@@ -1,0 +1,12 @@
+INTELIER-41
+
+Manage Room Information - General Settings
+
+As an...
+editorial user
+—
+I can...
+manage a list of rooms within my property or organization
+—
+So that...
+I can quickly view, sort and edit each room.
