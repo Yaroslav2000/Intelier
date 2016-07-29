@@ -6,5 +6,5 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.DefaultUrl;
 
-@DefaultUrl("http://www.google.co.uk")
+@DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
 public class LiveCMSModuleRooms extends PageObject {}

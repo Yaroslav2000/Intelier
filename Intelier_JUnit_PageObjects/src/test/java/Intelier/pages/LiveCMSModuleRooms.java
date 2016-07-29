@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import java.io.IOException;
 
 import net.thucydides.core.pages.PageObject;
 
@@ -13,23 +14,36 @@ import java.util.List;
 
 import static ch.lambdaj.Lambda.convert;
 
-@DefaultUrl("http://en.wiktionary.org/wiki/Wiktionary:Main_Page")
-public class DictionaryPage extends PageObject {
+@DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
+public class LiveCMSModuleRooms extends PageObject {
 
-    @FindBy(name="search")
-    private WebElementFacade searchTerms;
+    @FindBy(name="username")
+    private WebElementFacade username;
 
-    @FindBy(name="go")
-    private WebElementFacade lookupButton;
-
-    public void enter_keywords(String keyword) {
-        searchTerms.type(keyword);
+    @FindBy(name="password")
+    private WebElementFacade password;
+    
+    @FindBy(name="login")
+    private WebElementFacade loginButton;
+  
+    public void login_as_YY() {
+    	username.type("YY");
+    	pressAnyKeyToContinue();
+    	password.type("YY");
+    	loginButton.click();
     }
 
-    public void lookup_terms() {
-        lookupButton.click();
+    private void pressAnyKeyToContinue()
+    { 
+           System.out.println("Press any key to continue...");
+           try
+           {
+               System.in.read();
+           }  
+           catch(Exception e)
+           {}  
     }
-
+    
     public List<String> getDefinitions() {
         WebElementFacade definitionList = find(By.tagName("ol"));
         List<WebElement> results = definitionList.findElements(By.tagName("li"));
@@ -44,3 +58,4 @@ public class DictionaryPage extends PageObject {
         };
     }
 }
+

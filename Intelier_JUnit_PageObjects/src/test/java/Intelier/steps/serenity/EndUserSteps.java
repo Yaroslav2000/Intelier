@@ -1,6 +1,6 @@
 package Intelier.steps.serenity;
 
-import Intelier.pages.DictionaryPage;
+import Intelier.pages.LiveCMSModuleRooms;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -10,31 +10,21 @@ import static org.hamcrest.Matchers.hasItem;
 
 public class EndUserSteps extends ScenarioSteps {
 
-    DictionaryPage dictionaryPage;
+	LiveCMSModuleRooms liveCMSModuleRooms;
 
     @Step
-    public void enters(String keyword) {
-        dictionaryPage.enter_keywords(keyword);
+    public void navigates_to_start_page() {
+    	liveCMSModuleRooms.open();
     }
 
     @Step
-    public void starts_search() {
-        dictionaryPage.lookup_terms();
-    }
+    public void adds_new_room(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Step
-    public void should_see_definition(String definition) {
-        assertThat(dictionaryPage.getDefinitions(), hasItem(containsString(definition)));
-    }
-
-    @Step
-    public void is_the_home_page() {
-        dictionaryPage.open();
-    }
-
-    @Step
-    public void looks_for(String term) {
-        enters(term);
-        starts_search();
-    }
+	public void should_see_room_in_the_list(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 }
