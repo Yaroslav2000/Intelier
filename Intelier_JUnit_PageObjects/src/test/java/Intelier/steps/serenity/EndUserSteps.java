@@ -1,6 +1,7 @@
 package Intelier.steps.serenity;
 
 import Intelier.pages.LiveCMSModuleRooms;
+import Intelier.pages.LiveCMS;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -11,10 +12,14 @@ import static org.hamcrest.Matchers.hasItem;
 public class EndUserSteps extends ScenarioSteps {
 
 	LiveCMSModuleRooms liveCMSModuleRooms;
+	LiveCMS liveCMS;
 
     @Step
     public void navigates_to_start_page() {
+    	liveCMS.open();
+    	liveCMS.login();
     	liveCMSModuleRooms.open();
+    	liveCMS.logout();
     }
 
     @Step
