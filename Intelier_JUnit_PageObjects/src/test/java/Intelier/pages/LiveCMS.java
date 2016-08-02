@@ -3,6 +3,8 @@ package Intelier.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.annotations.NamedUrl;
+import net.thucydides.core.annotations.NamedUrls;
 
 import javax.swing.text.html.CSS;
 
@@ -22,7 +24,13 @@ public class LiveCMS extends PageObject {
     
     @FindBy(css="div[class='btnWrap btnWrapBlue']")
     private WebElementFacade loginButton;
+    
+//    @FindBy(css="div[class='logout']")
+//    private WebElementFacade logoutButton;
   
+    @FindBy(linkText = "Logout")
+    private WebElementFacade logoutLink;
+    
     public void login() {
     	username.type("Yaroslav.Yasynskyy@Webcanada.com");
     	password.type("Ntbk-9@#");
@@ -30,9 +38,7 @@ public class LiveCMS extends PageObject {
     }
 
 	public void logout() {
-		// TODO Auto-generated method stub
-		
+//    	logoutButton.click();
+    	logoutLink.click();
 	}
-
 }
-

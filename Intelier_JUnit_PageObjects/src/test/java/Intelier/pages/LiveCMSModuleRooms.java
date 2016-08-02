@@ -16,7 +16,12 @@ import static ch.lambdaj.Lambda.convert;
 
 @DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
 public class LiveCMSModuleRooms extends PageObject {
+    
+	@FindBy(linkText="Add a Room")
+    private WebElementFacade AddRoomLink;
 
+	public void AddNewRoom(String string) {
+		AddRoomLink.click();
+	}
 
 }
-
