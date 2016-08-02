@@ -14,21 +14,28 @@ public class BackEndUserSteps extends ScenarioSteps {
 	LiveCMSModuleRooms liveCMSModuleRooms;
 	LiveCMS liveCMS;
 
-    @Step
-    public void navigates_to_start_page() {
+	@Step
+    public void opens_LiveCMS() {
     	liveCMS.open();
     	liveCMS.login();
+    }
+	
+	@Step
+    public void closes_LiveCMS() {
+    	liveCMS.logout();
+    }
+	
+	@Step
+    public void navigates_to_room_module() {
     	liveCMSModuleRooms.open();
-//    	liveCMS.logout();
     }
 
     @Step
     public void adds_new_room(String string) {
-    	liveCMSModuleRooms.AddNewRoom(string);
+    	liveCMSModuleRooms.add_new_room(string);
 	}
 
 	public void should_see_room_in_the_list(String string) {
-		// TODO Auto-generated method stub
-		
+		liveCMSModuleRooms.should_see_room_in_the_list(string);
 	}
 }

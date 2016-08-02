@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -21,13 +22,17 @@ public class ManageRoomInformationStory {
     @Steps
     public BackEndUserSteps vasya;
 
-    @Issue("Test Case #1: Add a new room")
+    @Before 
+    public void LiveCMS_setup() {
+    	vasya.opens_LiveCMS();
+    }
+    
+    @Issue("Test Case #1: Adding a new room")
     @Test
     public void adding_new_room() {
-    	vasya.navigates_to_start_page();
+    	vasya.navigates_to_room_module();
     	vasya.adds_new_room("test-room");
     	vasya.should_see_room_in_the_list("test-room");
-
     }
 
 } 
