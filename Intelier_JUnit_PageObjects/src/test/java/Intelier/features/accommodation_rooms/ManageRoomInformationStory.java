@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import Intelier.steps.serenity.EndUserSteps;
+import Intelier.steps.serenity.BackEndUserSteps;
 
 @RunWith(SerenityRunner.class)
 public class ManageRoomInformationStory {
@@ -19,14 +19,14 @@ public class ManageRoomInformationStory {
     public WebDriver webdriver;
 
     @Steps
-    public EndUserSteps anna;
+    public BackEndUserSteps vasya;
 
-    @Issue("#WIKI-1")
+    @Issue("Test Case #1: Add a new room")
     @Test
     public void adding_new_room() {
-        anna.navigates_to_start_page();
-        anna.adds_new_room("test-room");
-        anna.should_see_room_in_the_list("test-room");
+    	vasya.navigates_to_start_page();
+    	vasya.adds_new_room("test-room");
+    	vasya.should_see_room_in_the_list("test-room");
 
     }
 
