@@ -32,8 +32,8 @@ public class LiveCMS extends PageObject {
     private WebElementFacade logoutLink;
     
     public void login() {
-    	username.type("Yaroslav.Yasynskyy@Webcanada.com");
-    	password.type("Ntbk-9@#");
+    	username.type("automation@Webcanada.com");
+    	password.type("Automation123");
     	loginButton.click();
     }
 

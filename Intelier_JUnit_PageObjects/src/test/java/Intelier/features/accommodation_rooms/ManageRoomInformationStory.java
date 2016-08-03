@@ -31,8 +31,8 @@ public class ManageRoomInformationStory {
     @Test
     public void adding_new_room() {
     	vasya.navigates_to_room_module();
-    	vasya.adds_new_room("test-room");
-    	vasya.should_see_room_in_the_list("test-room");
+    	vasya.adds_new_room("AutomationRoom");
+    	vasya.should_see_room_in_the_list("AutomationRoom");
     }
 
 } 
