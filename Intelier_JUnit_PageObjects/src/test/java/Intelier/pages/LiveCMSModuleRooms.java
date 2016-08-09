@@ -24,16 +24,13 @@ public class LiveCMSModuleRooms extends PageObject {
     private WebElementFacade RoomsListTable;
 	
 	public void add_new_room(String string) {
-//		AddRoomLink.withTimeoutOf(600,TimeUnit.SECONDS).waitUntilNotVisible().click();
 		AddRoomLink.click();
 		General_InternalNameTextBox.type(string);
 		General_SaveButton.click();
 	}
 
 	public void should_see_room_in_the_list(String string) {
-		//HtmlTable.rowsFrom(RoomsResultTable).size();
 		assertTrue(HtmlTable.rowsFrom(RoomsListTable).toString().contains(string));
-		
 	}
 
 }
