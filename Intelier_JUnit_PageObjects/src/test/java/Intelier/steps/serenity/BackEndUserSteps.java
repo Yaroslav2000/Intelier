@@ -30,8 +30,19 @@ public class BackEndUserSteps extends ScenarioSteps {
     public void adds_new_room(String string) {
     	liveCMSModuleRooms.add_new_room(string);
 	}
+    
+    @Step
+    public void deletes_room(String string) {
+    	liveCMSModuleRooms.delete_room(string);
+	}
 
+    @Step
 	public void should_see_room_in_the_list(String string) {
 		liveCMSModuleRooms.should_see_room_in_the_list(string);
+	}
+    
+    @Step
+	public void should_not_see_room_in_the_list(String string) {
+		liveCMSModuleRooms.should_not_see_room_in_the_list(string);
 	}
 }

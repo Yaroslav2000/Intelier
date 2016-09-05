@@ -6,14 +6,21 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import Intelier.steps.serenity.BackEndUserSteps;
 
 @RunWith(SerenityRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ManageRoomInformationStory {
 
     @Managed
@@ -22,17 +29,33 @@ public class ManageRoomInformationStory {
     @Steps
     public BackEndUserSteps vasya;
 
-    @Before 
+    @Before
     public void LiveCMS_setup() {
     	vasya.opens_LiveCMS();
+    	vasya.navigates_to_room_module();
     }
     
-    @Issue("Test Case #1: Adding a new room")
+    @After
+    public void LiveCMS_exit() {
+    	vasya.closes_LiveCMS();
+    }
+    
+	String TestRoomName = "AutomationRoom";
+     
+//@Ignore
+	@Issue("Test Case #001: Adding new room")
     @Test
-    public void adding_new_room() {
-    	vasya.navigates_to_room_module();
-    	vasya.adds_new_room("AutomationRoom");
-    	vasya.should_see_room_in_the_list("AutomationRoom");
+    public void Test_001_adding_new_room() {
+    	vasya.adds_new_room(TestRoomName);
+    	vasya.should_see_room_in_the_list(TestRoomName);
     }
 
+    @Issue("Test Case #002: Deleting room")
+    @Test
+    public void Test_002_deleting_room() {
+    	//vasya.should_see_room_in_the_list(TestRoomName);
+    	vasya.deletes_room(TestRoomName);
+    	vasya.should_not_see_room_in_the_list(TestRoomName);
+    }
+    
 } 

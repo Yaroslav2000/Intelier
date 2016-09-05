@@ -14,12 +14,12 @@ public class LiveCMS extends PageObject {
     @FindBy(name="password")
     private WebElementFacade password;
     
-    @FindBy(css="div[class='btnWrap btnWrapBlue']")
+    @FindBy(css="input[class='btn']")
     private WebElementFacade loginButton;
     
 //    @FindBy(css="div[class='logout']")
 //    private WebElementFacade logoutButton;
-  
+    
     @FindBy(linkText = "Logout")
     private WebElementFacade logoutLink;
     
@@ -30,7 +30,6 @@ public class LiveCMS extends PageObject {
     }
 
 	public void logout() {
-//    	logoutButton.click();
     	logoutLink.click();
 	}
 }

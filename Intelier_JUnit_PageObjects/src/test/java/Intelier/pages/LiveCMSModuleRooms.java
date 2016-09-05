@@ -5,8 +5,15 @@ import net.thucydides.core.pages.components.HtmlTable;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.NoSuchElementException;
 
 @DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
 public class LiveCMSModuleRooms extends PageObject {
@@ -23,14 +30,42 @@ public class LiveCMSModuleRooms extends PageObject {
 	@FindBy(className="list")
     private WebElementFacade RoomsListTable;
 	
-	public void add_new_room(String string) {
+    @FindBy(css="div[class='button-container']")
+    private WebElementFacade DeleteButton;
+    
+//    @FindBy(css="a[class='delete']")
+//    private WebElementFacade DeleteButton;
+    
+    @FindBy(css="input[name='Yes']")
+    private WebElementFacade DeleteConfirmYesButton;
+	
+    public void add_new_room(String string) {
 		AddRoomLink.click();
 		General_InternalNameTextBox.type(string);
 		General_SaveButton.click();
 	}
+	
+	public void delete_room(String string) {
+		//clickLinkByHref("/intelier/automation/automation-room/room/delete/id/76");
+//		HtmlTable table = HtmlTable.inTable(RoomsListTable);
+//        Iterator<WebElement> RowElements = table.getRowElements().iterator();
+//        while(RowElements.hasNext()) {
+//        	WebElement row = RowElements.next();
+//		    	if (row.getAttribute("data-name").contains(string)) {
+//		    	}
+//        }
+		DeleteButton.click();
+		DeleteConfirmYesButton.click();   
+	}
 
 	public void should_see_room_in_the_list(String string) {
 		assertTrue(HtmlTable.rowsFrom(RoomsListTable).toString().contains(string));
+	}
+	
+	public void should_not_see_room_in_the_list(String string) {
+	    try {
+	    	assertFalse(HtmlTable.rowsFrom(RoomsListTable).toString().contains(string));
+	    } catch (NoSuchElementException ex) {}
 	}
 
 }
