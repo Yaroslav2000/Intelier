@@ -42,17 +42,17 @@ public class ManageRoomInformationStory {
     
 	String TestRoomName = "AutomationRoom";
      
-//@Ignore
-	@Issue("Test Case #001: Adding new room")
+@Ignore
+	@Issue("Test Case #001: Add new room")
     @Test
-    public void Test_001_adding_new_room() {
+    public void Test_001_add_new_room() {
     	vasya.adds_new_room(TestRoomName);
     	vasya.should_see_room_in_the_list(TestRoomName);
     }
 
-    @Issue("Test Case #002: Deleting room")
+    @Issue("Test Case #002: Delete room")
     @Test
-    public void Test_002_deleting_room() {
+    public void Test_002_delete_room() {
     	//vasya.should_see_room_in_the_list(TestRoomName);
     	vasya.deletes_room(TestRoomName);
     	vasya.should_not_see_room_in_the_list(TestRoomName);

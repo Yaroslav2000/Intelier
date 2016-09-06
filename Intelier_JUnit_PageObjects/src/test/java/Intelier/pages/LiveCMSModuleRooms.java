@@ -12,7 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.NoSuchElementException;
 
 @DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
@@ -33,8 +35,8 @@ public class LiveCMSModuleRooms extends PageObject {
     @FindBy(css="div[class='button-container']")
     private WebElementFacade DeleteButton;
     
-//    @FindBy(css="a[class='delete']")
-//    private WebElementFacade DeleteButton;
+    @FindBy(xpath="//a[@class='delete']")
+    private WebElementFacade DeleteButton2;
     
     @FindBy(css="input[name='Yes']")
     private WebElementFacade DeleteConfirmYesButton;
@@ -54,7 +56,32 @@ public class LiveCMSModuleRooms extends PageObject {
 //		    	if (row.getAttribute("data-name").contains(string)) {
 //		    	}
 //        }
-		DeleteButton.click();
+		System.out.println("DeleteButton");
+				
+//		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+//		js.executeScript("arguments[0].click();", DeleteButton);
+		
+		Actions action = new Actions(getDriver());
+		//action.moveToElement(DeleteButton).perform();
+		
+		action.moveToElement(DeleteButton).moveToElement(DeleteButton2).click().perform();
+		  
+		
+		
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+		//action.moveToElement(DeleteButton2).click();
+	
+
+		//action.click(DeleteButton2).perform();
+		
+		//DeleteButton2.click();
+		System.out.println("DeleteConfirmYesButton-click");
 		DeleteConfirmYesButton.click();   
 	}
 
