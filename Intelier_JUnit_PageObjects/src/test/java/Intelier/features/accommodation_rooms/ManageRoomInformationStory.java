@@ -42,7 +42,7 @@ public class ManageRoomInformationStory {
     
 	String TestRoomName = "AutomationRoom";
      
-@Ignore
+//@Ignore
 	@Issue("Test Case #001: Add new room")
     @Test
     public void Test_001_add_new_room() {

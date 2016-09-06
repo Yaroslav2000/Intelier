@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.mockito.BDDMockito.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -61,13 +62,17 @@ public class LiveCMSModuleRooms extends PageObject {
 //		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 //		js.executeScript("arguments[0].click();", DeleteButton);
 		
-		Actions action = new Actions(getDriver());
+		//Actions action = new Actions(getDriver());
 		//action.moveToElement(DeleteButton).perform();
 		
-		action.moveToElement(DeleteButton).moveToElement(DeleteButton2).click().perform();
+		//action.moveToElement(DeleteButton).moveToElement(DeleteButton2).click().perform();
 		  
+		//find(By.cssSelector("div[class='button-container']")).click();
+	
+		find(By.cssSelector("div[class='button-container']")).then(By.xpath("//a[@class='delete']")).click();
 		
 		
+		//$(DeleteButton2).click();
 //		try {
 //			Thread.sleep(2000);
 //		} catch (InterruptedException e) {
