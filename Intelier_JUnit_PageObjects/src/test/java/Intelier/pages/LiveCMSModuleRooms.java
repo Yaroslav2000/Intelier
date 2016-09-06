@@ -4,7 +4,12 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.annotations.NamedUrl;
+import net.thucydides.core.annotations.NamedUrls;
 import net.thucydides.core.pages.PageObject;
+import net.thucydides.core.pages.Pages;
+import static net.thucydides.core.pages.PageObject.withParameters;
+
 import static org.junit.Assert.*;
 
 import java.util.Iterator;
@@ -16,9 +21,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.NoSuchElementException;
 
 @DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
+@NamedUrls(
+		  {
+		    @NamedUrl(name = "delete.room", url = "http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room/delete/id/{1}"),
+		    @NamedUrl(name = "edit.room", url = "http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room/edit/id/{1}")
+		  }
+)
 public class LiveCMSModuleRooms extends PageObject {
 	
 	@FindBy(linkText="Add a Room")
@@ -48,45 +60,23 @@ public class LiveCMSModuleRooms extends PageObject {
 		General_SaveButton.click();
 	}
 	
-	public void delete_room(String string) {
-		//clickLinkByHref("/intelier/automation/automation-room/room/delete/id/76");
-//		HtmlTable table = HtmlTable.inTable(RoomsListTable);
-//        Iterator<WebElement> RowElements = table.getRowElements().iterator();
-//        while(RowElements.hasNext()) {
-//        	WebElement row = RowElements.next();
-//		    	if (row.getAttribute("data-name").contains(string)) {
-//		    	}
-//        }
-		System.out.println("DeleteButton");
-				
-//		JavascriptExecutor js = (JavascriptExecutor) getDriver();
-//		js.executeScript("arguments[0].click();", DeleteButton);
+	public void delete_room(String string) {   
+		HtmlTable table = HtmlTable.inTable(RoomsListTable);
+        Iterator<WebElement> RowElements = table.getRowElements().iterator();
+        while(RowElements.hasNext()) {
+        	WebElement row = RowElements.next();
+		    	if (row.getAttribute("data-name").contains(string)) {
+		    		//System.out.println("before");
+		    		open("delete.room", withParameters(row.getAttribute("data-id")));
+		    		//System.out.println("after");
+		    		//break;
+		    	}
+        }
 		
 		//Actions action = new Actions(getDriver());
 		//action.moveToElement(DeleteButton).perform();
-		
-		//action.moveToElement(DeleteButton).moveToElement(DeleteButton2).click().perform();
-		  
-		//find(By.cssSelector("div[class='button-container']")).click();
-	
-		find(By.cssSelector("div[class='button-container']")).then(By.xpath("//a[@class='delete']")).click();
-		
-		
-		//$(DeleteButton2).click();
-//		try {
-//			Thread.sleep(2000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-		//action.moveToElement(DeleteButton2).click();
-	
-
-		//action.click(DeleteButton2).perform();
-		
 		//DeleteButton2.click();
-		System.out.println("DeleteConfirmYesButton-click");
+
 		DeleteConfirmYesButton.click();   
 	}
 
