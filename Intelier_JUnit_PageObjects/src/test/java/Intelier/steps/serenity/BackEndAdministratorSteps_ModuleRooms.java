@@ -1,25 +1,12 @@
 package Intelier.steps.serenity;
 
-import Intelier.pages.LiveCMSModuleRooms;
-import Intelier.pages.LiveCMS;
+import Intelier.pages.LiveCMSModuleRoomsPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class BackEndUserSteps extends ScenarioSteps {
+public class BackEndAdministratorSteps_ModuleRooms extends ScenarioSteps {
 
-	LiveCMSModuleRooms liveCMSModuleRooms;
-	LiveCMS liveCMS;
-
-	@Step
-    public void opens_LiveCMS() {
-    	liveCMS.open();
-    	liveCMS.login();
-    }
-	
-	@Step
-    public void closes_LiveCMS() {
-    	liveCMS.logout();
-    }
+	LiveCMSModuleRoomsPage liveCMSModuleRooms;
 	
 	@Step
     public void navigates_to_room_module() {

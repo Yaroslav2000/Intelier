@@ -17,35 +17,52 @@ import org.junit.Ignore;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
-import Intelier.steps.serenity.BackEndUserSteps;
+import Intelier.steps.serenity.BackEndAdministratorSteps_LiveCMS;
+import Intelier.steps.serenity.BackEndAdministratorSteps_ModuleRooms;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ManageRoomInformationStory {
 
-    @Managed
+	//Test Data Setup
+    String TestRoomName = "AutomationRoom";
+    //private static boolean FirstTest = true;
+    //private static boolean LastTest = false;
+
+	@Managed
     public WebDriver webdriver;
 
     @Steps
-    public BackEndUserSteps vasya;
+    public BackEndAdministratorSteps_LiveCMS BackEndAuthenticator;
+    
+    @Steps
+    public BackEndAdministratorSteps_ModuleRooms BackEndAdministrator;
 
     @Before
     public void LiveCMS_setup() {
-    	vasya.opens_LiveCMS();
-    	vasya.navigates_to_room_module();
+    	//Given
+    	//if (FirstTest) 
+    	//{
+    		BackEndAuthenticator.opens_LiveCMS();
+    		//FirstTest = false;
+    	//}
+    	BackEndAdministrator.navigates_to_room_module();
     }
     
     @After
     public void LiveCMS_exit() {
-    	vasya.closes_LiveCMS();
+    	//if (LastTest) 
+    	//{
+    		BackEndAuthenticator.closes_LiveCMS();
+    	//}
     }
-    
-	String TestRoomName = "AutomationRoom";
-     
+         
     @Test
     public void Test_Case_001_add_new_room() {
-    	vasya.adds_new_room(TestRoomName);
-    	vasya.should_see_room_in_the_list(TestRoomName);
+    	//When
+    	BackEndAdministrator.adds_new_room(TestRoomName);
+    	//Then
+    	BackEndAdministrator.should_see_room_in_the_list(TestRoomName);
     }
 
     @Test
@@ -55,8 +72,11 @@ public class ManageRoomInformationStory {
     
     @Test
     public void Test_Case_003_delete_room() {
-    	vasya.deletes_room(TestRoomName);
-    	vasya.should_not_see_room_in_the_list(TestRoomName);
+    	//When
+    	BackEndAdministrator.deletes_room(TestRoomName);
+    	//Then
+    	BackEndAdministrator.should_not_see_room_in_the_list(TestRoomName);
+    	//LastTest=true;
     }
     
 } 

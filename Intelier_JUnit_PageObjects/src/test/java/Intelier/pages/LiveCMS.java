@@ -16,10 +16,7 @@ public class LiveCMS extends PageObject {
     
     @FindBy(css="input[class='btn']")
     private WebElementFacade loginButton;
-    
-//    @FindBy(css="div[class='logout']")
-//    private WebElementFacade logoutButton;
-    
+      
     @FindBy(linkText = "Logout")
     private WebElementFacade logoutLink;
     

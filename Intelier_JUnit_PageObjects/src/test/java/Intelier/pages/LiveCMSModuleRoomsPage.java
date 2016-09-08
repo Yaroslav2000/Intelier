@@ -31,7 +31,7 @@ import org.openqa.selenium.NoSuchElementException;
 		    @NamedUrl(name = "edit.room", url = "http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room/edit/id/{1}")
 		  }
 )
-public class LiveCMSModuleRooms extends PageObject {
+public class LiveCMSModuleRoomsPage extends PageObject {
 	
 	@FindBy(linkText="Add a Room")
     private WebElementFacade AddRoomLink;
