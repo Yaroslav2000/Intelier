@@ -1,12 +1,12 @@
 package Intelier.steps.serenity;
 
-import Intelier.pages.LiveCMSModuleRoomsPage;
+import Intelier.pages.LiveCMSModuleRooms;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class BackEndAdministratorSteps_ModuleRooms extends ScenarioSteps {
+public class BackEndAdministratorModuleRoom extends ScenarioSteps {
 
-	LiveCMSModuleRoomsPage liveCMSModuleRooms;
+	LiveCMSModuleRooms liveCMSModuleRooms;
 	
 	@Step
     public void navigates_to_room_module() {
@@ -31,5 +31,15 @@ public class BackEndAdministratorSteps_ModuleRooms extends ScenarioSteps {
     @Step
 	public void should_not_see_room_in_the_list(String string) {
 		liveCMSModuleRooms.should_not_see_room_in_the_list(string);
+	}
+    
+    @Step
+    public void deletes_all_rooms() {
+    	liveCMSModuleRooms.delete_all_rooms();
+	}
+    
+    @Step
+	public void should_see_no_rooms_in_the_list() {
+		liveCMSModuleRooms.should_see_no_rooms_in_the_list();
 	}
 }

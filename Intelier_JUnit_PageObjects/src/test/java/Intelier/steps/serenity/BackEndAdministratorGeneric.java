@@ -2,14 +2,14 @@ package Intelier.steps.serenity;
 
 import org.openqa.selenium.WebDriver;
 
-import Intelier.pages.LiveCMS;
+import Intelier.pages.LiveCMSGeneric;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class BackEndAdministratorSteps_LiveCMS extends ScenarioSteps {
+public class BackEndAdministratorGeneric extends ScenarioSteps {
 	
-	LiveCMS liveCMS;
+	LiveCMSGeneric liveCMS;
 
 	@Step
     public void opens_LiveCMS() {

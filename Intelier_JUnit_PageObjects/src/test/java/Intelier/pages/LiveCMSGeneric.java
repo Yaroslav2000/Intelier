@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
 @DefaultUrl("http://l5.local-qa.dev.webcanada.com/")
-public class LiveCMS extends PageObject {
+public class LiveCMSGeneric extends PageObject {
 
     @FindBy(name="username")
     private WebElementFacade username;

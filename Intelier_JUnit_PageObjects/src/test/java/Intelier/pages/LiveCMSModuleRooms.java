@@ -31,7 +31,7 @@ import org.openqa.selenium.NoSuchElementException;
 		    @NamedUrl(name = "edit.room", url = "http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room/edit/id/{1}")
 		  }
 )
-public class LiveCMSModuleRoomsPage extends PageObject {
+public class LiveCMSModuleRooms extends PageObject {
 	
 	@FindBy(linkText="Add a Room")
     private WebElementFacade AddRoomLink;
@@ -45,11 +45,11 @@ public class LiveCMSModuleRoomsPage extends PageObject {
 	@FindBy(className="list")
     private WebElementFacade RoomsListTable;
 	
-    @FindBy(css="div[class='button-container']")
-    private WebElementFacade DeleteButton;
+    @FindBy(css="[data-id]")
+    private WebElementFacade FirstRow;
     
     @FindBy(xpath="//a[@class='delete']")
-    private WebElementFacade DeleteButton2;
+    private WebElementFacade DeleteButton;
     
     @FindBy(css="input[name='Yes']")
     private WebElementFacade DeleteConfirmYesButton;
@@ -79,6 +79,18 @@ public class LiveCMSModuleRoomsPage extends PageObject {
 
 		DeleteConfirmYesButton.click();   
 	}
+	
+	public void delete_all_rooms() {   
+		HtmlTable table = HtmlTable.inTable(RoomsListTable);
+        Iterator<WebElement> RowElements = table.getRowElements().iterator();
+        while(RowElements.hasNext()) {
+        	WebElement row = RowElements.next();
+        	System.out.println("while");
+        		FirstRow.click();
+        		DeleteButton.click();
+        		DeleteConfirmYesButton.click();       	
+        }
+	}
 
 	public void should_see_room_in_the_list(String string) {
 		assertTrue(HtmlTable.rowsFrom(RoomsListTable).toString().contains(string));
@@ -87,6 +99,12 @@ public class LiveCMSModuleRoomsPage extends PageObject {
 	public void should_not_see_room_in_the_list(String string) {
 	    try {
 	    	assertFalse(HtmlTable.rowsFrom(RoomsListTable).toString().contains(string));
+	    } catch (NoSuchElementException ex) {}
+	}
+	
+	public void should_see_no_rooms_in_the_list() {
+	    try {	
+	    	assertTrue(HtmlTable.rowsFrom(RoomsListTable).isEmpty());
 	    } catch (NoSuchElementException ex) {}
 	}
 

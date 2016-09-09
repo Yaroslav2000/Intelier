@@ -14,69 +14,69 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-import Intelier.steps.serenity.BackEndAdministratorSteps_LiveCMS;
-import Intelier.steps.serenity.BackEndAdministratorSteps_ModuleRooms;
+import Intelier.steps.serenity.BackEndAdministratorGeneric;
+import Intelier.steps.serenity.BackEndAdministratorModuleRoom;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ManageRoomInformationStory {
 
-	//Test Data Setup
-    String TestRoomName = "AutomationRoom";
-    //private static boolean FirstTest = true;
-    //private static boolean LastTest = false;
-
 	@Managed
     public WebDriver webdriver;
 
     @Steps
-    public BackEndAdministratorSteps_LiveCMS BackEndAuthenticator;
+    public BackEndAdministratorGeneric BackEndAdministratorGeneric;
     
     @Steps
-    public BackEndAdministratorSteps_ModuleRooms BackEndAdministrator;
+    public BackEndAdministratorModuleRoom BackEndAdministratorModuleRoom;
 
     @Before
     public void LiveCMS_setup() {
+    	BackEndAdministratorGeneric.opens_LiveCMS();
     	//Given
-    	//if (FirstTest) 
-    	//{
-    		BackEndAuthenticator.opens_LiveCMS();
-    		//FirstTest = false;
-    	//}
-    	BackEndAdministrator.navigates_to_room_module();
+    	BackEndAdministratorModuleRoom.navigates_to_room_module();
     }
     
     @After
     public void LiveCMS_exit() {
-    	//if (LastTest) 
-    	//{
-    		BackEndAuthenticator.closes_LiveCMS();
-    	//}
+    	BackEndAdministratorGeneric.closes_LiveCMS();
     }
          
-    @Test
-    public void Test_Case_001_add_new_room() {
-    	//When
-    	BackEndAdministrator.adds_new_room(TestRoomName);
-    	//Then
-    	BackEndAdministrator.should_see_room_in_the_list(TestRoomName);
-    }
-
-    @Test
-    public void Test_Case_002_edit_room() {
-//TO-DO
-    }
+	//Test Data Setup
+    String TestRoomName = "AutomationRoom";
+    
+//    @Test
+//    public void Test_Case_001_add_new_room() {
+//    	//When
+//    	BackEndAdministrator.adds_new_room(TestRoomName);
+//    	//Then
+//    	BackEndAdministrator.should_see_room_in_the_list(TestRoomName);
+//    }
+//
+//    @Test
+//    public void Test_Case_002_edit_room() {
+////TO-DO
+//    }
+//    
+//    @Test
+//    public void Test_Case_003_delete_room() {
+//    	//When
+//    	BackEndAdministrator.deletes_room(TestRoomName);
+//    	//Then
+//    	BackEndAdministrator.should_not_see_room_in_the_list(TestRoomName);
+//    }
     
     @Test
-    public void Test_Case_003_delete_room() {
+    public void delete_all_rooms() {
     	//When
-    	BackEndAdministrator.deletes_room(TestRoomName);
+    	BackEndAdministratorModuleRoom.deletes_all_rooms();
     	//Then
-    	BackEndAdministrator.should_not_see_room_in_the_list(TestRoomName);
-    	//LastTest=true;
+    	BackEndAdministratorModuleRoom.should_see_no_rooms_in_the_list();
     }
     
 } 
