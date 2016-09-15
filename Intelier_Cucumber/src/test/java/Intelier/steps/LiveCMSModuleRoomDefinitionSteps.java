@@ -33,59 +33,53 @@ public class LiveCMSModuleRoomDefinitionSteps {
     
 //    @And("Adds new room '(.*)'")
 //    public void Adds_new_room(String room) {
-//    	//When
 //    	BackEndAdministrator.adds_new_room(room);
-//    	//Then
 //    	BackEndAdministrator.should_see_room_in_the_list(room);
 //    }
 //    
 //    @And("Edits room '(.*)' with default settings'")
 //    public void Edits_room_default_settings(String room) {
-//    	//When
 //    	BackEndAdministrator.edits_room_default_settings(room);
-//    	//Then
 //    	BackEndAdministrator.should_save_room_new_settings(room);
 //    }
 //    
 //    @And("Deletes room '(.*)'")
 //    public void Deletes_room(String room) {
-//    	//When
 //    	BackEndAdministrator.deletes_room(room);
-//    	//Then
 //    	BackEndAdministrator.should_not_see_room_in_the_list(room);
 //    }    
     
-    @Given("BackEnd Administrator navigates to Room module")
+    @Given("Back-end Administrator navigates to Room module")
     public void Given_BackEndAdministrator_navigates_to_room_module() {
     	BackEndAdministrator.navigates_to_room_module();
     }
 
-    @When("BackEnd Administrator adds new room '(.*)'")
+    @When("Back-end Administrator adds new room '(.*)'")
     public void When_BackEndAdministrator_adds_new_room(String room) {
     	BackEndAdministrator.adds_new_room(room);
     }
 
-    @Then("BackEnd Administrator should see room '(.*)' in the room list table")
+    @Then("Back-end Administrator should see room '(.*)' in the room list table")
     public void Then_BackEndAdministrator_should_see_room_in_the_list(String room) {
     	BackEndAdministrator.should_see_room_in_the_list(room);
     }
 
-    @When("BackEnd Administrator deletes room '(.*)'")
+    @When("Back-end Administrator deletes room '(.*)'")
     public void When_BackEndAdministrator_deletes_new_room(String room) {
     	BackEndAdministrator.deletes_room(room);
     }
     
-    @Then("BackEnd Administrator should not see room '(.*)' in the room list table")
+    @Then("Back-end Administrator should not see room '(.*)' in the room list table")
     public void Then_BackEndAdministrator_should__not_see_room_in_the_list(String room) {
     	BackEndAdministrator.should_not_see_room_in_the_list(room);
     }
     
-    @When("BackEnd Administrator edits room '(.*)' with default settings")
+    @When("Back-end Administrator edits room '(.*)' with default settings")
     public void When_BackEndAdministrator_edits_room_default_settings(String room) {
     	BackEndAdministrator.edits_room_default_settings(room);
     }
     
-    @Then("BackEnd Administrator should save room '(.*)' new settings")
+    @Then("Back-end Administrator should save room '(.*)' new settings")
     public void Then_BackEndAdministrator_should_save_room_new_settings(String room) {
     	BackEndAdministrator.should_save_room_new_settings(room);
     }
