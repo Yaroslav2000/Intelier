@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,7 +23,7 @@ import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ManageRoomInformation {
+public class ManageRoomInformationGeneralSettings {
 
 	@Managed
     public WebDriver webdriver;
@@ -55,6 +56,7 @@ public class ManageRoomInformation {
 //    }
     
     @Test
+    @Title("Add new room")
     public void Test_Case_001_add_new_room() {
     	//When (Actions)
     	BackEndAdministrator.adds_new_room(TestRoomName);
@@ -63,6 +65,7 @@ public class ManageRoomInformation {
     }
 
     @Test
+    @Title("Edit new room with default settings")
     public void Test_Case_002_edit_room_default_settings() {
     	//When (Actions)
     	BackEndAdministrator.edits_room_default_settings(TestRoomName);
@@ -71,6 +74,7 @@ public class ManageRoomInformation {
     }
     
     @Test
+    @Title("Delete new room")
     public void Test_Case_003_delete_room() {
     	//When (Actions)
     	BackEndAdministrator.deletes_room(TestRoomName);
