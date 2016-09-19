@@ -1,5 +1,5 @@
-#INTELIER-41 (Story)
-Feature: Manage Room Information - General Settings
+#INTELIER-80
+Feature: Manage Room List (Story)
 As an...
 editorial user
 
@@ -16,8 +16,8 @@ I can quickly view, sort and edit each room.
     And Should be able to add new room 'AutomationRoom'
 #    When Back-end Administrator adds new room 'AutomationRoom'
 #    Then Back-end Administrator should see room 'AutomationRoom' in the room list table
-    
-  Scenario: Edit room with default settings
+
+  Scenario: Edit room
   	And Should be able to edit room 'AutomationRoom' with default settings
 #    When Back-end Administrator edits room 'AutomationRoom' with default settings
 #    Then Back-end Administrator should save room 'AutomationRoom' new settings
@@ -26,3 +26,4 @@ I can quickly view, sort and edit each room.
    	And Should be able to delete room 'AutomationRoom'
 #    When Back-end Administrator deletes room 'AutomationRoom'
 #    Then Back-end Administrator should not see room 'AutomationRoom' in the room list table
+    
