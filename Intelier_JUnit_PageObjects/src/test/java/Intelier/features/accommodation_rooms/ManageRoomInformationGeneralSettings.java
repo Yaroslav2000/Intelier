@@ -37,7 +37,6 @@ public class ManageRoomInformationGeneralSettings {
     @Before
     public void LiveCMS_setup() {
     	LiveCMS.setup();
-    	//Given (Preconditions)
     	BackEndAdministrator.navigates_to_room_module();
     }
     
@@ -58,27 +57,21 @@ public class ManageRoomInformationGeneralSettings {
     @Test
     @Title("Add new room")
     public void Test_Case_001_add_new_room() {
-    	//When (Actions)
     	BackEndAdministrator.adds_new_room(TestRoomName);
-    	//Then (Expected Result)
     	BackEndAdministrator.should_see_room_in_the_list(TestRoomName);
     }
 
     @Test
-    @Title("Edit new room with default settings")
+    @Title("Edit room")
     public void Test_Case_002_edit_room_default_settings() {
-    	//When (Actions)
     	BackEndAdministrator.edits_room_default_settings(TestRoomName);
-    	//Then (Expected Result)
     	BackEndAdministrator.should_save_room_new_settings(TestRoomName);
     }
     
     @Test
-    @Title("Delete new room")
+    @Title("Delete room")
     public void Test_Case_003_delete_room() {
-    	//When (Actions)
     	BackEndAdministrator.deletes_room(TestRoomName);
-    	//Then (Expected Result)
     	BackEndAdministrator.should_not_see_room_in_the_list(TestRoomName);
     }
     

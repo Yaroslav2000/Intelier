@@ -54,4 +54,10 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 		liveCMSModuleRoom.should_save_room_new_settings(string);
 		
 	}
+
+    @Step
+	public void cancels_adding_new_room(String room) {
+		//liveCMSModuleRoom.cancels_adding_new_room(string);
+		
+	}
 }

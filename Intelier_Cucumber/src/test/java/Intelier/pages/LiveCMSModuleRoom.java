@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.NamedUrl;
 import net.thucydides.core.annotations.NamedUrls;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.Pages;
 import static net.thucydides.core.pages.PageObject.withParameters;
