@@ -50,7 +50,7 @@ public class AccommodationRoomsDefinitionSteps {
     	BackEndAdministrator.navigates_to_room_module();
     }
 
-//Samples1
+//Samples
     
 //  @And("Should be able to add new room '(.*)'")
 //  public void Add_new_room(String room) {
