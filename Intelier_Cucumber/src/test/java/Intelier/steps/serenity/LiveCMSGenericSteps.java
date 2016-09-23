@@ -8,18 +8,14 @@ public class LiveCMSGenericSteps extends ScenarioSteps {
 	
 	LiveCMSGeneric liveCMSGeneric;
 
-	//@Step
-    public void openLiveCMS() {
+	@Step
+    public void setup() {
 		liveCMSGeneric.open();
-    }
-    
-    //@Step
-    public void login() {
 		liveCMSGeneric.login();
     }
 	
-	//@Step
-    public void logout() {
+	@Step
+    public void teardown() {
 		liveCMSGeneric.logout();
     }
 

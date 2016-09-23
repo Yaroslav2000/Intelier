@@ -27,14 +27,12 @@ public class LiveCMSGeneric extends PageObject {
     // -----------------------------------------------------------------------------------------------------------------
     // ACTIONS
     
-    @Step("LiveCMS Login")
     public void login() {
     	Username_TEXTBOX.type("automation@Webcanada.com");
     	Password_TEXTBOX.type("Automation123");
     	Login_BUTTON.click();
     }
 
-    @Step("LiveCMS Logout")
 	public void logout() {
 		Logout_LINK.click();
 	}

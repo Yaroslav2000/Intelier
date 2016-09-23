@@ -18,105 +18,96 @@ import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
 
 public class AccommodationRoomsDefinitionSteps {
 	
-	@Steps
-	LiveCMSGeneric liveCMSGenericSteps;
-	
-	LiveCMSGeneric liveCMSGeneric;
-	
     @Steps
-    LiveCMSModuleRoomSteps BackEndAdministrator;
+    LiveCMSModuleRoomSteps LiveCMSModuleRoomSteps;
     
     @Steps
     LiveCMSGenericSteps LiveCMSGenericSteps;
 
     @Before
-    public void LiveCMS_setup() {
-    	liveCMSGeneric.open();
-    	liveCMSGenericSteps.login();
-//    	LiveCMSGenericSteps.openLiveCMS();
-//    	LiveCMSGenericSteps.login();
+    public void Setup() {
+    	LiveCMSGenericSteps.setup();
     }
     
     @After
-    public void LiveCMS_exit() {
-    	liveCMSGenericSteps.logout();
-//    	LiveCMSGenericSteps.logout();
+    public void Teardown() {
+    	LiveCMSGenericSteps.teardown();
     }
 
 //Background:
     
     @Given("Back-end Administrator has opened room module")
     public void Navigate_to_room_module() {
-    	BackEndAdministrator.navigates_to_room_module();
+    	LiveCMSModuleRoomSteps.navigate_to_room_module();
     }
 
 //Samples
     
 //  @And("Should be able to add new room '(.*)'")
 //  public void Add_new_room(String room) {
-//  	//BackEndAdministrator.adds_new_room(room);
+//  	//BackEndAdministrator.add_new_room(room);
 //  	//BackEndAdministrator.should_see_room_in_the_list(room);
 //  }      
     
 //Scenario: Add new room
     
     @Given("No rooms are in the room list")
-    public void Delete_all_rooms() {
-    	//BackEndAdministrator.deletes_all_rooms();
-    	//BackEndAdministrator.should_see_no_rooms_in_the_list();
+    public void No_rooms() {
+    	LiveCMSModuleRoomSteps.delete_all_rooms();
+    	LiveCMSModuleRoomSteps.should_see_no_rooms_in_the_list();
     }
     
     @When("Back-end Administrator adds new room '(.*)'")
-    public void When_BackEndAdministrator_adds_new_room(String room) {
-    	//BackEndAdministrator.adds_new_room(room);
+    public void add_new_room(String room) {
+    	LiveCMSModuleRoomSteps.add_new_room(room);
     }
 
     @Then("Back-end Administrator should see room '(.*)' in the room list")
-    public void Then_BackEndAdministrator_should_see_room_in_the_list(String room) {
-    	//BackEndAdministrator.should_see_room_in_the_list(room);
+    public void should_see_room_in_the_list(String room) {
+    	LiveCMSModuleRoomSteps.should_see_room_in_the_list(room);
     }
 
 //Scenario: Cancel adding new Room
     
-    @When("Back-end Administrator cancels adding new room '(.*)'")
-    public void When_BackEndAdministrator_cancels_adding_new_room(String room) {
-    	//BackEndAdministrator.cancels_adding_new_room(room);
+    @When("Back-end Administrator cancel adding new room '(.*)'")
+    public void cancel_adding_new_room(String room) {
+    	LiveCMSModuleRoomSteps.cancel_adding_new_room(room);
     }
     
 //Scenario: Delete room
     
     @Given("'(.*)' room is in the room list")
-    public void Given_room_is_in_the_room_list(String room) {
-    	//BackEndAdministrator.adds_new_room(room);
+    public void room_is_in_the_room_list(String room) {
+    	LiveCMSModuleRoomSteps.add_new_room(room);
     }
     
     @When("Back-end Administrator deletes room '(.*)'")
-    public void When_BackEndAdministrator_deletes_new_room(String room) {
-    	//BackEndAdministrator.deletes_room(room);
+    public void delete_room(String room) {
+    	LiveCMSModuleRoomSteps.delete_room(room);
     }
     
     @Then("Back-end Administrator should not see room '(.*)' in the room list")
-    public void Then_BackEndAdministrator_should__not_see_room_in_the_list(String room) {
-    	//BackEndAdministrator.should_not_see_room_in_the_list(room);
+    public void should_not_see_room_in_the_list(String room) {
+    	LiveCMSModuleRoomSteps.should_not_see_room_in_the_list(room);
     }
     
 //Scenario: Edit room - General settings
     
     @When("Back-end Administrator edits room '(.*)' general settings")
-    public void When_BackEndAdministrator_edits_room_general_settings(String room) {
-    	//BackEndAdministrator.edits_room_default_settings(room);
+    public void edit_room_general_settings(String room) {
+    	LiveCMSModuleRoomSteps.edit_room_default_settings(room);
     }
     
     @Then("Back-end Administrator should save room '(.*)' new settings")
-    public void Then_BackEndAdministrator_should_save_room_new_settings(String room) {
-    	//BackEndAdministrator.should_save_room_new_settings(room);
+    public void should_save_room_new_settings(String room) {
+    	LiveCMSModuleRoomSteps.should_save_room_new_settings(room);
     }
     
 //Scenario: Edit room - Language-specific settings
     
     @When("Back-end Administrator edits room '(.*)' language-specific settings")
-    public void When_BackEndAdministrator_edits_room_language_specific_settings(String room) {
-    	//BackEndAdministrator.edits_room_default_settings(room);
+    public void edit_room_language_specific_settings(String room) {
+    	//LiveCMSModuleRoomSteps.edit_room_default_settings(room);
     }
     
 }
