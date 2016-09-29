@@ -34,8 +34,8 @@ import org.openqa.selenium.NoSuchElementException;
 )
 public class LiveCMSModuleRoom extends PageObject {
 	
-    // -----------------------------------------------------------------------------------------------------------------
-    // LOCATORS
+// -----------------------------------------------------------------------------------------------------------------
+// LOCATORS
 	
 	@FindBy(linkText="Add a Room")
     private WebElementFacade AddRoom_LINK;
@@ -54,6 +54,9 @@ public class LiveCMSModuleRoom extends PageObject {
     
 	@FindBy(id="isActive-1")
     private WebElementFacade General_Active_RADIOBUTTON;
+	
+	@FindBy(id="isActive-0")
+    private WebElementFacade General_Inactive_RADIOBUTTON;
     
     @FindBy(name="internalName")
     private WebElementFacade General_InternalName_TEXTBOX;
@@ -86,8 +89,8 @@ public class LiveCMSModuleRoom extends PageObject {
     private WebElementFacade General_Save_BUTTON;
 	
 	
-    // -----------------------------------------------------------------------------------------------------------------
-    // ACTIONS
+// -----------------------------------------------------------------------------------------------------------------
+// ACTIONS
     
     public void add_new_room(String string) {
     	AddRoom_LINK.click();
@@ -128,20 +131,70 @@ public class LiveCMSModuleRoom extends PageObject {
 		    		open("edit.room", withParameters(row.getAttribute("data-id")));
 		    	}
         }
-        General_Active_RADIOBUTTON.click();
-        General_RoomCategory_DROPDOWN.selectByValue("suites");
-        General_FromRate_TEXTBOX.type("99");
-        General_SizeFrom_TEXTBOX.type("10");
-        General_SizeTo_TEXTBOX.type("20");
-        General_Unit_DROPDOWN.selectByValue("f");
-        General_AdultGuests_DROPDOWN.selectByIndex(1);
-        General_ChildrenGuests_DROPDOWN.selectByIndex(2);
-        General_AddAllAmenities_BUTTON.click();
+        General_Status("Active");
+        General_InternalName(string);
+        General_RoomCategory("suites");
+        General_FromRate("99");
+        General_SizeFrom("10");
+        General_SizeTo("20");
+        General_Unit("f");
+        General_AdultGuests(1);
+        General_ChildrenGuests(2);
+        General_AddAllAmenities();
     	General_Save_BUTTON.click();
 	}
+	
+	
+// -----------------------------------------------------------------------------------------------------------------
+// SETTERS & GETTERS
+	
+	public void General_Status(String string) {
+		if (string == "Active") {
+			General_Active_RADIOBUTTON.click();
+		} else if (string == "Inactive") {
+			General_Inactive_RADIOBUTTON.click();
+		}
+	}
+	
+	public void General_InternalName(String string) {
+		General_InternalName_TEXTBOX.type(string);
+	}
+	
+	public void General_RoomCategory(String string) {
+		General_RoomCategory_DROPDOWN.selectByValue(string);
+	}
+	
+	public void General_FromRate(String string) {
+		General_FromRate_TEXTBOX.type(string);
+	}
+	
+	public void General_SizeFrom(String string) {
+		General_SizeFrom_TEXTBOX.type(string);
+	}
+	
+	public void General_SizeTo(String string) {
+		General_SizeTo_TEXTBOX.type(string);
+	}
+	
+	public void General_Unit(String string) {
+		General_Unit_DROPDOWN.selectByValue(string);
+	}
+	
+	public void General_AdultGuests(Integer number) {
+		General_AdultGuests_DROPDOWN.selectByIndex(number);
+	}
+	
+	public void General_ChildrenGuests(Integer number) {
+		General_ChildrenGuests_DROPDOWN.selectByIndex(number);
+	}
+	
+	public void General_AddAllAmenities() {
+		General_AddAllAmenities_BUTTON.click();
+	}
 
-    // -----------------------------------------------------------------------------------------------------------------
-    // VERIFICATIONS
+	
+// -----------------------------------------------------------------------------------------------------------------
+// VERIFICATIONS
 	
 	public void should_see_room_in_the_list(String string) {
 		assertTrue(HtmlTable.rowsFrom(RoomsList_TABLE).toString().contains(string));
