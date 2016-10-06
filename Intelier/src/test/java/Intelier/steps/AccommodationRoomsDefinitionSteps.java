@@ -44,7 +44,9 @@ public class AccommodationRoomsDefinitionSteps {
     
     @When("Back-end Administrator adds new room '(.*)'")
     public void add_new_room(String room) {
-    	ModuleRoomSteps.add_new_room(room);
+    	ModuleRoomSteps.Add_a_room();
+    	ModuleRoomSteps.GeneralTab_InternalName(room);
+    	ModuleRoomSteps.Save_changes();
     }
 
     @Then("Back-end Administrator should see room '(.*)' in the room list")
@@ -56,19 +58,22 @@ public class AccommodationRoomsDefinitionSteps {
     
     @When("Back-end Administrator cancel adding new room '(.*)'")
     public void cancel_adding_new_room(String room) {
-    	ModuleRoomSteps.cancel_adding_new_room(room);
+    	ModuleRoomSteps.Add_a_room();
+    	ModuleRoomSteps.GeneralTab_InternalName(room);
+    	ModuleRoomSteps.Cancel_changes();
     }
     
 //Scenario: Delete room
     
     @Given("'(.*)' room is in the room list")
     public void room_is_in_the_room_list(String room) {
-    	ModuleRoomSteps.add_new_room(room);
+    	ModuleRoomSteps.make_sure_room_is_in_the_list(room);
     }
     
     @When("Back-end Administrator deletes room '(.*)'")
     public void delete_room(String room) {
     	ModuleRoomSteps.delete_room(room);
+    	ModuleRoomSteps.delete_room_confirm();
     }
     
     @Then("Back-end Administrator should not see room '(.*)' in the room list")
@@ -78,9 +83,20 @@ public class AccommodationRoomsDefinitionSteps {
     
 //Scenario: Edit room - General settings
     
-    @When("Back-end Administrator edits room '(.*)' general settings")
+    @When("Back-end Administrator edits room '(.*)' with default general settings")
     public void edit_room_general_settings(String room) {
-    	ModuleRoomSteps.edit_room_default_settings(room);
+    	ModuleRoomSteps.Edit_room(room);
+    	ModuleRoomSteps.GeneralTab_Status("Active");
+    	ModuleRoomSteps.GeneralTab_InternalName(room);
+    	ModuleRoomSteps.GeneralTab_RoomCategory("suites");
+    	ModuleRoomSteps.GeneralTab_FromRate("99");
+    	ModuleRoomSteps.GeneralTab_SizeFrom("10");
+    	ModuleRoomSteps.GeneralTab_SizeTo("20");
+    	ModuleRoomSteps.GeneralTab_Unit("f");
+    	ModuleRoomSteps.GeneralTab_AdultGuests(1);
+    	ModuleRoomSteps.GeneralTab_ChildrenGuests(2);
+    	ModuleRoomSteps.GeneralTab_AddAllAmenities();
+    	ModuleRoomSteps.Save_changes();
     }
     
     @Then("Back-end Administrator should save room '(.*)' new settings")
@@ -90,9 +106,20 @@ public class AccommodationRoomsDefinitionSteps {
     
 //Scenario: Edit room - Language-specific settings
     
-    @When("Back-end Administrator edits room '(.*)' language-specific settings")
+    @When("Back-end Administrator edits room '(.*)' with default language-specific settings")
     public void edit_room_language_specific_settings(String room) {
-    	//ModuleRoomSteps.edit_room_default_settings(room);
+    	ModuleRoomSteps.Edit_room(room);
+    	ModuleRoomSteps.Open_LanguageSpecific_EnglishTab();
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_TitleTag("AutomationRoom Title Tag");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_MetaKeywords("AutomationRoom Meta Keywords");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_MetaDescription("AutomationRoom Meta Description");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Name("AutomationRoom Name");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_VanityURL("AutomationRoom Vanity URL");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Headline("AutomationRoom Headline");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Description("AutomationRoom Description");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_BedTypes("AutomationRoom Bed Types");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Features("AutomationRoom Features");
+    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Notes("AutomationRoom Notes");
     }
     
 }

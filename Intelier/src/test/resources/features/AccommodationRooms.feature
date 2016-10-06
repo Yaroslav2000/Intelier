@@ -16,7 +16,7 @@ Feature: Accommodation Rooms
 	When Back-end Administrator cancel adding new room 'AutomationRoom'
 	Then Back-end Administrator should not see room 'AutomationRoomCancel' in the room list
 
-  @issue:INTELIER-80  
+  @issue:INTELIER-80
   Scenario: Delete room
 	And 'AutomationRoom' room is in the room list
     When Back-end Administrator deletes room 'AutomationRoom'
@@ -25,13 +25,14 @@ Feature: Accommodation Rooms
   @issue:INTELIER-41
   Scenario: Edit room - General settings
 	And 'AutomationRoom' room is in the room list
-	When Back-end Administrator edits room 'AutomationRoom' general settings
+	When Back-end Administrator edits room 'AutomationRoom' with default general settings
    	Then Back-end Administrator should save room 'AutomationRoom' new settings
    	
   @issue:INTELIER-81
+  @debug
   Scenario: Edit room - Language-specific settings
 	And 'AutomationRoom' room is in the room list
-	When Back-end Administrator edits room 'AutomationRoom' language-specific settings
+	When Back-end Administrator edits room 'AutomationRoom' with default language-specific settings
    	Then Back-end Administrator should save room 'AutomationRoom' new settings
 
 

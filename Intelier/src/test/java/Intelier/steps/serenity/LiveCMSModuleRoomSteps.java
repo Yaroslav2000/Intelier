@@ -17,21 +17,36 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 // -----------------------------------------------------------------------------------------------------------------
 // TASKS
 	
+	// -----------------------------------------------------------------------------------------------------------------
+	// COMMON
+	
 	@Step
     public void navigate_to_room_module() {
 		ModuleRoom.open();
     }
 	
 	@Step
-    public void add_new_room(String string) {
-    	ModuleRoom.Add_a_room();
-    	ModuleRoom.GeneralTab_InternalName(string);
-    	ModuleRoom.Save_changes();
+	public void Add_a_room() {
+		ModuleRoom.AddRoom_LINK.click();
+	}
+	
+	@Step
+	public void Save_changes() {
+		ModuleRoom.Save_BUTTON.click();
+	}
+	
+	@Step
+	public void Edit_room(String string) {
+		ModuleRoom.Edit_room(string);
 	}
     
     @Step
     public void delete_room(String string) {
     	ModuleRoom.Delete_room(string);
+	}
+    
+    @Step
+    public void delete_room_confirm() {
     	ModuleRoom.DeleteConfirmYes_BUTTON.click();
 	}
 
@@ -41,28 +56,136 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	}
     
     @Step
-	public void edit_room_default_settings(String string) {
-		ModuleRoom.Edit_room(string);
-		ModuleRoom.GeneralTab_Status("Active");
-		ModuleRoom.GeneralTab_InternalName(string);
-		ModuleRoom.GeneralTab_RoomCategory("suites");
-		ModuleRoom.GeneralTab_FromRate("99");
-		ModuleRoom.GeneralTab_SizeFrom("10");
-		ModuleRoom.GeneralTab_SizeTo("20");
-		ModuleRoom.GeneralTab_Unit("f");
-		ModuleRoom.GeneralTab_AdultGuests(1);
-		ModuleRoom.GeneralTab_ChildrenGuests(2);
-		ModuleRoom.GeneralTab_AddAllAmenities();
-		ModuleRoom.Save_changes();
+	public void Cancel_changes() {
+    	ModuleRoom.Close_BUTTON.click();
 	}
     
     @Step
-	public void cancel_adding_new_room(String room) {
-		//ModuleRoom.cancel_adding_new_room(string);
+	public void make_sure_room_is_in_the_list(String string) {
+    	if (HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string) == false) {
+    		ModuleRoom.AddRoom_LINK.click();
+    		ModuleRoom.GeneralTab_InternalName_TEXTBOX.type(string);
+    		ModuleRoom.Save_BUTTON.click();
+    	}
+	}
+    
+    // -----------------------------------------------------------------------------------------------------------------
+    // GENERAL TAB
+    
+    @Step
+	public void GeneralTab_Status(String string) {
+		if (string == "Active") {
+			ModuleRoom.GeneralTab_Active_RADIOBUTTON.click();
+		} else if (string == "Inactive") {
+			ModuleRoom.GeneralTab_Inactive_RADIOBUTTON.click();
+		}
+	}
+	
+    @Step
+	public void GeneralTab_InternalName(String string) {
+		ModuleRoom.GeneralTab_InternalName_TEXTBOX.type(string);
+	}
+    
+    @Step
+	public void GeneralTab_RoomCategory(String string) {
+    	ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue(string);
+	}
+	
+    @Step
+	public void GeneralTab_FromRate(String string) {
+    	ModuleRoom.GeneralTab_FromRate_TEXTBOX.type(string);
+	}
+	
+    @Step
+	public void GeneralTab_SizeFrom(String string) {
+    	ModuleRoom.GeneralTab_SizeFrom_TEXTBOX.type(string);
+	}
+	
+    @Step
+	public void GeneralTab_SizeTo(String string) {
+    	ModuleRoom.GeneralTab_SizeTo_TEXTBOX.type(string);
+	}
+	
+    @Step
+	public void GeneralTab_Unit(String string) {
+    	ModuleRoom.GeneralTab_Unit_DROPDOWN.selectByValue(string);
+	}
+	
+    @Step
+	public void GeneralTab_AdultGuests(Integer number) {
+    	ModuleRoom.GeneralTab_AdultGuests_DROPDOWN.selectByIndex(number);
+	}
+	
+    @Step
+	public void GeneralTab_ChildrenGuests(Integer number) {
+    	ModuleRoom.GeneralTab_ChildrenGuests_DROPDOWN.selectByIndex(number);
+	}
+	
+    @Step
+	public void GeneralTab_AddAllAmenities() {
+    	ModuleRoom.GeneralTab_AddAllAmenities_BUTTON.click();
+	}
+    
+    // -----------------------------------------------------------------------------------------------------------------
+    // LANGUAGE-SPECIFIC TAB
+    
+    @Step
+	public void Open_LanguageSpecific_EnglishTab() {
+		ModuleRoom.LanguageSpecific_EnglishTab.click();
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_TitleTag(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_TitleTag_TEXTBOX.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_MetaKeywords(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_MetaKeywords_TEXTBOX.type(string);
+	}
+
+    @Step
+	public void LanguageSpecific_EnglishTab_MetaDescription(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_MetaDescription_TEXTBOX.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_Name(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_Name_TEXTBOX.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_VanityURL(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_VanityURL_TEXTBOX.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_Headline(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_Headline_TEXTBOX.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_Description(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_Description_FRAME.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_BedTypes(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_BedTypes_TEXTBOX.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_Features(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX.type(string);
+	}
+    
+    @Step
+	public void LanguageSpecific_EnglishTab_Notes(String string) {
+		ModuleRoom.LanguageSpecific_EnglishTab_Notes_FRAME.type(string);
 	}
     
  // -----------------------------------------------------------------------------------------------------------------
- // VERIFICATIONS    
+ // QUESTIONS    
     
     @Step
 	public void should_see_room_in_the_list(String string) {
@@ -88,6 +211,5 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     	assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string));
 		
 	}
-
 
 }
