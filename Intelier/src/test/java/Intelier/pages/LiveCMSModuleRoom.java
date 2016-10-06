@@ -24,68 +24,37 @@ public class LiveCMSModuleRoom extends PageObject {
 // -----------------------------------------------------------------------------------------------------------------
 // LOCATORS
 	
-	@FindBy(linkText="Add a Room")
-    public WebElementFacade AddRoom_LINK;
-	
-	@FindBy(className="list")
-	public WebElementFacade RoomsList_TABLE;
-	
-    @FindBy(css="[data-id]")
-    public WebElementFacade FirstRoom_ROW;
-
-    @FindBy(xpath="//a[@class='delete']")
-    public WebElementFacade Delete_BUTTON;
-    
-    @FindBy(css="input[name='Yes']")
-    public WebElementFacade DeleteConfirmYes_BUTTON;
-    
-	@FindBy(id="isActive-1")
-    public WebElementFacade GeneralTab_Active_RADIOBUTTON;
-	
-	@FindBy(id="isActive-0")
-    public WebElementFacade GeneralTab_Inactive_RADIOBUTTON;
-    
-    @FindBy(name="internalName")
-    public WebElementFacade GeneralTab_InternalName_TEXTBOX;
-	
-	@FindBy(name="category")
-    public WebElementFacade GeneralTab_RoomCategory_DROPDOWN;
-    
-	@FindBy(name="fromRate")
-    public WebElementFacade GeneralTab_FromRate_TEXTBOX;
-
-	@FindBy(id="size_from")
-    public WebElementFacade GeneralTab_SizeFrom_TEXTBOX;
-	
-	@FindBy(id="size_to")
-    public WebElementFacade GeneralTab_SizeTo_TEXTBOX;
-	
-    @FindBy(css="select[name='unit']")
-    public WebElementFacade GeneralTab_Unit_DROPDOWN;
-	
-	@FindBy(name="numOfGuest[0][adults]")
-    public WebElementFacade GeneralTab_AdultGuests_DROPDOWN;
-	
-	@FindBy(name="numOfGuest[0][children]")
-    public WebElementFacade GeneralTab_ChildrenGuests_DROPDOWN;
-			
-	@FindBy(className="add-all")
-    public WebElementFacade GeneralTab_AddAllAmenities_BUTTON;
-	
-    @FindBy(id="save_button-save")
-    public WebElementFacade GeneralTab_Save_BUTTON;
+	@FindBy(linkText="Add a Room") public WebElementFacade AddRoom_LINK;
+	@FindBy(className="list") public WebElementFacade RoomsList_TABLE;
+    @FindBy(css="[data-id]") public WebElementFacade FirstRoom_ROW;
+    @FindBy(xpath="//a[@class='delete']") public WebElementFacade Delete_BUTTON;
+    @FindBy(css="input[name='Yes']") public WebElementFacade DeleteConfirmYes_BUTTON;
+	@FindBy(id="isActive-1") public WebElementFacade GeneralTab_Active_RADIOBUTTON;	
+	@FindBy(id="isActive-0") public WebElementFacade GeneralTab_Inactive_RADIOBUTTON;    
+    @FindBy(name="internalName") public WebElementFacade GeneralTab_InternalName_TEXTBOX;	
+	@FindBy(name="category") public WebElementFacade GeneralTab_RoomCategory_DROPDOWN;    
+	@FindBy(name="fromRate") public WebElementFacade GeneralTab_FromRate_TEXTBOX;
+	@FindBy(id="size_from") public WebElementFacade GeneralTab_SizeFrom_TEXTBOX;	
+	@FindBy(id="size_to") public WebElementFacade GeneralTab_SizeTo_TEXTBOX;	
+    @FindBy(css="select[name='unit']") public WebElementFacade GeneralTab_Unit_DROPDOWN;	
+	@FindBy(name="numOfGuest[0][adults]") public WebElementFacade GeneralTab_AdultGuests_DROPDOWN;	
+	@FindBy(name="numOfGuest[0][children]") public WebElementFacade GeneralTab_ChildrenGuests_DROPDOWN;			
+	@FindBy(className="add-all") public WebElementFacade GeneralTab_AddAllAmenities_BUTTON;	
+    @FindBy(id="save_button-save") public WebElementFacade Save_BUTTON;
 	
 	
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS
-    
-    public void add_new_room(String string) {
-    	AddRoom_LINK.click();
-    	GeneralTab_InternalName_TEXTBOX.type(string);
-    	GeneralTab_Save_BUTTON.click();
-	}
 	
-	public void delete_room(String string) {   
+	public void Add_a_room() {
+		AddRoom_LINK.click();
+	}
+
+	public void Save_changes() {
+		Save_BUTTON.click();
+	}
+    
+	public void Delete_room(String string) {   
 		HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
         Iterator<WebElement> RowElements = table.getRowElements().iterator();
         while(RowElements.hasNext()) {
@@ -93,11 +62,10 @@ public class LiveCMSModuleRoom extends PageObject {
 		    	if (row.getAttribute("data-name").contains(string)) {
 		    		open("delete.room", withParameters(row.getAttribute("data-id")));
 		    	}
-        }
-        DeleteConfirmYes_BUTTON.click();   
+        } 
 	}
 	
-	public void delete_all_rooms() {   
+	public void Delete_all_rooms() {   
 	    try {
 	    	HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
 	        Iterator<WebElement> RowElements = table.getRowElements().iterator();
@@ -109,7 +77,7 @@ public class LiveCMSModuleRoom extends PageObject {
 	    } catch (NoSuchElementException ex) {}
 	}
 	
-	public void edit_room_default_settings(String string) {
+	public void Edit_room(String string) {
 		HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
         Iterator<WebElement> RowElements = table.getRowElements().iterator();
         while(RowElements.hasNext()) {
@@ -118,22 +86,7 @@ public class LiveCMSModuleRoom extends PageObject {
 		    		open("edit.room", withParameters(row.getAttribute("data-id")));
 		    	}
         }
-        GeneralTab_Status("Active");
-        GeneralTab_InternalName(string);
-        GeneralTab_RoomCategory("suites");
-        GeneralTab_FromRate("99");
-        GeneralTab_SizeFrom("10");
-        GeneralTab_SizeTo("20");
-        GeneralTab_Unit("f");
-        GeneralTab_AdultGuests(1);
-        GeneralTab_ChildrenGuests(2);
-        GeneralTab_AddAllAmenities();
-    	GeneralTab_Save_BUTTON.click();
 	}
-	
-	
-// -----------------------------------------------------------------------------------------------------------------
-// SETTERS & GETTERS
 	
 	public void GeneralTab_Status(String string) {
 		if (string == "Active") {
@@ -178,5 +131,5 @@ public class LiveCMSModuleRoom extends PageObject {
 	public void GeneralTab_AddAllAmenities() {
 		GeneralTab_AddAllAmenities_BUTTON.click();
 	}
-
+	
 }

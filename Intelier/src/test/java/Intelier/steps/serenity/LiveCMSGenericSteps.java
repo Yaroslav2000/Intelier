@@ -14,12 +14,14 @@ public class LiveCMSGenericSteps extends ScenarioSteps {
 	@Step("LiveCMS Setup")
     public void setup() {
 		liveCMSGeneric.open();
-		liveCMSGeneric.login("automation@Webcanada.com","Automation123");
+		liveCMSGeneric.Username_TEXTBOX.type("automation@Webcanada.com");
+		liveCMSGeneric.Password_TEXTBOX.type("Automation123");
+		liveCMSGeneric.Login_BUTTON.click();
     }
 	
 	@Step("Teardown")
     public void teardown() {
-		liveCMSGeneric.logout();
+		liveCMSGeneric.Logout_LINK.click();
     }
 
 }
