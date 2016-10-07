@@ -29,7 +29,6 @@ Feature: Accommodation Rooms
    	Then Back-end Administrator should save room 'AutomationRoom' new settings
    	
   @issue:INTELIER-81
-  @debug
   Scenario: Edit room - Language-specific settings
 	And 'AutomationRoom' room is in the room list
 	When Back-end Administrator edits room 'AutomationRoom' with default language-specific settings

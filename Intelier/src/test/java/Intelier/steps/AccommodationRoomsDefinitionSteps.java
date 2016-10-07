@@ -6,6 +6,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import Intelier.steps.serenity.LiveCMSGenericSteps;
 import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
 
@@ -26,7 +27,12 @@ public class AccommodationRoomsDefinitionSteps {
     public void teardown() {
     	GenericSteps.teardown();
     }
-
+    
+//DEBUG TOOLS
+//	System.out.println("--------------------------------------");
+//	System.out.println("some value");
+//	System.out.println("--------------------------------------");
+    
 //Background:
     
     @Given("Back-end Administrator has opened room module")
@@ -67,7 +73,7 @@ public class AccommodationRoomsDefinitionSteps {
     
     @Given("'(.*)' room is in the room list")
     public void room_is_in_the_room_list(String room) {
-    	ModuleRoomSteps.make_sure_room_is_in_the_list(room);
+    	ModuleRoomSteps.make_sure_room_exists(room);
     }
     
     @When("Back-end Administrator deletes room '(.*)'")
@@ -120,6 +126,7 @@ public class AccommodationRoomsDefinitionSteps {
     	ModuleRoomSteps.LanguageSpecific_EnglishTab_BedTypes("AutomationRoom Bed Types");
     	ModuleRoomSteps.LanguageSpecific_EnglishTab_Features("AutomationRoom Features");
     	ModuleRoomSteps.LanguageSpecific_EnglishTab_Notes("AutomationRoom Notes");
+    	ModuleRoomSteps.Save_changes();
     }
     
 }

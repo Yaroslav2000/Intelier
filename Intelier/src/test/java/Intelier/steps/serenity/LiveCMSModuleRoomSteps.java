@@ -61,12 +61,12 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	}
     
     @Step
-	public void make_sure_room_is_in_the_list(String string) {
-    	if (HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string) == false) {
-    		ModuleRoom.AddRoom_LINK.click();
-    		ModuleRoom.GeneralTab_InternalName_TEXTBOX.type(string);
-    		ModuleRoom.Save_BUTTON.click();
-    	}
+	public void make_sure_room_exists(String string) {
+        if (verify_if_room_exists(string) != true) {
+        	ModuleRoom.AddRoom_LINK.click();
+        	ModuleRoom.GeneralTab_InternalName_TEXTBOX.type(string);
+        	ModuleRoom.Save_BUTTON.click();
+        }
 	}
     
     // -----------------------------------------------------------------------------------------------------------------
@@ -166,7 +166,8 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     
     @Step
 	public void LanguageSpecific_EnglishTab_Description(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_Description_FRAME.type(string);
+    	ModuleRoom.LanguageSpecific_EnglishTab_Description_FRAME.click();
+		ModuleRoom.LanguageSpecific_EnglishTab_Description_FRAME.sendKeys(string);
 	}
     
     @Step
@@ -176,12 +177,14 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     
     @Step
 	public void LanguageSpecific_EnglishTab_Features(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX.type(string);
+    	ModuleRoom.LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX.click();
+    	ModuleRoom.LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX.typeAndEnter(string);
 	}
     
     @Step
 	public void LanguageSpecific_EnglishTab_Notes(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_Notes_FRAME.type(string);
+    	ModuleRoom.LanguageSpecific_EnglishTab_Notes_FRAME.click();
+    	ModuleRoom.LanguageSpecific_EnglishTab_Notes_FRAME.sendKeys(string);
 	}
     
  // -----------------------------------------------------------------------------------------------------------------
@@ -189,7 +192,9 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     
     @Step
 	public void should_see_room_in_the_list(String string) {
-    	assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string));
+    	try {
+    		assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string));
+    	} catch (NoSuchElementException ex) {}
 	}
     
     @Step
@@ -202,14 +207,25 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     @Step
 	public void should_see_no_rooms_in_the_list() {
     	try {	
-	    	assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).isEmpty());
+	    	assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().isEmpty());
 	    } catch (NoSuchElementException ex) {}
 	}
 
     @Step
 	public void should_save_room_new_settings(String string) {
-    	assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string));
-		
+    	try {
+    		assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string));
+    	} catch (NoSuchElementException ex) {}
+	}
+    
+    @Step
+	public boolean verify_if_room_exists(String string) {
+    	try {
+    		if (HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string)) {;
+    			return true;
+    		}
+    	} catch (NoSuchElementException ex) {}
+    	return false;
 	}
 
 }

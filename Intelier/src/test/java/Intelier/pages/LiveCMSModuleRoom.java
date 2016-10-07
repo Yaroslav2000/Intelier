@@ -45,19 +45,18 @@ public class LiveCMSModuleRoom extends PageObject {
     @FindBy(id="save_button-save") public WebElementFacade Save_BUTTON;
     @FindBy(id="save_button-close") public WebElementFacade Close_BUTTON;
     
-    @FindBy(className="content-tab-button lang") public WebElementFacade LanguageSpecific_EnglishTab;
+    @FindBy(xpath="//div[@class='content-tab-button lang']") public WebElementFacade LanguageSpecific_EnglishTab;
     @FindBy(id="langData-en_title") public WebElementFacade LanguageSpecific_EnglishTab_TitleTag_TEXTBOX;
     @FindBy(id="langData-en_metaKeywords") public WebElementFacade LanguageSpecific_EnglishTab_MetaKeywords_TEXTBOX;
     @FindBy(id="langData-en_metaDescription") public WebElementFacade LanguageSpecific_EnglishTab_MetaDescription_TEXTBOX;
     @FindBy(id="langData-en_name") public WebElementFacade LanguageSpecific_EnglishTab_Name_TEXTBOX;
     @FindBy(id="langData-en_vanityUrl") public WebElementFacade LanguageSpecific_EnglishTab_VanityURL_TEXTBOX;
     @FindBy(id="langData-en_headline") public WebElementFacade LanguageSpecific_EnglishTab_Headline_TEXTBOX;
-    @FindBy(id="langData-en_description_ifr") public WebElementFacade LanguageSpecific_EnglishTab_Description_FRAME;
+    @FindBy(id="langData-en_description_ifr") public WebElementFacade LanguageSpecific_EnglishTab_Description_FRAME;   
     @FindBy(name="langData[en_bedTypes][0][value]") public WebElementFacade LanguageSpecific_EnglishTab_BedTypes_TEXTBOX;
-    @FindBy(id="langData-en_features") public WebElementFacade LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX;
+    @FindBy(xpath="//*[@id='langData-en_features-element']/span/span[1]/span/ul/li/input") public WebElementFacade LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX;
     @FindBy(id="langData-en_notes_ifr") public WebElementFacade LanguageSpecific_EnglishTab_Notes_FRAME;
-	
-	
+    
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS
     
@@ -68,6 +67,7 @@ public class LiveCMSModuleRoom extends PageObject {
         	WebElement row = RowElements.next();
 		    	if (row.getAttribute("data-name").contains(string)) {
 		    		open("delete.room", withParameters(row.getAttribute("data-id")));
+		    		break;
 		    	}
         } 
 	}
@@ -79,6 +79,7 @@ public class LiveCMSModuleRoom extends PageObject {
         	WebElement row = RowElements.next();
 		    	if (row.getAttribute("data-name").contains(string)) {
 		    		open("edit.room", withParameters(row.getAttribute("data-id")));
+		    		break;
 		    	}
         }
 	}
@@ -94,5 +95,5 @@ public class LiveCMSModuleRoom extends PageObject {
 	        }
 	    } catch (NoSuchElementException ex) {}
 	}
-	
+
 }
