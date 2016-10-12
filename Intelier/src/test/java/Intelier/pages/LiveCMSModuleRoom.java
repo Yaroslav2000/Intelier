@@ -1,5 +1,6 @@
 package Intelier.pages;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -9,7 +10,10 @@ import net.thucydides.core.annotations.NamedUrls;
 import net.thucydides.core.pages.PageObject;
 
 import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 
 @DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
@@ -26,9 +30,12 @@ public class LiveCMSModuleRoom extends PageObject {
 	
 	@FindBy(linkText="Add a Room") public WebElementFacade AddRoom_LINK;
 	@FindBy(className="list") public WebElementFacade RoomsList_TABLE;
-    @FindBy(css="[data-id]") public WebElementFacade FirstRoom_ROW;
+	@FindBy(css="tr[data-id]") public WebElementFacade FirstRoom_ROW;
+    //@FindBy(css="tr[data-id]") public Iterator<WebElementFacade> AllRooms_ITERATOR;
+    //@FindBy(css="tr[data-id]") public List<WebElementFacade> AllRooms_LIST;
     @FindBy(xpath="//a[@class='delete']") public WebElementFacade Delete_BUTTON;
     @FindBy(css="input[name='Yes']") public WebElementFacade DeleteConfirmYes_BUTTON;
+    @FindBy(css="input[value='Search']") public WebElementFacade Search_TEXTBOX;
     
 	@FindBy(id="isActive-1") public WebElementFacade GeneralTab_Active_RADIOBUTTON;	
 	@FindBy(id="isActive-0") public WebElementFacade GeneralTab_Inactive_RADIOBUTTON;    
@@ -41,9 +48,6 @@ public class LiveCMSModuleRoom extends PageObject {
 	@FindBy(name="numOfGuest[0][adults]") public WebElementFacade GeneralTab_AdultGuests_DROPDOWN;	
 	@FindBy(name="numOfGuest[0][children]") public WebElementFacade GeneralTab_ChildrenGuests_DROPDOWN;			
 	@FindBy(className="add-all") public WebElementFacade GeneralTab_AddAllAmenities_BUTTON;
-	
-    @FindBy(id="save_button-save") public WebElementFacade Save_BUTTON;
-    @FindBy(id="save_button-close") public WebElementFacade Close_BUTTON;
     
     @FindBy(xpath="//div[@class='content-tab-button lang']") public WebElementFacade LanguageSpecific_EnglishTab;
     @FindBy(id="langData-en_title") public WebElementFacade LanguageSpecific_EnglishTab_TitleTag_TEXTBOX;
@@ -56,6 +60,9 @@ public class LiveCMSModuleRoom extends PageObject {
     @FindBy(name="langData[en_bedTypes][0][value]") public WebElementFacade LanguageSpecific_EnglishTab_BedTypes_TEXTBOX;
     @FindBy(xpath="//*[@id='langData-en_features-element']/span/span[1]/span/ul/li/input") public WebElementFacade LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX;
     @FindBy(id="langData-en_notes_ifr") public WebElementFacade LanguageSpecific_EnglishTab_Notes_FRAME;
+
+    @FindBy(id="save_button-save") public WebElementFacade Save_BUTTON;
+    @FindBy(id="save_button-close") public WebElementFacade Close_BUTTON;
     
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS
@@ -94,6 +101,14 @@ public class LiveCMSModuleRoom extends PageObject {
 	        	DeleteConfirmYes_BUTTON.click();       	
 	        }
 	    } catch (NoSuchElementException ex) {}
+	}
+	
+	public void Drag_and_drop(String room2, String room1) {
+		WebElementFacade Test2Room_ROW = $("//tr[@data-name='"+room2+"']");
+		WebElementFacade Test1Room_ROW = $("//tr[@data-name='"+room1+"']");
+		withAction().clickAndHold(Test2Room_ROW).perform();
+		withAction().moveToElement(Test1Room_ROW).perform();
+		withAction().release().perform();
 	}
 
 }

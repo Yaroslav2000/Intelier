@@ -21,7 +21,7 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	// COMMON
 	
 	@Step
-    public void navigate_to_room_module() {
+    public void Navigate_to_room_module() {
 		ModuleRoom.open();
     }
 	
@@ -41,17 +41,17 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	}
     
     @Step
-    public void delete_room(String string) {
+    public void Delete_room(String string) {
     	ModuleRoom.Delete_room(string);
 	}
     
     @Step
-    public void delete_room_confirm() {
+    public void Delete_room_confirm() {
     	ModuleRoom.DeleteConfirmYes_BUTTON.click();
 	}
 
     @Step
-    public void delete_all_rooms() {
+    public void Delete_all_rooms() {
     	ModuleRoom.Delete_all_rooms();
 	}
     
@@ -61,13 +61,24 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	}
     
     @Step
-	public void make_sure_room_exists(String string) {
-        if (verify_if_room_exists(string) != true) {
+	public void Make_sure_room_exists(String string) {
+        if (verify_room_exists(string) != true) {
         	ModuleRoom.AddRoom_LINK.click();
         	ModuleRoom.GeneralTab_InternalName_TEXTBOX.type(string);
         	ModuleRoom.Save_BUTTON.click();
         }
 	}
+    
+    @Step
+	public void Search_room(String room) {
+		ModuleRoom.Search_TEXTBOX.type(room);
+	}
+	
+    @Step
+	public void Sorting_rooms(String room2, String room1) {
+		ModuleRoom.Drag_and_drop(room2, room1);
+	}
+	
     
     // -----------------------------------------------------------------------------------------------------------------
     // GENERAL TAB
@@ -218,14 +229,20 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     	} catch (NoSuchElementException ex) {}
 	}
     
-    @Step
-	public boolean verify_if_room_exists(String string) {
+	public boolean verify_room_exists(String string) {
     	try {
     		if (HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string)) {;
     			return true;
     		}
     	} catch (NoSuchElementException ex) {}
     	return false;
+	}
+
+	@Step
+	public void should_see_room_in_the_list_first(String string) {
+    	try {
+    		assertTrue(ModuleRoom.FirstRoom_ROW.getAttribute("data-name").toString().contains(string));
+    	} catch (NoSuchElementException ex) {}
 	}
 
 }

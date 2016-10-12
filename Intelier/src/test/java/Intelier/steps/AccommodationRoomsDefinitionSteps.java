@@ -7,6 +7,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import org.openqa.selenium.JavascriptExecutor;
+
 import Intelier.steps.serenity.LiveCMSGenericSteps;
 import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
 
@@ -28,23 +30,28 @@ public class AccommodationRoomsDefinitionSteps {
     	GenericSteps.teardown();
     }
     
-//DEBUG TOOLS
+//DEBUGGING
 //	System.out.println("--------------------------------------");
 //	System.out.println("some value");
 //	System.out.println("--------------------------------------");
+    
+//	JavascriptExecutor javascript = (JavascriptExecutor) getDriver();
+//	javascript.executeScript("alert('Element Is drag and drop by 100 pixel offset In horizontal direction.');");
+//	waitABit(5000);
+//	getDriver().switchTo().alert().accept();
     
 //Background:
     
     @Given("Back-end Administrator has opened room module")
     public void navigate_to_room_module() {
-    	ModuleRoomSteps.navigate_to_room_module();
+    	ModuleRoomSteps.Navigate_to_room_module();
     } 
     
 //Scenario: Add new room
     
     @Given("No rooms are in the room list")
     public void no_rooms() {
-    	ModuleRoomSteps.delete_all_rooms();
+    	ModuleRoomSteps.Delete_all_rooms();
     	ModuleRoomSteps.should_see_no_rooms_in_the_list();
     }
     
@@ -71,15 +78,15 @@ public class AccommodationRoomsDefinitionSteps {
     
 //Scenario: Delete room
     
-    @Given("'(.*)' room is in the room list")
+    @Given("Room '(.*)' is in the room list")
     public void room_is_in_the_room_list(String room) {
-    	ModuleRoomSteps.make_sure_room_exists(room);
+    	ModuleRoomSteps.Make_sure_room_exists(room);
     }
     
     @When("Back-end Administrator deletes room '(.*)'")
     public void delete_room(String room) {
-    	ModuleRoomSteps.delete_room(room);
-    	ModuleRoomSteps.delete_room_confirm();
+    	ModuleRoomSteps.Delete_room(room);
+    	ModuleRoomSteps.Delete_room_confirm();
     }
     
     @Then("Back-end Administrator should not see room '(.*)' in the room list")
@@ -127,6 +134,25 @@ public class AccommodationRoomsDefinitionSteps {
     	ModuleRoomSteps.LanguageSpecific_EnglishTab_Features("AutomationRoom Features");
     	ModuleRoomSteps.LanguageSpecific_EnglishTab_Notes("AutomationRoom Notes");
     	ModuleRoomSteps.Save_changes();
+    }
+    
+//Scenario: Search room
+    
+    @When("Back-end Administrator searches for room '(.*)'")
+    public void search_room(String room) {
+    	ModuleRoomSteps.Search_room(room);
+    	ModuleRoomSteps.should_see_room_in_the_list(room);
+    }
+    
+//Scenario: Sorting rooms
+    @When("Back-end Administrator drag-and-drop room '(.*)' to room '(.*)'")
+    public void Sorting_rooms(String room2, String room1) {
+    	ModuleRoomSteps.Sorting_rooms(room2, room1);
+    }
+    
+    @Then("Back-end Administrator should see room '(.*)' first in the room list")
+    public void should_see_room_in_the_list_first(String room) {
+    	ModuleRoomSteps.should_see_room_in_the_list_first(room);
     }
     
 }
