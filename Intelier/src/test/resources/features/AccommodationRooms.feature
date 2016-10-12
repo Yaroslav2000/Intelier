@@ -45,7 +45,6 @@ Feature: Accommodation Rooms
    	Then Back-end Administrator should see room 'AutomationRoom' in the room list
    	
   @issue:INTELIER-80
-  @debug
    	Scenario: Sorting rooms
    	And No rooms are in the room list
    	When Back-end Administrator adds new room 'AutomationSortTest1'
