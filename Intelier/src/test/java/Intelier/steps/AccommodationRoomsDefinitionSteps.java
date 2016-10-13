@@ -1,13 +1,12 @@
 package Intelier.steps;
 
 import net.thucydides.core.annotations.Steps;
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import org.openqa.selenium.JavascriptExecutor;
 
 import Intelier.steps.serenity.LiveCMSGenericSteps;
 import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
@@ -101,11 +100,11 @@ public class AccommodationRoomsDefinitionSteps {
     	ModuleRoomSteps.Edit_room(room);
     	ModuleRoomSteps.GeneralTab_Status("Active");
     	ModuleRoomSteps.GeneralTab_InternalName(room);
-    	ModuleRoomSteps.GeneralTab_RoomCategory("suites");
+    	ModuleRoomSteps.GeneralTab_RoomCategory("Suites");
     	ModuleRoomSteps.GeneralTab_FromRate("99");
     	ModuleRoomSteps.GeneralTab_SizeFrom("10");
     	ModuleRoomSteps.GeneralTab_SizeTo("20");
-    	ModuleRoomSteps.GeneralTab_Unit("f");
+    	ModuleRoomSteps.GeneralTab_Unit("ft²");
     	ModuleRoomSteps.GeneralTab_AdultGuests(1);
     	ModuleRoomSteps.GeneralTab_ChildrenGuests(2);
     	ModuleRoomSteps.GeneralTab_AddAllAmenities();
@@ -119,7 +118,7 @@ public class AccommodationRoomsDefinitionSteps {
     
 //Scenario: Edit room - Language-specific settings
     
-    @When("Back-end Administrator edits room '(.*)' with default language-specific settings")
+    @When("Back-end Administrator edits room '(.*)' with English language-specific settings")
     public void edit_room_language_specific_settings(String room) {
     	ModuleRoomSteps.Edit_room(room);
     	ModuleRoomSteps.Open_LanguageSpecific_EnglishTab();
@@ -145,8 +144,9 @@ public class AccommodationRoomsDefinitionSteps {
     }
     
 //Scenario: Sorting rooms
+    
     @When("Back-end Administrator drag-and-drop room '(.*)' to room '(.*)'")
-    public void Sorting_rooms(String room2, String room1) {
+    public void sorting_rooms(String room2, String room1) {
     	ModuleRoomSteps.Sorting_rooms(room2, room1);
     }
     
@@ -154,5 +154,26 @@ public class AccommodationRoomsDefinitionSteps {
     public void should_see_room_in_the_list_first(String room) {
     	ModuleRoomSteps.should_see_room_in_the_list_first(room);
     }
+
+//Scenario: Edit Rooms Settings for English language
     
+    @When("Back-end Administrator edits rooms settings for English language with default parameters")
+    public void edit_rooms_settings() {
+    	ModuleRoomSteps.Edit_rooms_settings();
+    	ModuleRoomSteps.Settings_EnglishTab_TitleTag("Automation Settings Title Tag");
+    	ModuleRoomSteps.Settings_EnglishTab_MetaKeywords("Automation Settings Meta Keywords");
+    	ModuleRoomSteps.Settings_EnglishTab_MetaDescription("AutomationSettings Meta Description");
+    	ModuleRoomSteps.Settings_EnglishTab_Status("Active");
+    	ModuleRoomSteps.Settings_EnglishTab_RoomsOverview("Matrix and list view toggle");
+    	ModuleRoomSteps.Settings_EnglishTab_Default("Matrix view");
+    	ModuleRoomSteps.Settings_EnglishTab_DefaultUnitType("m²");
+    	ModuleRoomSteps.Settings_EnglishTab_AddAllFilters();
+    	ModuleRoomSteps.Save_changes();
+    }
+    
+    @Then("^Back-end Administrator should save new rooms settings$")
+    public void back_end_Administrator_should_save_new_rooms_settings() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }

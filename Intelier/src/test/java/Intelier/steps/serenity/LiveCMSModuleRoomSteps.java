@@ -15,10 +15,7 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	LiveCMSModuleRoom ModuleRoom;
 
 // -----------------------------------------------------------------------------------------------------------------
-// TASKS
-	
-	// -----------------------------------------------------------------------------------------------------------------
-	// COMMON
+// COMMON
 	
 	@Step
     public void Navigate_to_room_module() {
@@ -78,17 +75,97 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	public void Sorting_rooms(String room2, String room1) {
 		ModuleRoom.Drag_and_drop(room2, room1);
 	}
-	
     
-    // -----------------------------------------------------------------------------------------------------------------
-    // GENERAL TAB
+    @Step
+	public void Edit_rooms_settings() {
+    	ModuleRoom.Edit_rooms_settings();
+	}
+
+// -----------------------------------------------------------------------------------------------------------------
+// SETTINGS
+    
+    @Step
+	public void Settings_EnglishTab_TitleTag(String string) {
+    	ModuleRoom.Settings_EnglishTab_TitleTag_TEXTBOX.type(string);
+		
+	}
+
+    @Step
+	public void Settings_EnglishTab_MetaKeywords(String string) {
+    	ModuleRoom.Settings_EnglishTab_MetaKeywords_TEXTBOX.type(string);
+		
+	}
+
+    @Step
+	public void Settings_EnglishTab_MetaDescription(String string) {
+    	ModuleRoom.Settings_EnglishTab_MetaDescription_TEXTBOX.type(string);
+	}
+
+    @Step
+	public void Settings_EnglishTab_Status(String string) {
+		if (string == "Active") {
+			ModuleRoom.Settings_EnglishTab_Status_Active_RADIOBUTTON.click();
+		} else if (string == "Inactive") {
+			ModuleRoom.Settings_EnglishTab_Status_InActive_RADIOBUTTON.click();
+		}
+	}
+
+    @Step
+	public void Settings_EnglishTab_RoomsOverview(String string) {
+		if (string == "Matrix view only") {
+			ModuleRoom.Settings_EnglishTab_RoomsOverview_MatrixViewOnly_RADIOBUTTON.click();
+		} else if (string == "List view only") {
+			ModuleRoom.Settings_EnglishTab_RoomsOverview_ListViewOnly_RADIOBUTTON.click();
+		} else if (string == "Matrix and list view toggle") {
+			ModuleRoom.Settings_EnglishTab_RoomsOverview_MatrixAndListViewToggle_RADIOBUTTON.click();
+		}
+	}
+
+    @Step
+	public void Settings_EnglishTab_Default(String string) {
+		if (string == "Matrix view") {
+			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue("matrix");
+		} else if (string == "List view") {
+			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue("list");
+		}
+	}
+
+    @Step
+	public void Settings_EnglishTab_DefaultUnitType(String string) {
+		if (string == "m²") {
+			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue("sq_m");
+		} else if (string == "ft²") {
+			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue("sq_ft");
+		}
+	}
+
+    @Step
+	public void Settings_EnglishTab_AddAllFilters() {
+    	if (!ModuleRoom.Settings_EnglishTab_Filters_FromRate_CHECKBOX.isSelected()) {
+    		ModuleRoom.Settings_EnglishTab_Filters_FromRate_CHECKBOX.click();
+    	}
+    	if (!ModuleRoom.Settings_EnglishTab_Filters_RoomType_CHECKBOX.isSelected()) {
+    	ModuleRoom.Settings_EnglishTab_Filters_RoomType_CHECKBOX.click();
+    	}
+    	if (!ModuleRoom.Settings_EnglishTab_Filters_Sleeps_CHECKBOX.isSelected()) {
+    	ModuleRoom.Settings_EnglishTab_Filters_Sleeps_CHECKBOX.click();
+    	}
+    	if (!ModuleRoom.Settings_EnglishTab_Filters_Amenities_CHECKBOX.isSelected()) {
+    	ModuleRoom.Settings_EnglishTab_Filters_Amenities_CHECKBOX.click();
+    	}
+	}
+
+    
+    
+// -----------------------------------------------------------------------------------------------------------------
+// GENERAL TAB
     
     @Step
 	public void GeneralTab_Status(String string) {
 		if (string == "Active") {
-			ModuleRoom.GeneralTab_Active_RADIOBUTTON.click();
+			ModuleRoom.GeneralTab_Status_Active_RADIOBUTTON.click();
 		} else if (string == "Inactive") {
-			ModuleRoom.GeneralTab_Inactive_RADIOBUTTON.click();
+			ModuleRoom.GeneralTab_Status_Inactive_RADIOBUTTON.click();
 		}
 	}
 	
@@ -99,7 +176,11 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     
     @Step
 	public void GeneralTab_RoomCategory(String string) {
-    	ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue(string);
+		if (string == "Guest Rooms") {
+			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue("guest_rooms");
+		} else if (string == "Suites") {
+			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue("suites");
+		}
 	}
 	
     @Step
@@ -119,7 +200,11 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	
     @Step
 	public void GeneralTab_Unit(String string) {
-    	ModuleRoom.GeneralTab_Unit_DROPDOWN.selectByValue(string);
+		if (string == "m²") {
+			ModuleRoom.GeneralTab_Unit_DROPDOWN.selectByValue("m");
+		} else if (string == "ft²") {
+			ModuleRoom.GeneralTab_Unit_DROPDOWN.selectByValue("f");
+		}
 	}
 	
     @Step
@@ -137,8 +222,8 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     	ModuleRoom.GeneralTab_AddAllAmenities_BUTTON.click();
 	}
     
-    // -----------------------------------------------------------------------------------------------------------------
-    // LANGUAGE-SPECIFIC TAB
+// -----------------------------------------------------------------------------------------------------------------
+// LANGUAGE-SPECIFIC TAB
     
     @Step
 	public void Open_LanguageSpecific_EnglishTab() {
@@ -199,7 +284,7 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	}
     
  // -----------------------------------------------------------------------------------------------------------------
- // QUESTIONS    
+ // VERIFICATIONS    
     
     @Step
 	public void should_see_room_in_the_list(String string) {
@@ -244,5 +329,6 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     		assertTrue(ModuleRoom.FirstRoom_ROW.getAttribute("data-name").toString().contains(string));
     	} catch (NoSuchElementException ex) {}
 	}
+
 
 }

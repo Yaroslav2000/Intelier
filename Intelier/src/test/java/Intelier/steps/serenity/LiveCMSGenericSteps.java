@@ -9,7 +9,7 @@ public class LiveCMSGenericSteps extends ScenarioSteps {
 	LiveCMSGeneric liveCMSGeneric;
 
 // -----------------------------------------------------------------------------------------------------------------
-// TASKS
+// LOGIN & LOGOUT
 	
 	@Step("LiveCMS Setup")
     public void setup() {

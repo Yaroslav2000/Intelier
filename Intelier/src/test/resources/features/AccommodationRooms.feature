@@ -32,9 +32,9 @@ Feature: Accommodation Rooms
    	Then Back-end Administrator should save room 'AutomationRoom' new settings
    	
   @issue:INTELIER-81
-  Scenario: Edit room - Language-specific settings
+  Scenario: Edit room - Language-specific settings for English language
 	And Room 'AutomationRoom' is in the room list
-	When Back-end Administrator edits room 'AutomationRoom' with default language-specific settings
+	When Back-end Administrator edits room 'AutomationRoom' with English language-specific settings
 	#Note: the default settings TBD
    	Then Back-end Administrator should save room 'AutomationRoom' new settings
 
@@ -52,8 +52,8 @@ Feature: Accommodation Rooms
    	And Back-end Administrator drag-and-drop room 'AutomationSortTest2' to room 'AutomationSortTest1'
    	Then Back-end Administrator should see room 'AutomationSortTest2' first in the room list
    	
-   	
-   	
-   	
-   	
-   	
+  @issue:INTELIER-82
+   	Scenario: Edit rooms settings for English language
+   	When Back-end Administrator edits rooms settings for English language with default parameters
+   	Then Back-end Administrator should save new rooms settings
+   	   	

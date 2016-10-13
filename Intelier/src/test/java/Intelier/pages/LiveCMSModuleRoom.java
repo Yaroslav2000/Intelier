@@ -16,11 +16,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 
-@DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room")
+@DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room")
 @NamedUrls(
 		  {
-		    @NamedUrl(name = "delete.room", url = "http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room/delete/id/{1}"),
-		    @NamedUrl(name = "edit.room", url = "http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room/room/edit/id/{1}")
+		    @NamedUrl(name = "delete.room", url = "/room/delete/id/{1}"),
+		    @NamedUrl(name = "edit.room", url = "/room/edit/id/{1}"),
+		    @NamedUrl(name = "edit.settings", url = "/site/edit")	  
 		  }
 )
 public class LiveCMSModuleRoom extends PageObject {
@@ -30,15 +31,30 @@ public class LiveCMSModuleRoom extends PageObject {
 	
 	@FindBy(linkText="Add a Room") public WebElementFacade AddRoom_LINK;
 	@FindBy(className="list") public WebElementFacade RoomsList_TABLE;
-	@FindBy(css="tr[data-id]") public WebElementFacade FirstRoom_ROW;
-    //@FindBy(css="tr[data-id]") public Iterator<WebElementFacade> AllRooms_ITERATOR;
-    //@FindBy(css="tr[data-id]") public List<WebElementFacade> AllRooms_LIST;
+	@FindBy(xpath="//tr[@data-id]") public WebElementFacade FirstRoom_ROW;
+    //@FindBy(xpath="tr[data-id]") public Iterator<WebElementFacade> AllRooms_ITERATOR;
+    //@FindBy(xpath="tr[data-id]") public List<WebElementFacade> AllRooms_LIST;
     @FindBy(xpath="//a[@class='delete']") public WebElementFacade Delete_BUTTON;
     @FindBy(css="input[name='Yes']") public WebElementFacade DeleteConfirmYes_BUTTON;
     @FindBy(css="input[value='Search']") public WebElementFacade Search_TEXTBOX;
+
+    @FindBy(id="langData-en_title") public WebElementFacade Settings_EnglishTab_TitleTag_TEXTBOX;
+    @FindBy(id="langData-en_metaKeywords") public WebElementFacade Settings_EnglishTab_MetaKeywords_TEXTBOX;
+    @FindBy(id="langData-en_metaDescription") public WebElementFacade Settings_EnglishTab_MetaDescription_TEXTBOX;
+    @FindBy(id="isActive-1") public WebElementFacade Settings_EnglishTab_Status_Active_RADIOBUTTON;
+    @FindBy(id="isActive-0") public WebElementFacade Settings_EnglishTab_Status_InActive_RADIOBUTTON;
+    @FindBy(id="viewType-matrix") public WebElementFacade Settings_EnglishTab_RoomsOverview_MatrixViewOnly_RADIOBUTTON;
+    @FindBy(id="viewType-list") public WebElementFacade Settings_EnglishTab_RoomsOverview_ListViewOnly_RADIOBUTTON;
+    @FindBy(id="viewType-toggle") public WebElementFacade Settings_EnglishTab_RoomsOverview_MatrixAndListViewToggle_RADIOBUTTON;
+    @FindBy(id="toggleDefault") public WebElementFacade Settings_EnglishTab_Default_DROPDOWN;
+    @FindBy(id="defaultUnitType") public WebElementFacade Settings_EnglishTab_DefaultUnitType_DROPDOWN;
+    @FindBy(id="filters-from_rate") public WebElementFacade Settings_EnglishTab_Filters_FromRate_CHECKBOX;
+    @FindBy(id="filters-room_types") public WebElementFacade Settings_EnglishTab_Filters_RoomType_CHECKBOX;
+    @FindBy(id="filters-sleeps") public WebElementFacade Settings_EnglishTab_Filters_Sleeps_CHECKBOX;
+    @FindBy(id="filters-amenities") public WebElementFacade Settings_EnglishTab_Filters_Amenities_CHECKBOX;
     
-	@FindBy(id="isActive-1") public WebElementFacade GeneralTab_Active_RADIOBUTTON;	
-	@FindBy(id="isActive-0") public WebElementFacade GeneralTab_Inactive_RADIOBUTTON;    
+	@FindBy(id="isActive-1") public WebElementFacade GeneralTab_Status_Active_RADIOBUTTON;	
+	@FindBy(id="isActive-0") public WebElementFacade GeneralTab_Status_Inactive_RADIOBUTTON;    
     @FindBy(name="internalName") public WebElementFacade GeneralTab_InternalName_TEXTBOX;	
 	@FindBy(name="category") public WebElementFacade GeneralTab_RoomCategory_DROPDOWN;    
 	@FindBy(name="fromRate") public WebElementFacade GeneralTab_FromRate_TEXTBOX;
@@ -92,7 +108,7 @@ public class LiveCMSModuleRoom extends PageObject {
 	}
 	
 	public void Delete_all_rooms() {   
-	    try {
+		try {
 	    	HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
 	        Iterator<WebElement> RowElements = table.getRowElements().iterator();
 	        while(RowElements.hasNext()) {
@@ -109,6 +125,10 @@ public class LiveCMSModuleRoom extends PageObject {
 		withAction().clickAndHold(Test2Room_ROW).perform();
 		withAction().moveToElement(Test1Room_ROW).perform();
 		withAction().release().perform();
+	}
+	
+	public void Edit_rooms_settings() {
+		open("edit.settings", withParameters());
 	}
 
 }
