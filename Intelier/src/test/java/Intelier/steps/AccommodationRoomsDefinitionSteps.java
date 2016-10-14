@@ -93,10 +93,10 @@ public class AccommodationRoomsDefinitionSteps {
     	ModuleRoomSteps.should_not_see_room_in_the_list(room);
     }
     
-//Scenario: Edit room - General settings
+//Scenario: Edit room
     
-    @When("Back-end Administrator edits room '(.*)' with default general settings")
-    public void edit_room_general_settings(String room) {
+    @When("Back-end Administrator edits room '(.*)' with default settings")
+    public void edit_room(String room) {
     	ModuleRoomSteps.Edit_room(room);
     	ModuleRoomSteps.GeneralTab_Status("Active");
     	ModuleRoomSteps.GeneralTab_InternalName(room);
@@ -108,19 +108,6 @@ public class AccommodationRoomsDefinitionSteps {
     	ModuleRoomSteps.GeneralTab_AdultGuests(1);
     	ModuleRoomSteps.GeneralTab_ChildrenGuests(2);
     	ModuleRoomSteps.GeneralTab_AddAllAmenities();
-    	ModuleRoomSteps.Save_changes();
-    }
-    
-    @Then("Back-end Administrator should save room '(.*)' new settings")
-    public void should_save_room_new_settings(String room) {
-    	ModuleRoomSteps.should_save_room_new_settings(room);
-    }
-    
-//Scenario: Edit room - Language-specific settings
-    
-    @When("Back-end Administrator edits room '(.*)' with English language-specific settings")
-    public void edit_room_language_specific_settings(String room) {
-    	ModuleRoomSteps.Edit_room(room);
     	ModuleRoomSteps.Open_LanguageSpecific_EnglishTab();
     	ModuleRoomSteps.LanguageSpecific_EnglishTab_TitleTag("AutomationRoom Title Tag");
     	ModuleRoomSteps.LanguageSpecific_EnglishTab_MetaKeywords("AutomationRoom Meta Keywords");
@@ -135,12 +122,22 @@ public class AccommodationRoomsDefinitionSteps {
     	ModuleRoomSteps.Save_changes();
     }
     
+    @Then("Back-end Administrator should save room '(.*)' new settings")
+    public void should_save_room_new_settings(String room) {
+    	ModuleRoomSteps.should_save_room_new_settings(room);
+    }
+    
+    @Then("Front-end User should see room 'AutomationRoom' default settings on FE")
+    public void front_end_User_should_see_room_AutomationRoom_default_settings_on_FE() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+    
 //Scenario: Search room
     
     @When("Back-end Administrator searches for room '(.*)'")
     public void search_room(String room) {
     	ModuleRoomSteps.Search_room(room);
-    	ModuleRoomSteps.should_see_room_in_the_list(room);
     }
     
 //Scenario: Sorting rooms
@@ -171,7 +168,7 @@ public class AccommodationRoomsDefinitionSteps {
     	ModuleRoomSteps.Save_changes();
     }
     
-    @Then("^Back-end Administrator should save new rooms settings$")
+    @Then("Back-end Administrator should save new rooms settings")
     public void back_end_Administrator_should_save_new_rooms_settings() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();

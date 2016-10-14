@@ -16,12 +16,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 
-@DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room")
+//@DefaultUrl("http://l5.local-qa.dev.webcanada.com/intelier/automation/automation-room")
+//@DefaultUrl("http://l5.local-qa.dev.webcanada.com/set-hotels/ihw/4/ihw-set-room")
+@DefaultUrl("http://l5.local-qa.dev.webcanada.com/starwood/lps2/198/lps2-rooms")
 @NamedUrls(
 		  {
 		    @NamedUrl(name = "delete.room", url = "/room/delete/id/{1}"),
 		    @NamedUrl(name = "edit.room", url = "/room/edit/id/{1}"),
-		    @NamedUrl(name = "edit.settings", url = "/site/edit")	  
+		    @NamedUrl(name = "edit.settings", url = "/site/edit")
 		  }
 )
 public class LiveCMSModuleRoom extends PageObject {
@@ -31,7 +33,7 @@ public class LiveCMSModuleRoom extends PageObject {
 	
 	@FindBy(linkText="Add a Room") public WebElementFacade AddRoom_LINK;
 	@FindBy(className="list") public WebElementFacade RoomsList_TABLE;
-	@FindBy(xpath="//tr[@data-id]") public WebElementFacade FirstRoom_ROW;
+	@FindBy(css="[data-id]") public WebElementFacade FirstRoom_ROW;
     //@FindBy(xpath="tr[data-id]") public Iterator<WebElementFacade> AllRooms_ITERATOR;
     //@FindBy(xpath="tr[data-id]") public List<WebElementFacade> AllRooms_LIST;
     @FindBy(xpath="//a[@class='delete']") public WebElementFacade Delete_BUTTON;
@@ -77,8 +79,8 @@ public class LiveCMSModuleRoom extends PageObject {
     @FindBy(xpath="//*[@id='langData-en_features-element']/span/span[1]/span/ul/li/input") public WebElementFacade LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX;
     @FindBy(id="langData-en_notes_ifr") public WebElementFacade LanguageSpecific_EnglishTab_Notes_FRAME;
 
-    @FindBy(id="save_button-save") public WebElementFacade Save_BUTTON;
-    @FindBy(id="save_button-close") public WebElementFacade Close_BUTTON;
+    @FindBy(xpath="//input[@type='submit' and @value='Save']") public WebElementFacade Save_BUTTON;
+    @FindBy(xpath="//div[@class='standard_form_button']") public WebElementFacade Close_BUTTON;
     
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS
@@ -109,12 +111,12 @@ public class LiveCMSModuleRoom extends PageObject {
 	
 	public void Delete_all_rooms() {   
 		try {
-	    	HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
+			HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
 	        Iterator<WebElement> RowElements = table.getRowElements().iterator();
 	        while(RowElements.hasNext()) {
 	        	FirstRoom_ROW.click();
 	        	Delete_BUTTON.click();
-	        	DeleteConfirmYes_BUTTON.click();       	
+	        	DeleteConfirmYes_BUTTON.click();
 	        }
 	    } catch (NoSuchElementException ex) {}
 	}
@@ -131,4 +133,9 @@ public class LiveCMSModuleRoom extends PageObject {
 		open("edit.settings", withParameters());
 	}
 
+	public String GetValueByLabel(String string) {
+		return $("//option[@label = '"+string+"']").getAttribute("value");
+	}
+	
+	
 }

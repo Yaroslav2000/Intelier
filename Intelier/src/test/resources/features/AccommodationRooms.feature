@@ -6,17 +6,8 @@ Feature: Accommodation Rooms
 
   @issue:INTELIER-80
   Scenario: Add new room
-    And No rooms are in the room list
     When Back-end Administrator adds new room 'AutomationRoom'
     Then Back-end Administrator should see room 'AutomationRoom' in the room list
-    #And Front-end User should see room 'AutomationRoom' on the Rooms Page
-	#Note: just adding a room into the room list is not enough, more actions have to be done before we can see the room of the web-site, TBD
-
-  @issue:INTELIER-80
-  Scenario: Cancel adding new room
-    And No rooms are in the room list
-	When Back-end Administrator cancel adding new room 'AutomationRoom'
-	Then Back-end Administrator should not see room 'AutomationRoomCancel' in the room list
 
   @issue:INTELIER-80
   Scenario: Delete room
@@ -24,22 +15,22 @@ Feature: Accommodation Rooms
     When Back-end Administrator deletes room 'AutomationRoom'
     Then Back-end Administrator should not see room 'AutomationRoom' in the room list
 
+  @issue:INTELIER-80
+  Scenario: Cancel adding new room
+	When Back-end Administrator cancel adding new room 'AutomationRoom'
+	Then Back-end Administrator should not see room 'AutomationRoomCancel' in the room list
+
   @issue:INTELIER-41
-  Scenario: Edit room - General settings
+  @debug
+  Scenario: Edit room
 	And Room 'AutomationRoom' is in the room list
-	When Back-end Administrator edits room 'AutomationRoom' with default general settings
-	#Note: the default settings TBD
+	When Back-end Administrator edits room 'AutomationRoom' with default settings
    	Then Back-end Administrator should save room 'AutomationRoom' new settings
-   	
-  @issue:INTELIER-81
-  Scenario: Edit room - Language-specific settings for English language
-	And Room 'AutomationRoom' is in the room list
-	When Back-end Administrator edits room 'AutomationRoom' with English language-specific settings
-	#Note: the default settings TBD
-   	Then Back-end Administrator should save room 'AutomationRoom' new settings
+   	And Front-end User should see room 'AutomationRoom' default settings on FE
+   	#Note: the default settings TBD
 
   @issue:INTELIER-80
-  Scenario: Search Room
+  Scenario: Search room
 	And Room 'AutomationRoom' is in the room list
 	When Back-end Administrator searches for room 'AutomationRoom'
    	Then Back-end Administrator should see room 'AutomationRoom' in the room list
@@ -52,8 +43,8 @@ Feature: Accommodation Rooms
    	And Back-end Administrator drag-and-drop room 'AutomationSortTest2' to room 'AutomationSortTest1'
    	Then Back-end Administrator should see room 'AutomationSortTest2' first in the room list
    	
-  @issue:INTELIER-82
-   	Scenario: Edit rooms settings for English language
-   	When Back-end Administrator edits rooms settings for English language with default parameters
-   	Then Back-end Administrator should save new rooms settings
+#  @issue:INTELIER-82
+#   	Scenario: Edit rooms settings for English language
+#   	When Back-end Administrator edits rooms settings for English language with default parameters
+#   	Then Back-end Administrator should save new rooms settings
    	   	

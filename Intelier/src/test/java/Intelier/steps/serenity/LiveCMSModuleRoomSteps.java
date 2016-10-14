@@ -3,6 +3,8 @@ package Intelier.steps.serenity;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Random;
+
 import org.openqa.selenium.NoSuchElementException;
 
 import Intelier.pages.LiveCMSModuleRoom;
@@ -123,19 +125,19 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 
     @Step
 	public void Settings_EnglishTab_Default(String string) {
-		if (string == "Matrix view") {
-			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue("matrix");
+    	if (string == "Matrix view") {
+			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		} else if (string == "List view") {
-			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue("list");
+			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 
     @Step
 	public void Settings_EnglishTab_DefaultUnitType(String string) {
 		if (string == "m²") {
-			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue("sq_m");
+			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		} else if (string == "ft²") {
-			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue("sq_ft");
+			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 
@@ -177,9 +179,9 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     @Step
 	public void GeneralTab_RoomCategory(String string) {
 		if (string == "Guest Rooms") {
-			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue("guest_rooms");
+			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		} else if (string == "Suites") {
-			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue("suites");
+			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 	
