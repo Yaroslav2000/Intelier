@@ -7,14 +7,14 @@ import java.util.Random;
 
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.LiveCMSModuleRoom;
+import Intelier.pages.LiveCMSModuleRoomPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 
-	LiveCMSModuleRoom ModuleRoom;
+	LiveCMSModuleRoomPage ModuleRoom;
 
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON
@@ -289,7 +289,7 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
  // VERIFICATIONS    
     
     @Step
-	public void should_see_room_in_the_list(String string) {
+	public void should_see_room_in_the_list_BE(String string) {
     	try {
     		assertTrue(HtmlTable.rowsFrom(ModuleRoom.RoomsList_TABLE).toString().contains(string));
     	} catch (NoSuchElementException ex) {}

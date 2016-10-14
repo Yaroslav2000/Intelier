@@ -6,6 +6,7 @@ Feature: Accommodation Rooms
 
   @issue:INTELIER-80
   Scenario: Add new room
+    And No rooms are in the room list
     When Back-end Administrator adds new room 'AutomationRoom'
     Then Back-end Administrator should see room 'AutomationRoom' in the room list
 
@@ -17,23 +18,24 @@ Feature: Accommodation Rooms
 
   @issue:INTELIER-80
   Scenario: Cancel adding new room
+  	And No rooms are in the room list
 	When Back-end Administrator cancel adding new room 'AutomationRoom'
 	Then Back-end Administrator should not see room 'AutomationRoomCancel' in the room list
-
-  @issue:INTELIER-41
-  @debug
-  Scenario: Edit room
-	And Room 'AutomationRoom' is in the room list
-	When Back-end Administrator edits room 'AutomationRoom' with default settings
-   	Then Back-end Administrator should save room 'AutomationRoom' new settings
-   	And Front-end User should see room 'AutomationRoom' default settings on FE
-   	#Note: the default settings TBD
 
   @issue:INTELIER-80
   Scenario: Search room
 	And Room 'AutomationRoom' is in the room list
 	When Back-end Administrator searches for room 'AutomationRoom'
    	Then Back-end Administrator should see room 'AutomationRoom' in the room list
+   	
+  @issue:INTELIER-41
+  @issue:INTELIER-81
+  @debug
+  Scenario: Edit room
+	And Room 'AutomationRoom' is in the room list
+	When Back-end Administrator edits room 'AutomationRoom' with default settings
+   	Then Back-end Administrator should save room 'AutomationRoom' new settings
+   	And Front-end User should see room 'AutomationRoom' new settings
    	
   @issue:INTELIER-80
    	Scenario: Sorting rooms

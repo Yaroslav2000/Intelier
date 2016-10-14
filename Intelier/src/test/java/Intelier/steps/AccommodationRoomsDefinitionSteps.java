@@ -1,5 +1,6 @@
 package Intelier.steps;
 
+import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Steps;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
@@ -8,25 +9,32 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.JavascriptExecutor;
+
+import Intelier.steps.serenity.FrontEndModuleRoomSteps;
 import Intelier.steps.serenity.LiveCMSGenericSteps;
 import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
 
-public class AccommodationRoomsDefinitionSteps {
+public class AccommodationRoomsDefinitionSteps extends PageObject {
 	
     @Steps
-    LiveCMSModuleRoomSteps ModuleRoomSteps;
+    LiveCMSGenericSteps LiveCMSGenericSteps;
+
+    @Steps
+    LiveCMSModuleRoomSteps LiveCMSModuleRoomSteps;
     
     @Steps
-    LiveCMSGenericSteps GenericSteps;
-
+    FrontEndModuleRoomSteps FrontEndModuleRoomSteps;
+    
     @Before
     public void setup() {
-    	GenericSteps.setup();
+    	LiveCMSGenericSteps.setup();
     }
     
     @After
     public void teardown() {
-    	GenericSteps.teardown();
+    	LiveCMSGenericSteps.teardown();
     }
     
 //DEBUGGING
@@ -43,134 +51,129 @@ public class AccommodationRoomsDefinitionSteps {
     
     @Given("Back-end Administrator has opened room module")
     public void navigate_to_room_module() {
-    	ModuleRoomSteps.Navigate_to_room_module();
+    	LiveCMSModuleRoomSteps.Navigate_to_room_module();
     } 
     
 //Scenario: Add new room
     
     @Given("No rooms are in the room list")
     public void no_rooms() {
-    	ModuleRoomSteps.Delete_all_rooms();
-    	ModuleRoomSteps.should_see_no_rooms_in_the_list();
+    	LiveCMSModuleRoomSteps.Delete_all_rooms();
+    	LiveCMSModuleRoomSteps.should_see_no_rooms_in_the_list();
     }
     
     @When("Back-end Administrator adds new room '(.*)'")
     public void add_new_room(String room) {
-    	ModuleRoomSteps.Add_a_room();
-    	ModuleRoomSteps.GeneralTab_InternalName(room);
-    	ModuleRoomSteps.Save_changes();
+    	LiveCMSModuleRoomSteps.Add_a_room();
+    	LiveCMSModuleRoomSteps.GeneralTab_InternalName(room);
+    	LiveCMSModuleRoomSteps.Save_changes();
     }
 
     @Then("Back-end Administrator should see room '(.*)' in the room list")
     public void should_see_room_in_the_list(String room) {
-    	ModuleRoomSteps.should_see_room_in_the_list(room);
+    	LiveCMSModuleRoomSteps.should_see_room_in_the_list_BE(room);
     }
 
 //Scenario: Cancel adding new Room
     
     @When("Back-end Administrator cancel adding new room '(.*)'")
     public void cancel_adding_new_room(String room) {
-    	ModuleRoomSteps.Add_a_room();
-    	ModuleRoomSteps.GeneralTab_InternalName(room);
-    	ModuleRoomSteps.Cancel_changes();
+    	LiveCMSModuleRoomSteps.Add_a_room();
+    	LiveCMSModuleRoomSteps.GeneralTab_InternalName(room);
+    	LiveCMSModuleRoomSteps.Cancel_changes();
     }
     
 //Scenario: Delete room
     
     @Given("Room '(.*)' is in the room list")
     public void room_is_in_the_room_list(String room) {
-    	ModuleRoomSteps.Make_sure_room_exists(room);
+    	LiveCMSModuleRoomSteps.Make_sure_room_exists(room);
     }
     
     @When("Back-end Administrator deletes room '(.*)'")
     public void delete_room(String room) {
-    	ModuleRoomSteps.Delete_room(room);
-    	ModuleRoomSteps.Delete_room_confirm();
+    	LiveCMSModuleRoomSteps.Delete_room(room);
+    	LiveCMSModuleRoomSteps.Delete_room_confirm();
     }
     
     @Then("Back-end Administrator should not see room '(.*)' in the room list")
     public void should_not_see_room_in_the_list(String room) {
-    	ModuleRoomSteps.should_not_see_room_in_the_list(room);
+    	LiveCMSModuleRoomSteps.should_not_see_room_in_the_list(room);
     }
     
 //Scenario: Edit room
     
     @When("Back-end Administrator edits room '(.*)' with default settings")
     public void edit_room(String room) {
-    	ModuleRoomSteps.Edit_room(room);
-    	ModuleRoomSteps.GeneralTab_Status("Active");
-    	ModuleRoomSteps.GeneralTab_InternalName(room);
-    	ModuleRoomSteps.GeneralTab_RoomCategory("Suites");
-    	ModuleRoomSteps.GeneralTab_FromRate("99");
-    	ModuleRoomSteps.GeneralTab_SizeFrom("10");
-    	ModuleRoomSteps.GeneralTab_SizeTo("20");
-    	ModuleRoomSteps.GeneralTab_Unit("ft²");
-    	ModuleRoomSteps.GeneralTab_AdultGuests(1);
-    	ModuleRoomSteps.GeneralTab_ChildrenGuests(2);
-    	ModuleRoomSteps.GeneralTab_AddAllAmenities();
-    	ModuleRoomSteps.Open_LanguageSpecific_EnglishTab();
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_TitleTag("AutomationRoom Title Tag");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_MetaKeywords("AutomationRoom Meta Keywords");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_MetaDescription("AutomationRoom Meta Description");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Name("AutomationRoom Name");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_VanityURL("AutomationRoom Vanity URL");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Headline("AutomationRoom Headline");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Description("AutomationRoom Description");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_BedTypes("AutomationRoom Bed Types");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Features("AutomationRoom Features");
-    	ModuleRoomSteps.LanguageSpecific_EnglishTab_Notes("AutomationRoom Notes");
-    	ModuleRoomSteps.Save_changes();
+    	LiveCMSModuleRoomSteps.Edit_room(room);
+    	LiveCMSModuleRoomSteps.GeneralTab_Status("Active");
+    	LiveCMSModuleRoomSteps.GeneralTab_InternalName(room);
+    	LiveCMSModuleRoomSteps.GeneralTab_RoomCategory("Suites");
+    	LiveCMSModuleRoomSteps.GeneralTab_FromRate("99");
+    	LiveCMSModuleRoomSteps.GeneralTab_SizeFrom("10");
+    	LiveCMSModuleRoomSteps.GeneralTab_SizeTo("20");
+    	LiveCMSModuleRoomSteps.GeneralTab_Unit("ft²");
+    	LiveCMSModuleRoomSteps.GeneralTab_AdultGuests(1);
+    	LiveCMSModuleRoomSteps.GeneralTab_ChildrenGuests(2);
+    	LiveCMSModuleRoomSteps.GeneralTab_AddAllAmenities();
+    	LiveCMSModuleRoomSteps.Open_LanguageSpecific_EnglishTab();
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_TitleTag(room+" TitleTag");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_MetaKeywords(room+" MetaKeywords");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_MetaDescription(room+" MetaDescription");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Name(room+" Name");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_VanityURL(room+"VanityURL"+RandomStringUtils.randomNumeric(10));
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Headline(room+" Headline");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Description(room+" Description");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_BedTypes(room+" BedTypes");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Features(room+" Features");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Notes(room+" Notes");
+    	LiveCMSModuleRoomSteps.Save_changes();
     }
     
     @Then("Back-end Administrator should save room '(.*)' new settings")
     public void should_save_room_new_settings(String room) {
-    	ModuleRoomSteps.should_save_room_new_settings(room);
+    	LiveCMSModuleRoomSteps.should_save_room_new_settings(room);
     }
     
-    @Then("Front-end User should see room 'AutomationRoom' default settings on FE")
-    public void front_end_User_should_see_room_AutomationRoom_default_settings_on_FE() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Then("Front-end User should see room '(.*)' new settings")
+    public void front_end_User_should_see_room_AutomationRoom_new_settings_on_FE(String room) {
+    	FrontEndModuleRoomSteps.openFE();
+    	FrontEndModuleRoomSteps.should_see_room_in_the_list_FE(room);
     }
     
 //Scenario: Search room
     
     @When("Back-end Administrator searches for room '(.*)'")
     public void search_room(String room) {
-    	ModuleRoomSteps.Search_room(room);
+    	LiveCMSModuleRoomSteps.Search_room(room);
     }
     
 //Scenario: Sorting rooms
     
     @When("Back-end Administrator drag-and-drop room '(.*)' to room '(.*)'")
     public void sorting_rooms(String room2, String room1) {
-    	ModuleRoomSteps.Sorting_rooms(room2, room1);
+    	LiveCMSModuleRoomSteps.Sorting_rooms(room2, room1);
     }
     
     @Then("Back-end Administrator should see room '(.*)' first in the room list")
     public void should_see_room_in_the_list_first(String room) {
-    	ModuleRoomSteps.should_see_room_in_the_list_first(room);
+    	LiveCMSModuleRoomSteps.should_see_room_in_the_list_first(room);
     }
 
 //Scenario: Edit Rooms Settings for English language
     
     @When("Back-end Administrator edits rooms settings for English language with default parameters")
     public void edit_rooms_settings() {
-    	ModuleRoomSteps.Edit_rooms_settings();
-    	ModuleRoomSteps.Settings_EnglishTab_TitleTag("Automation Settings Title Tag");
-    	ModuleRoomSteps.Settings_EnglishTab_MetaKeywords("Automation Settings Meta Keywords");
-    	ModuleRoomSteps.Settings_EnglishTab_MetaDescription("AutomationSettings Meta Description");
-    	ModuleRoomSteps.Settings_EnglishTab_Status("Active");
-    	ModuleRoomSteps.Settings_EnglishTab_RoomsOverview("Matrix and list view toggle");
-    	ModuleRoomSteps.Settings_EnglishTab_Default("Matrix view");
-    	ModuleRoomSteps.Settings_EnglishTab_DefaultUnitType("m²");
-    	ModuleRoomSteps.Settings_EnglishTab_AddAllFilters();
-    	ModuleRoomSteps.Save_changes();
+    	LiveCMSModuleRoomSteps.Edit_rooms_settings();
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_TitleTag("Automation Settings Title Tag");
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_MetaKeywords("Automation Settings Meta Keywords");
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_MetaDescription("AutomationSettings Meta Description");
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_Status("Active");
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_RoomsOverview("Matrix and list view toggle");
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_Default("Matrix view");
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_DefaultUnitType("m²");
+    	LiveCMSModuleRoomSteps.Settings_EnglishTab_AddAllFilters();
+    	LiveCMSModuleRoomSteps.Save_changes();
     }
     
-    @Then("Back-end Administrator should save new rooms settings")
-    public void back_end_Administrator_should_save_new_rooms_settings() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 }

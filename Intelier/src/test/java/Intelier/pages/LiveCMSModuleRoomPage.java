@@ -2,12 +2,12 @@ package Intelier.pages;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
+import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.NamedUrl;
 import net.thucydides.core.annotations.NamedUrls;
-import net.thucydides.core.pages.PageObject;
 
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +26,7 @@ import org.openqa.selenium.NoSuchElementException;
 		    @NamedUrl(name = "edit.settings", url = "/site/edit")
 		  }
 )
-public class LiveCMSModuleRoom extends PageObject {
+public class LiveCMSModuleRoomPage extends PageObject {
 	
 // -----------------------------------------------------------------------------------------------------------------
 // LOCATORS
@@ -34,8 +34,6 @@ public class LiveCMSModuleRoom extends PageObject {
 	@FindBy(linkText="Add a Room") public WebElementFacade AddRoom_LINK;
 	@FindBy(className="list") public WebElementFacade RoomsList_TABLE;
 	@FindBy(css="[data-id]") public WebElementFacade FirstRoom_ROW;
-    //@FindBy(xpath="tr[data-id]") public Iterator<WebElementFacade> AllRooms_ITERATOR;
-    //@FindBy(xpath="tr[data-id]") public List<WebElementFacade> AllRooms_LIST;
     @FindBy(xpath="//a[@class='delete']") public WebElementFacade Delete_BUTTON;
     @FindBy(css="input[name='Yes']") public WebElementFacade DeleteConfirmYes_BUTTON;
     @FindBy(css="input[value='Search']") public WebElementFacade Search_TEXTBOX;
@@ -79,7 +77,7 @@ public class LiveCMSModuleRoom extends PageObject {
     @FindBy(xpath="//*[@id='langData-en_features-element']/span/span[1]/span/ul/li/input") public WebElementFacade LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX;
     @FindBy(id="langData-en_notes_ifr") public WebElementFacade LanguageSpecific_EnglishTab_Notes_FRAME;
 
-    @FindBy(xpath="//input[@type='submit' and @value='Save']") public WebElementFacade Save_BUTTON;
+    @FindBy(xpath="//input[@value='Save']") public WebElementFacade Save_BUTTON;
     @FindBy(xpath="//div[@class='standard_form_button']") public WebElementFacade Close_BUTTON;
     
 // -----------------------------------------------------------------------------------------------------------------
@@ -136,6 +134,5 @@ public class LiveCMSModuleRoom extends PageObject {
 	public String GetValueByLabel(String string) {
 		return $("//option[@label = '"+string+"']").getAttribute("value");
 	}
-	
 	
 }
