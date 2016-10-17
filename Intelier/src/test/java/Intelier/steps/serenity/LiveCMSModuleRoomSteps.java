@@ -3,8 +3,11 @@ package Intelier.steps.serenity;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.NoSuchElementException;
 
 import Intelier.pages.LiveCMSModuleRoomPage;
@@ -15,7 +18,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 
 	LiveCMSModuleRoomPage ModuleRoom;
-
+	
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON
 	
@@ -82,6 +85,8 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	public void Edit_rooms_settings() {
     	ModuleRoom.Edit_rooms_settings();
 	}
+    
+    
 
 // -----------------------------------------------------------------------------------------------------------------
 // SETTINGS
@@ -252,9 +257,13 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 		ModuleRoom.LanguageSpecific_EnglishTab_Name_TEXTBOX.type(string);
 	}
     
+    public Map<String, String> Generated_RandomVanityURL = new HashMap<String, String>();
+    
     @Step
-	public void LanguageSpecific_EnglishTab_VanityURL(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_VanityURL_TEXTBOX.type(string);
+	public void LanguageSpecific_EnglishTab_Generate_RandomVanityURL(String string) {
+    	String RandomVanityURL = string+"VanityURL"+RandomStringUtils.randomNumeric(7);
+    	Generated_RandomVanityURL.put(string, RandomVanityURL);
+    	ModuleRoom.LanguageSpecific_EnglishTab_VanityURL_TEXTBOX.type(RandomVanityURL);	
 	}
     
     @Step

@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -23,7 +24,7 @@ import org.openqa.selenium.NoSuchElementException;
 		  {
 		    @NamedUrl(name = "delete.room", url = "/room/delete/id/{1}"),
 		    @NamedUrl(name = "edit.room", url = "/room/edit/id/{1}"),
-		    @NamedUrl(name = "edit.settings", url = "/site/edit")
+		    @NamedUrl(name = "edit.settings", url = "/site/edit"),
 		  }
 )
 public class LiveCMSModuleRoomPage extends PageObject {
@@ -82,7 +83,7 @@ public class LiveCMSModuleRoomPage extends PageObject {
     
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS
-    
+       
 	public void Delete_room(String string) {   
 		HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
         Iterator<WebElement> RowElements = table.getRowElements().iterator();

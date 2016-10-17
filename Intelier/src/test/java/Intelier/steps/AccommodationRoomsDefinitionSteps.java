@@ -9,9 +9,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.JavascriptExecutor;
-
 import Intelier.steps.serenity.FrontEndModuleRoomSteps;
 import Intelier.steps.serenity.LiveCMSGenericSteps;
 import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
@@ -108,7 +105,7 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     	LiveCMSModuleRoomSteps.Edit_room(room);
     	LiveCMSModuleRoomSteps.GeneralTab_Status("Active");
     	LiveCMSModuleRoomSteps.GeneralTab_InternalName(room);
-    	LiveCMSModuleRoomSteps.GeneralTab_RoomCategory("Suites");
+    	LiveCMSModuleRoomSteps.GeneralTab_RoomCategory("Guest Rooms");
     	LiveCMSModuleRoomSteps.GeneralTab_FromRate("99");
     	LiveCMSModuleRoomSteps.GeneralTab_SizeFrom("10");
     	LiveCMSModuleRoomSteps.GeneralTab_SizeTo("20");
@@ -121,7 +118,7 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_MetaKeywords(room+" MetaKeywords");
     	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_MetaDescription(room+" MetaDescription");
     	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Name(room+" Name");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_VanityURL(room+"VanityURL"+RandomStringUtils.randomNumeric(10));
+    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Generate_RandomVanityURL(room);
     	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Headline(room+" Headline");
     	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Description(room+" Description");
     	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_BedTypes(room+" BedTypes");
@@ -136,9 +133,21 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     }
     
     @Then("Front-end User should see room '(.*)' new settings")
-    public void front_end_User_should_see_room_AutomationRoom_new_settings_on_FE(String room) {
+    public void should_see_FE_room_new_settings_on_FE(String room) {
     	FrontEndModuleRoomSteps.openFE();
-    	FrontEndModuleRoomSteps.should_see_room_in_the_list_FE(room);
+    	FrontEndModuleRoomSteps.should_see_FE_room_in_the_list(room);
+    	FrontEndModuleRoomSteps.open_vanity_URL(LiveCMSModuleRoomSteps.Generated_RandomVanityURL.get(room));
+    	FrontEndModuleRoomSteps.should_see_FE_Room_Name(room+" Name");
+    	FrontEndModuleRoomSteps.should_see_FE_RoomCategory("Guest Rooms");
+    	FrontEndModuleRoomSteps.should_see_FE_FromRate("99");
+    	FrontEndModuleRoomSteps.should_see_FE_SizeFrom("10");
+    	FrontEndModuleRoomSteps.should_see_FE_SizeTo("20");
+    	FrontEndModuleRoomSteps.should_see_FE_Unit("ft²");
+    	FrontEndModuleRoomSteps.should_see_FE_Headline(room+" Headline");
+    	FrontEndModuleRoomSteps.should_see_FE_Description(room+" Description");
+    	FrontEndModuleRoomSteps.should_see_FE_BedTypes(room+" BedTypes");
+    	FrontEndModuleRoomSteps.should_see_FE_Features(room+" Features");
+    	FrontEndModuleRoomSteps.should_see_FE_Notes(room+" Notes");
     }
     
 //Scenario: Search room
