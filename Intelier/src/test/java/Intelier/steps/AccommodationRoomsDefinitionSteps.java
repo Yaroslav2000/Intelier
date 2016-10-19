@@ -1,6 +1,5 @@
 package Intelier.steps;
 
-import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Steps;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
@@ -13,7 +12,7 @@ import Intelier.steps.serenity.FrontEndModuleRoomSteps;
 import Intelier.steps.serenity.LiveCMSGenericSteps;
 import Intelier.steps.serenity.LiveCMSModuleRoomSteps;
 
-public class AccommodationRoomsDefinitionSteps extends PageObject {
+public class AccommodationRoomsDefinitionSteps {
 	
     @Steps
     LiveCMSGenericSteps LiveCMSGenericSteps;
@@ -33,6 +32,7 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     public void teardown() {
     	LiveCMSGenericSteps.teardown();
     }
+
     
 //DEBUGGING
 //	System.out.println("--------------------------------------");
@@ -41,7 +41,7 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     
 //	JavascriptExecutor javascript = (JavascriptExecutor) getDriver();
 //	javascript.executeScript("alert('Element Is drag and drop by 100 pixel offset In horizontal direction.');");
-//	waitABit(5000);
+//	waitAbit(5000);
 //	getDriver().switchTo().alert().accept();
     
 //Background:
@@ -62,7 +62,7 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     @When("Back-end Administrator adds new room '(.*)'")
     public void add_new_room(String room) {
     	LiveCMSModuleRoomSteps.Add_a_room();
-    	LiveCMSModuleRoomSteps.GeneralTab_InternalName(room);
+    	LiveCMSModuleRoomSteps.General_InternalName(room);
     	LiveCMSModuleRoomSteps.Save_changes();
     }
 
@@ -76,7 +76,7 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     @When("Back-end Administrator cancel adding new room '(.*)'")
     public void cancel_adding_new_room(String room) {
     	LiveCMSModuleRoomSteps.Add_a_room();
-    	LiveCMSModuleRoomSteps.GeneralTab_InternalName(room);
+    	LiveCMSModuleRoomSteps.General_InternalName(room);
     	LiveCMSModuleRoomSteps.Cancel_changes();
     }
     
@@ -103,28 +103,33 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     @When("Back-end Administrator edits room '(.*)' with default settings")
     public void edit_room(String room) {
     	LiveCMSModuleRoomSteps.Edit_room(room);
-    	LiveCMSModuleRoomSteps.GeneralTab_Status("Active");
-    	LiveCMSModuleRoomSteps.GeneralTab_InternalName(room);
-    	LiveCMSModuleRoomSteps.GeneralTab_RoomCategory("Guest Rooms");
-    	LiveCMSModuleRoomSteps.GeneralTab_FromRate("99");
-    	LiveCMSModuleRoomSteps.GeneralTab_SizeFrom("10");
-    	LiveCMSModuleRoomSteps.GeneralTab_SizeTo("20");
-    	LiveCMSModuleRoomSteps.GeneralTab_Unit("ft²");
-    	LiveCMSModuleRoomSteps.GeneralTab_AdultGuests(1);
-    	LiveCMSModuleRoomSteps.GeneralTab_ChildrenGuests(2);
-    	LiveCMSModuleRoomSteps.GeneralTab_AddAllAmenities();
-    	LiveCMSModuleRoomSteps.Open_LanguageSpecific_EnglishTab();
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_TitleTag(room+" TitleTag");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_MetaKeywords(room+" MetaKeywords");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_MetaDescription(room+" MetaDescription");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Name(room+" Name");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Generate_RandomVanityURL(room);
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Headline(room+" Headline");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Description(room+" Description");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_BedTypes(room+" BedTypes");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Features(room+" Features");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_EnglishTab_Notes(room+" Notes");
+    	LiveCMSModuleRoomSteps.General_Status("Active");
+    	LiveCMSModuleRoomSteps.General_InternalName(room);
+    	LiveCMSModuleRoomSteps.General_RoomCategory("Guest Rooms");
+    	LiveCMSModuleRoomSteps.General_FromRate("99");
+    	LiveCMSModuleRoomSteps.General_SizeFrom("10");
+    	LiveCMSModuleRoomSteps.General_SizeTo("20");
+    	LiveCMSModuleRoomSteps.General_Unit("ft²");
+    	LiveCMSModuleRoomSteps.General_AdultGuests(1);
+    	LiveCMSModuleRoomSteps.General_ChildrenGuests(2);
+    	LiveCMSModuleRoomSteps.General_AddAllAmenities();
+    	LiveCMSModuleRoomSteps.Open_LanguageSpecific_English();
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_TitleTag(room+" TitleTag");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_MetaKeywords(room+" MetaKeywords");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_MetaDescription(room+" MetaDescription");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Name(room);
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Generate_RandomVanityURL(room);
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Headline(room+" Headline");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Description(room+" Description");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_BedTypes(room+" BedTypes");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Features(room+" Features");
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Notes(room+" Notes");
     	LiveCMSModuleRoomSteps.Save_changes();
+    	
+  	
+    	
+    	
+    	
     }
     
     @Then("Back-end Administrator should save room '(.*)' new settings")
@@ -174,15 +179,20 @@ public class AccommodationRoomsDefinitionSteps extends PageObject {
     @When("Back-end Administrator edits rooms settings for English language with default parameters")
     public void edit_rooms_settings() {
     	LiveCMSModuleRoomSteps.Edit_rooms_settings();
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_TitleTag("Automation Settings Title Tag");
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_MetaKeywords("Automation Settings Meta Keywords");
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_MetaDescription("AutomationSettings Meta Description");
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_Status("Active");
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_RoomsOverview("Matrix and list view toggle");
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_Default("Matrix view");
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_DefaultUnitType("m²");
-    	LiveCMSModuleRoomSteps.Settings_EnglishTab_AddAllFilters();
+    	LiveCMSModuleRoomSteps.Settings_English_TitleTag("Automation Settings Title Tag");
+    	LiveCMSModuleRoomSteps.Settings_English_MetaKeywords("Automation Settings Meta Keywords");
+    	LiveCMSModuleRoomSteps.Settings_English_MetaDescription("AutomationSettings Meta Description");
+    	LiveCMSModuleRoomSteps.Settings_English_Status("Active");
+    	LiveCMSModuleRoomSteps.Settings_English_RoomsOverview("Matrix and list view toggle");
+    	LiveCMSModuleRoomSteps.Settings_English_Default("Matrix view");
+    	LiveCMSModuleRoomSteps.Settings_English_DefaultUnitType("m²");
+    	LiveCMSModuleRoomSteps.Settings_English_AddAllFilters();
     	LiveCMSModuleRoomSteps.Save_changes();
+    }
+    
+    @Then("Back-end Administrator should save new rooms settings")
+    public void should_save_new_rooms_settings() {
+    	LiveCMSModuleRoomSteps.should_save_new_rooms_settings();
     }
     
 }

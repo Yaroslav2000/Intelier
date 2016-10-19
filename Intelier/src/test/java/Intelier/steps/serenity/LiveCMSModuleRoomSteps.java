@@ -12,6 +12,7 @@ import org.openqa.selenium.NoSuchElementException;
 
 import Intelier.pages.LiveCMSModuleRoomPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -66,7 +67,7 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	public void Make_sure_room_exists(String string) {
         if (verify_room_exists(string) != true) {
         	ModuleRoom.AddRoom_LINK.click();
-        	ModuleRoom.GeneralTab_InternalName_TEXTBOX.type(string);
+        	ModuleRoom.General_InternalName_TEXTBOX.type(string);
         	ModuleRoom.Save_BUTTON.click();
         }
 	}
@@ -92,73 +93,73 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 // SETTINGS
     
     @Step
-	public void Settings_EnglishTab_TitleTag(String string) {
-    	ModuleRoom.Settings_EnglishTab_TitleTag_TEXTBOX.type(string);
+	public void Settings_English_TitleTag(String string) {
+    	ModuleRoom.Settings_English_TitleTag_TEXTBOX.type(string);
 		
 	}
 
     @Step
-	public void Settings_EnglishTab_MetaKeywords(String string) {
-    	ModuleRoom.Settings_EnglishTab_MetaKeywords_TEXTBOX.type(string);
+	public void Settings_English_MetaKeywords(String string) {
+    	ModuleRoom.Settings_English_MetaKeywords_TEXTBOX.type(string);
 		
 	}
 
     @Step
-	public void Settings_EnglishTab_MetaDescription(String string) {
-    	ModuleRoom.Settings_EnglishTab_MetaDescription_TEXTBOX.type(string);
+	public void Settings_English_MetaDescription(String string) {
+    	ModuleRoom.Settings_English_MetaDescription_TEXTBOX.type(string);
 	}
 
     @Step
-	public void Settings_EnglishTab_Status(String string) {
+	public void Settings_English_Status(String string) {
 		if (string == "Active") {
-			ModuleRoom.Settings_EnglishTab_Status_Active_RADIOBUTTON.click();
+			ModuleRoom.Settings_English_Status_Active_RADIOBUTTON.click();
 		} else if (string == "Inactive") {
-			ModuleRoom.Settings_EnglishTab_Status_InActive_RADIOBUTTON.click();
+			ModuleRoom.Settings_English_Status_InActive_RADIOBUTTON.click();
 		}
 	}
 
     @Step
-	public void Settings_EnglishTab_RoomsOverview(String string) {
+	public void Settings_English_RoomsOverview(String string) {
 		if (string == "Matrix view only") {
-			ModuleRoom.Settings_EnglishTab_RoomsOverview_MatrixViewOnly_RADIOBUTTON.click();
+			ModuleRoom.Settings_English_RoomsOverview_MatrixViewOnly_RADIOBUTTON.click();
 		} else if (string == "List view only") {
-			ModuleRoom.Settings_EnglishTab_RoomsOverview_ListViewOnly_RADIOBUTTON.click();
+			ModuleRoom.Settings_English_RoomsOverview_ListViewOnly_RADIOBUTTON.click();
 		} else if (string == "Matrix and list view toggle") {
-			ModuleRoom.Settings_EnglishTab_RoomsOverview_MatrixAndListViewToggle_RADIOBUTTON.click();
+			ModuleRoom.Settings_English_RoomsOverview_MatrixAndListViewToggle_RADIOBUTTON.click();
 		}
 	}
 
     @Step
-	public void Settings_EnglishTab_Default(String string) {
+	public void Settings_English_Default(String string) {
     	if (string == "Matrix view") {
-			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
+			ModuleRoom.Settings_English_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		} else if (string == "List view") {
-			ModuleRoom.Settings_EnglishTab_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
+			ModuleRoom.Settings_English_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 
     @Step
-	public void Settings_EnglishTab_DefaultUnitType(String string) {
+	public void Settings_English_DefaultUnitType(String string) {
 		if (string == "m²") {
-			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
+			ModuleRoom.Settings_English_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		} else if (string == "ft²") {
-			ModuleRoom.Settings_EnglishTab_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
+			ModuleRoom.Settings_English_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 
     @Step
-	public void Settings_EnglishTab_AddAllFilters() {
-    	if (!ModuleRoom.Settings_EnglishTab_Filters_FromRate_CHECKBOX.isSelected()) {
-    		ModuleRoom.Settings_EnglishTab_Filters_FromRate_CHECKBOX.click();
+	public void Settings_English_AddAllFilters() {
+    	if (!ModuleRoom.Settings_English_Filters_FromRate_CHECKBOX.isSelected()) {
+    		ModuleRoom.Settings_English_Filters_FromRate_CHECKBOX.click();
     	}
-    	if (!ModuleRoom.Settings_EnglishTab_Filters_RoomType_CHECKBOX.isSelected()) {
-    	ModuleRoom.Settings_EnglishTab_Filters_RoomType_CHECKBOX.click();
+    	if (!ModuleRoom.Settings_English_Filters_RoomType_CHECKBOX.isSelected()) {
+    	ModuleRoom.Settings_English_Filters_RoomType_CHECKBOX.click();
     	}
-    	if (!ModuleRoom.Settings_EnglishTab_Filters_Sleeps_CHECKBOX.isSelected()) {
-    	ModuleRoom.Settings_EnglishTab_Filters_Sleeps_CHECKBOX.click();
+    	if (!ModuleRoom.Settings_English_Filters_Sleeps_CHECKBOX.isSelected()) {
+    	ModuleRoom.Settings_English_Filters_Sleeps_CHECKBOX.click();
     	}
-    	if (!ModuleRoom.Settings_EnglishTab_Filters_Amenities_CHECKBOX.isSelected()) {
-    	ModuleRoom.Settings_EnglishTab_Filters_Amenities_CHECKBOX.click();
+    	if (!ModuleRoom.Settings_English_Filters_Amenities_CHECKBOX.isSelected()) {
+    	ModuleRoom.Settings_English_Filters_Amenities_CHECKBOX.click();
     	}
 	}
 
@@ -168,130 +169,130 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 // GENERAL TAB
     
     @Step
-	public void GeneralTab_Status(String string) {
+	public void General_Status(String string) {
 		if (string == "Active") {
-			ModuleRoom.GeneralTab_Status_Active_RADIOBUTTON.click();
+			ModuleRoom.General_Status_Active_RADIOBUTTON.click();
 		} else if (string == "Inactive") {
-			ModuleRoom.GeneralTab_Status_Inactive_RADIOBUTTON.click();
+			ModuleRoom.General_Status_Inactive_RADIOBUTTON.click();
 		}
 	}
 	
     @Step
-	public void GeneralTab_InternalName(String string) {
-		ModuleRoom.GeneralTab_InternalName_TEXTBOX.type(string);
+	public void General_InternalName(String string) {
+		ModuleRoom.General_InternalName_TEXTBOX.type(string);
 	}
     
     @Step
-	public void GeneralTab_RoomCategory(String string) {
+	public void General_RoomCategory(String string) {
 		if (string == "Guest Rooms") {
-			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
+			ModuleRoom.General_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		} else if (string == "Suites") {
-			ModuleRoom.GeneralTab_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
+			ModuleRoom.General_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 	
     @Step
-	public void GeneralTab_FromRate(String string) {
-    	ModuleRoom.GeneralTab_FromRate_TEXTBOX.type(string);
+	public void General_FromRate(String string) {
+    	ModuleRoom.General_FromRate_TEXTBOX.type(string);
 	}
 	
     @Step
-	public void GeneralTab_SizeFrom(String string) {
-    	ModuleRoom.GeneralTab_SizeFrom_TEXTBOX.type(string);
+	public void General_SizeFrom(String string) {
+    	ModuleRoom.General_SizeFrom_TEXTBOX.type(string);
 	}
 	
     @Step
-	public void GeneralTab_SizeTo(String string) {
-    	ModuleRoom.GeneralTab_SizeTo_TEXTBOX.type(string);
+	public void General_SizeTo(String string) {
+    	ModuleRoom.General_SizeTo_TEXTBOX.type(string);
 	}
 	
     @Step
-	public void GeneralTab_Unit(String string) {
+	public void General_Unit(String string) {
 		if (string == "m²") {
-			ModuleRoom.GeneralTab_Unit_DROPDOWN.selectByValue("m");
+			ModuleRoom.General_Unit_DROPDOWN.selectByValue("m");
 		} else if (string == "ft²") {
-			ModuleRoom.GeneralTab_Unit_DROPDOWN.selectByValue("f");
+			ModuleRoom.General_Unit_DROPDOWN.selectByValue("f");
 		}
 	}
 	
     @Step
-	public void GeneralTab_AdultGuests(Integer number) {
-    	ModuleRoom.GeneralTab_AdultGuests_DROPDOWN.selectByIndex(number);
+	public void General_AdultGuests(Integer number) {
+    	ModuleRoom.General_AdultGuests_DROPDOWN.selectByIndex(number);
 	}
 	
     @Step
-	public void GeneralTab_ChildrenGuests(Integer number) {
-    	ModuleRoom.GeneralTab_ChildrenGuests_DROPDOWN.selectByIndex(number);
+	public void General_ChildrenGuests(Integer number) {
+    	ModuleRoom.General_ChildrenGuests_DROPDOWN.selectByIndex(number);
 	}
 	
     @Step
-	public void GeneralTab_AddAllAmenities() {
-    	ModuleRoom.GeneralTab_AddAllAmenities_BUTTON.click();
+	public void General_AddAllAmenities() {
+    	ModuleRoom.General_AddAllAmenities_BUTTON.click();
 	}
     
 // -----------------------------------------------------------------------------------------------------------------
 // LANGUAGE-SPECIFIC TAB
     
     @Step
-	public void Open_LanguageSpecific_EnglishTab() {
-		ModuleRoom.LanguageSpecific_EnglishTab.click();
+	public void Open_LanguageSpecific_English() {
+		ModuleRoom.LanguageSpecific_English.click();
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_TitleTag(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_TitleTag_TEXTBOX.type(string);
+	public void LanguageSpecific_English_TitleTag(String string) {
+		ModuleRoom.LanguageSpecific_English_TitleTag_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_MetaKeywords(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_MetaKeywords_TEXTBOX.type(string);
+	public void LanguageSpecific_English_MetaKeywords(String string) {
+		ModuleRoom.LanguageSpecific_English_MetaKeywords_TEXTBOX.type(string);
 	}
 
     @Step
-	public void LanguageSpecific_EnglishTab_MetaDescription(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_MetaDescription_TEXTBOX.type(string);
+	public void LanguageSpecific_English_MetaDescription(String string) {
+		ModuleRoom.LanguageSpecific_English_MetaDescription_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_Name(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_Name_TEXTBOX.type(string);
+	public void LanguageSpecific_English_Name(String string) {
+		ModuleRoom.LanguageSpecific_English_Name_TEXTBOX.type(string);
 	}
     
     public Map<String, String> Generated_RandomVanityURL = new HashMap<String, String>();
     
     @Step
-	public void LanguageSpecific_EnglishTab_Generate_RandomVanityURL(String string) {
+	public void LanguageSpecific_English_Generate_RandomVanityURL(String string) {  	
     	String RandomVanityURL = string+"VanityURL"+RandomStringUtils.randomNumeric(7);
     	Generated_RandomVanityURL.put(string, RandomVanityURL);
-    	ModuleRoom.LanguageSpecific_EnglishTab_VanityURL_TEXTBOX.type(RandomVanityURL);	
+    	ModuleRoom.LanguageSpecific_English_VanityURL_TEXTBOX.type(RandomVanityURL);	
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_Headline(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_Headline_TEXTBOX.type(string);
+	public void LanguageSpecific_English_Headline(String string) {
+		ModuleRoom.LanguageSpecific_English_Headline_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_Description(String string) {
-    	ModuleRoom.LanguageSpecific_EnglishTab_Description_FRAME.click();
-		ModuleRoom.LanguageSpecific_EnglishTab_Description_FRAME.sendKeys(string);
+	public void LanguageSpecific_English_Description(String string) {
+    	ModuleRoom.LanguageSpecific_English_Description_FRAME.click();
+		ModuleRoom.LanguageSpecific_English_Description_FRAME.sendKeys(string);
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_BedTypes(String string) {
-		ModuleRoom.LanguageSpecific_EnglishTab_BedTypes_TEXTBOX.type(string);
+	public void LanguageSpecific_English_BedTypes(String string) {
+		ModuleRoom.LanguageSpecific_English_BedTypes_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_Features(String string) {
-    	ModuleRoom.LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX.click();
-    	ModuleRoom.LanguageSpecific_EnglishTab_Features_DROPDOWNTEXTBOX.typeAndEnter(string);
+	public void LanguageSpecific_English_Features(String string) {
+    	ModuleRoom.LanguageSpecific_English_Features_DROPDOWNTEXTBOX.click();
+    	ModuleRoom.LanguageSpecific_English_Features_DROPDOWNTEXTBOX.typeAndEnter(string);
 	}
     
     @Step
-	public void LanguageSpecific_EnglishTab_Notes(String string) {
-    	ModuleRoom.LanguageSpecific_EnglishTab_Notes_FRAME.click();
-    	ModuleRoom.LanguageSpecific_EnglishTab_Notes_FRAME.sendKeys(string);
+	public void LanguageSpecific_English_Notes(String string) {
+    	ModuleRoom.LanguageSpecific_English_Notes_FRAME.click();
+    	ModuleRoom.LanguageSpecific_English_Notes_FRAME.sendKeys(string);
 	}
     
  // -----------------------------------------------------------------------------------------------------------------
@@ -341,5 +342,11 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     	} catch (NoSuchElementException ex) {}
 	}
 
+	@Step
+	public void should_save_new_rooms_settings() {
+    	try {
+    		assertTrue(ModuleRoom.RoomsList_TABLE.isPresent());
+    	} catch (NoSuchElementException ex) {}
+	}
 
 }
