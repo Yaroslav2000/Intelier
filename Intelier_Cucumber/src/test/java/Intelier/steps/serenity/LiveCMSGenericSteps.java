@@ -1,22 +1,33 @@
 package Intelier.steps.serenity;
 
-import Intelier.pages.LiveCMSGeneric;
+import static org.junit.Assert.assertTrue;
+
+import org.openqa.selenium.NoSuchElementException;
+
+import Intelier.pages.LiveCMSGenericPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class LiveCMSGenericSteps extends ScenarioSteps {
 	
-	LiveCMSGeneric liveCMSGeneric;
+	LiveCMSGenericPage liveCMSGeneric;
 
-	@Step
+// -----------------------------------------------------------------------------------------------------------------
+// LOGIN & LOGOUT
+
+	@Step("LiveCMS Setup")
     public void setup() {
 		liveCMSGeneric.open();
-		liveCMSGeneric.login();
+		liveCMSGeneric.Username_TEXTBOX.type("automation@Webcanada.com");
+		liveCMSGeneric.Password_TEXTBOX.type("Automation123");
+		liveCMSGeneric.Login_BUTTON.click();
     }
 	
-	@Step
+	@Step("Teardown")
     public void teardown() {
-		liveCMSGeneric.logout();
-    }
-
+    	try {
+    		liveCMSGeneric.Logout_LINK.click();
+    	} catch (NoSuchElementException ex) {}
+	}
+	
 }

@@ -117,7 +117,7 @@ public class AccommodationRoomsDefinitionSteps {
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_TitleTag(room+" TitleTag");
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_MetaKeywords(room+" MetaKeywords");
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_MetaDescription(room+" MetaDescription");
-    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Name(room);
+    	LiveCMSModuleRoomSteps.LanguageSpecific_English_Name(room+" Name");
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_Generate_RandomVanityURL(room);
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_Headline(room+" Headline");
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_Description(room+" Description");
@@ -125,11 +125,7 @@ public class AccommodationRoomsDefinitionSteps {
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_Features(room+" Features");
     	LiveCMSModuleRoomSteps.LanguageSpecific_English_Notes(room+" Notes");
     	LiveCMSModuleRoomSteps.Save_changes();
-    	
-  	
-    	
-    	
-    	
+    	    	
     }
     
     @Then("Back-end Administrator should save room '(.*)' new settings")
