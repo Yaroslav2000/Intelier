@@ -80,9 +80,9 @@ public class FrontEndModuleRoomSteps extends ScenarioSteps {
 	public void should_see_FE_Unit(String string) {
     	try {
     		FrontendModuleRoom.MoveToElement(FrontendModuleRoom.FE_Size_Unit);
-    		if (string == "m²") {
+    		if (string.equals("m²")) {
     			assertTrue(FrontendModuleRoom.FE_Size_Unit.containsText("m"));
-    		} else if (string == "ft²") {
+    		} else if (string.equals("ft²")) {
     			assertTrue(FrontendModuleRoom.FE_Size_Unit.containsText("f"));
     		}
     	} catch (NoSuchElementException ex) {}	

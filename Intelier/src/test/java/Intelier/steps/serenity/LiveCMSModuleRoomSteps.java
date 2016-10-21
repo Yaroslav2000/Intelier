@@ -8,18 +8,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.NoSuchElementException;
 
 import Intelier.pages.LiveCMSModuleRoomPage;
+import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.thucydides.core.steps.ScenarioSteps;
+import net.thucydides.junit.annotations.Qualifier;
+import net.thucydides.junit.annotations.UseTestDataFrom;
 
 public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 
-	LiveCMSModuleRoomPage ModuleRoom;
-	
+	LiveCMSModuleRoomPage ModuleRoom;   
+    
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON
 	
@@ -93,62 +98,62 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 // SETTINGS
     
     @Step
-	public void Settings_English_TitleTag(String string) {
+	public void Set_Settings_English_TitleTag(String string) {
     	ModuleRoom.Settings_English_TitleTag_TEXTBOX.type(string);
 		
 	}
 
     @Step
-	public void Settings_English_MetaKeywords(String string) {
+	public void Set_Settings_English_MetaKeywords(String string) {
     	ModuleRoom.Settings_English_MetaKeywords_TEXTBOX.type(string);
 		
 	}
 
     @Step
-	public void Settings_English_MetaDescription(String string) {
+	public void Set_Settings_English_MetaDescription(String string) {
     	ModuleRoom.Settings_English_MetaDescription_TEXTBOX.type(string);
 	}
 
     @Step
-	public void Settings_English_Status(String string) {
-		if (string == "Active") {
+	public void Set_Settings_English_Status(String string) {
+		if (string.equals("Active")) {
 			ModuleRoom.Settings_English_Status_Active_RADIOBUTTON.click();
-		} else if (string == "Inactive") {
+		} else if (string.equals("Inactive")) {
 			ModuleRoom.Settings_English_Status_InActive_RADIOBUTTON.click();
 		}
 	}
 
     @Step
-	public void Settings_English_RoomsOverview(String string) {
-		if (string == "Matrix view only") {
+	public void Set_Settings_English_RoomsOverview(String string) {
+		if (string.equals("Matrix view only")) {
 			ModuleRoom.Settings_English_RoomsOverview_MatrixViewOnly_RADIOBUTTON.click();
-		} else if (string == "List view only") {
+		} else if (string.equals("List view only")) {
 			ModuleRoom.Settings_English_RoomsOverview_ListViewOnly_RADIOBUTTON.click();
-		} else if (string == "Matrix and list view toggle") {
+		} else if (string.equals("Matrix and list view toggle")) {
 			ModuleRoom.Settings_English_RoomsOverview_MatrixAndListViewToggle_RADIOBUTTON.click();
 		}
 	}
 
     @Step
-	public void Settings_English_Default(String string) {
-    	if (string == "Matrix view") {
+	public void Set_Settings_English_Default(String string) {
+    	if (string.equals("Matrix view")) {
 			ModuleRoom.Settings_English_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
-		} else if (string == "List view") {
+		} else if (string.equals("List view")) {
 			ModuleRoom.Settings_English_Default_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 
     @Step
-	public void Settings_English_DefaultUnitType(String string) {
-		if (string == "m²") {
+	public void Set_Settings_English_DefaultUnitType(String string) {
+		if (string.equals("m²")) {
 			ModuleRoom.Settings_English_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
-		} else if (string == "ft²") {
+		} else if (string.equals("ft²")) {
 			ModuleRoom.Settings_English_DefaultUnitType_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 
     @Step
-	public void Settings_English_AddAllFilters() {
+	public void Set_Settings_English_AddAllFilters() {
     	if (!ModuleRoom.Settings_English_Filters_FromRate_CHECKBOX.isSelected()) {
     		ModuleRoom.Settings_English_Filters_FromRate_CHECKBOX.click();
     	}
@@ -169,64 +174,64 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 // GENERAL TAB
     
     @Step
-	public void General_Status(String string) {
-		if (string == "Active") {
-			ModuleRoom.General_Status_Active_RADIOBUTTON.click();
-		} else if (string == "Inactive") {
+	public void Set_General_Status(String string) {
+    	if (string.equals("Active")) {
+    		ModuleRoom.General_Status_Active_RADIOBUTTON.click();
+		} else if (string.equals("Inactive")) {
 			ModuleRoom.General_Status_Inactive_RADIOBUTTON.click();
 		}
 	}
 	
     @Step
-	public void General_InternalName(String string) {
+	public void Set_General_InternalName(String string) {
 		ModuleRoom.General_InternalName_TEXTBOX.type(string);
 	}
     
     @Step
-	public void General_RoomCategory(String string) {
-		if (string == "Guest Rooms") {
+	public void Set_General_RoomCategory(String string) {
+		if (string.equals("Guest Rooms")) {
 			ModuleRoom.General_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
-		} else if (string == "Suites") {
+		} else if (string.equals("Suites")) {
 			ModuleRoom.General_RoomCategory_DROPDOWN.selectByValue(ModuleRoom.GetValueByLabel(string));
 		}
 	}
 	
     @Step
-	public void General_FromRate(String string) {
+	public void Set_General_FromRate(String string) {
     	ModuleRoom.General_FromRate_TEXTBOX.type(string);
 	}
 	
     @Step
-	public void General_SizeFrom(String string) {
+	public void Set_General_SizeFrom(String string) {
     	ModuleRoom.General_SizeFrom_TEXTBOX.type(string);
 	}
 	
     @Step
-	public void General_SizeTo(String string) {
+	public void Set_General_SizeTo(String string) {
     	ModuleRoom.General_SizeTo_TEXTBOX.type(string);
 	}
 	
     @Step
-	public void General_Unit(String string) {
-		if (string == "m²") {
+	public void Set_General_Unit(String string) {
+		if (string.equals("m²")) {
 			ModuleRoom.General_Unit_DROPDOWN.selectByValue("m");
-		} else if (string == "ft²") {
+		} else if (string.equals("ft²")) {
 			ModuleRoom.General_Unit_DROPDOWN.selectByValue("f");
 		}
 	}
 	
     @Step
-	public void General_AdultGuests(Integer number) {
+	public void Set_General_AdultGuests(Integer number) {
     	ModuleRoom.General_AdultGuests_DROPDOWN.selectByIndex(number);
 	}
 	
     @Step
-	public void General_ChildrenGuests(Integer number) {
+	public void Set_General_ChildrenGuests(Integer number) {
     	ModuleRoom.General_ChildrenGuests_DROPDOWN.selectByIndex(number);
 	}
 	
     @Step
-	public void General_AddAllAmenities() {
+	public void Set_General_AddAllAmenities() {
     	ModuleRoom.General_AddAllAmenities_BUTTON.click();
 	}
     
@@ -239,58 +244,58 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 	}
     
     @Step
-	public void LanguageSpecific_English_TitleTag(String string) {
+	public void Set_LanguageSpecific_English_TitleTag(String string) {
 		ModuleRoom.LanguageSpecific_English_TitleTag_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_English_MetaKeywords(String string) {
+	public void Set_LanguageSpecific_English_MetaKeywords(String string) {
 		ModuleRoom.LanguageSpecific_English_MetaKeywords_TEXTBOX.type(string);
 	}
 
     @Step
-	public void LanguageSpecific_English_MetaDescription(String string) {
+	public void Set_LanguageSpecific_English_MetaDescription(String string) {
 		ModuleRoom.LanguageSpecific_English_MetaDescription_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_English_Name(String string) {
+	public void Set_LanguageSpecific_English_Name(String string) {
 		ModuleRoom.LanguageSpecific_English_Name_TEXTBOX.type(string);
 	}
     
     public Map<String, String> Generated_RandomVanityURL = new HashMap<String, String>();
     
     @Step
-	public void LanguageSpecific_English_Generate_RandomVanityURL(String string) {  	
+	public void Set_LanguageSpecific_English_Generate_RandomVanityURL(String string) {  	
     	String RandomVanityURL = string+"VanityURL"+RandomStringUtils.randomNumeric(7);
     	Generated_RandomVanityURL.put(string, RandomVanityURL);
     	ModuleRoom.LanguageSpecific_English_VanityURL_TEXTBOX.type(RandomVanityURL);	
 	}
     
     @Step
-	public void LanguageSpecific_English_Headline(String string) {
+	public void Set_LanguageSpecific_English_Headline(String string) {
 		ModuleRoom.LanguageSpecific_English_Headline_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_English_Description(String string) {
+	public void Set_LanguageSpecific_English_Description(String string) {
     	ModuleRoom.LanguageSpecific_English_Description_FRAME.click();
 		ModuleRoom.LanguageSpecific_English_Description_FRAME.sendKeys(string);
 	}
     
     @Step
-	public void LanguageSpecific_English_BedTypes(String string) {
+	public void Set_LanguageSpecific_English_BedTypes(String string) {
 		ModuleRoom.LanguageSpecific_English_BedTypes_TEXTBOX.type(string);
 	}
     
     @Step
-	public void LanguageSpecific_English_Features(String string) {
+	public void Set_LanguageSpecific_English_Features(String string) {
     	ModuleRoom.LanguageSpecific_English_Features_DROPDOWNTEXTBOX.click();
     	ModuleRoom.LanguageSpecific_English_Features_DROPDOWNTEXTBOX.typeAndEnter(string);
 	}
     
     @Step
-	public void LanguageSpecific_English_Notes(String string) {
+	public void Set_LanguageSpecific_English_Notes(String string) {
     	ModuleRoom.LanguageSpecific_English_Notes_FRAME.click();
     	ModuleRoom.LanguageSpecific_English_Notes_FRAME.sendKeys(string);
 	}
@@ -347,6 +352,11 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     	try {
     		assertTrue(ModuleRoom.RoomsList_TABLE.isPresent());
     	} catch (NoSuchElementException ex) {}
+	}
+
+	public void navigate_to_user_accounts_page() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

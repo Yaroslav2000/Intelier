@@ -31,11 +31,22 @@ Feature: Accommodation Rooms
   @issue:INTELIER-41
   @issue:INTELIER-81
   @debug
-  Scenario: Edit room
+    Scenario: Edit room
 	And Room 'AutomationRoom' is in the room list
-	When Back-end Administrator edits room 'AutomationRoom' with default settings
+	When Back-end Administrator edits room 'AutomationRoom' with default settings "1"
    	Then Back-end Administrator should save room 'AutomationRoom' new settings
    	And Front-end User should see room 'AutomationRoom' new settings
+
+#   Scenario Outline: Edit room
+#	And Room 'AutomationRoom' is in the room list
+#	When Back-end Administrator edits room 'AutomationRoom' with default settings "<test-data>"
+#   	Then Back-end Administrator should save room 'AutomationRoom' new settings
+#   	And Front-end User should see room 'AutomationRoom' new settings
+#
+#  Examples:
+#  |test-data|
+#  |1|
+#  |2|
 
    	#General_Status			| Active 		 |
    	#General_InternalName	| AutomationRoom |

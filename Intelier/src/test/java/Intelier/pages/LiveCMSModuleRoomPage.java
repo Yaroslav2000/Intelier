@@ -3,6 +3,7 @@ package Intelier.pages;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
