@@ -10,9 +10,6 @@ import cucumber.api.java.en.When;
 
 import Intelier.testdata.AccommodationRoomsTestData;
 
-import java.io.IOException;
-import java.util.Objects;
-
 import Intelier.steps.serenity.FrontEndModuleRoomSteps;
 import Intelier.steps.serenity.LiveCMSGenericSteps;
 import Intelier.steps.serenity.LiveCMSModuleRoomSteps;

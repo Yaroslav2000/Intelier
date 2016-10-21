@@ -3,23 +3,16 @@ package Intelier.steps.serenity;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.NoSuchElementException;
 
 import Intelier.pages.LiveCMSModuleRoomPage;
-import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.StepGroup;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.junit.annotations.Qualifier;
-import net.thucydides.junit.annotations.UseTestDataFrom;
 
 public class LiveCMSModuleRoomSteps extends ScenarioSteps {
 
@@ -352,11 +345,6 @@ public class LiveCMSModuleRoomSteps extends ScenarioSteps {
     	try {
     		assertTrue(ModuleRoom.RoomsList_TABLE.isPresent());
     	} catch (NoSuchElementException ex) {}
-	}
-
-	public void navigate_to_user_accounts_page() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
