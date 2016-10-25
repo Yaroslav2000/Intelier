@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-public class AccommodationRoomsTestData {
+public class TestData_AccommodationRooms {
 	
 	public static String General_Status;
 	public static String General_InternalName;
@@ -29,7 +29,7 @@ public class AccommodationRoomsTestData {
     public static String LanguageSpecific_English_Features;
     public static String LanguageSpecific_English_Notes; 
     
-    public static void PrepareTestData (long testdata) {
+    public static void prepareTestData (long testdata) {
     	
     	String file = "src/test/resources/test-data/AccommodationRooms.csv";
 
@@ -62,8 +62,7 @@ public class AccommodationRoomsTestData {
         	    LanguageSpecific_English_BedTypes = record.get("LanguageSpecific_English_BedTypes");
         	    LanguageSpecific_English_Features = record.get("LanguageSpecific_English_Features");
         	    LanguageSpecific_English_Notes = record.get("LanguageSpecific_English_Notes");
-    		}
-        	    
+    		} 
     	}
 
     }

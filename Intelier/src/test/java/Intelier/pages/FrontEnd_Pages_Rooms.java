@@ -13,7 +13,7 @@ import net.thucydides.core.pages.PageObject;
 		    @NamedUrl(name = "open.vanityURL", url = "/{1}"),
 		  }
 )
-public class FrontEndModuleRoomPage extends PageObject {
+public class FrontEnd_Pages_Rooms extends PageObject {
 
 // -----------------------------------------------------------------------------------------------------------------
 // LOCATORS
@@ -34,11 +34,11 @@ public class FrontEndModuleRoomPage extends PageObject {
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS	
 	
-	public void Open_VanityURL(String string) {
+	public void open_vanity_URL(String string) {
 		open("open.vanityURL", withParameters(string));
 	}
 	
-	public void MoveToElement(WebElementFacade WebElementFacade) {
+	public void moveToElement(WebElementFacade WebElementFacade) {
 		withAction().moveToElement(WebElementFacade).perform();
 	}
 	

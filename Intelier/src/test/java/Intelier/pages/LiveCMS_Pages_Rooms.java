@@ -24,7 +24,7 @@ import org.openqa.selenium.NoSuchElementException;
 		    @NamedUrl(name = "edit.settings", url = "/site/edit"),
 		  }
 )
-public class LiveCMSModuleRoomPage extends PageObject {
+public class LiveCMS_Pages_Rooms extends PageObject {
 	
 // -----------------------------------------------------------------------------------------------------------------
 // LOCATORS
@@ -81,7 +81,7 @@ public class LiveCMSModuleRoomPage extends PageObject {
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS
        
-	public void Delete_room(String string) {   
+	public void open_Delete_room(String string) {   
 		HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
         Iterator<WebElement> RowElements = table.getRowElements().iterator();
         while(RowElements.hasNext()) {
@@ -93,7 +93,7 @@ public class LiveCMSModuleRoomPage extends PageObject {
         } 
 	}
 	
-	public void Edit_room(String string) {
+	public void open_Edit_room(String string) {
 		HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
         Iterator<WebElement> RowElements = table.getRowElements().iterator();
         while(RowElements.hasNext()) {
@@ -105,7 +105,7 @@ public class LiveCMSModuleRoomPage extends PageObject {
         }
 	}
 	
-	public void Delete_all_rooms() {   
+	public void delete_all_rooms() {   
 		try {
 			HtmlTable table = HtmlTable.inTable(RoomsList_TABLE);
 	        Iterator<WebElement> RowElements = table.getRowElements().iterator();
@@ -117,7 +117,7 @@ public class LiveCMSModuleRoomPage extends PageObject {
 	    } catch (NoSuchElementException ex) {}
 	}
 	
-	public void Drag_and_drop(String room2, String room1) {
+	public void drag_and_drop(String room2, String room1) {
 		WebElementFacade Test2Room_ROW = $("//tr[@data-name='"+room2+"']");
 		WebElementFacade Test1Room_ROW = $("//tr[@data-name='"+room1+"']");
 		withAction().clickAndHold(Test2Room_ROW).perform();
@@ -125,11 +125,11 @@ public class LiveCMSModuleRoomPage extends PageObject {
 		withAction().release().perform();
 	}
 	
-	public void Edit_rooms_settings() {
+	public void open_Room_module_Settings() {
 		open("edit.settings", withParameters());
 	}
 
-	public String GetValueByLabel(String string) {
+	public String getValueByLabel(String string) {
 		return $("//option[@label = '"+string+"']").getAttribute("value");
 	}
 	

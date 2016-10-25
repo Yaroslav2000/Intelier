@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.PageObject;
 
 @DefaultUrl("http://l5.local-qa.dev.webcanada.com/")
-public class LiveCMSGenericPage extends PageObject {
+public class LiveCMS_Pages_Generic extends PageObject {
 
 // -----------------------------------------------------------------------------------------------------------------
 // LOCATORS

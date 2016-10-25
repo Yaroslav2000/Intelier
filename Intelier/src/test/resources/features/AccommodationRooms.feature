@@ -2,7 +2,7 @@
 Feature: Accommodation Rooms
 
   Background:
-    Given Back-end Administrator has opened room module
+    Given Back-end Administrator has opened Room module
 
   @issue:INTELIER-80
   Scenario: Add new room
@@ -47,27 +47,6 @@ Feature: Accommodation Rooms
 #  |test-data|
 #  |1|
 #  |2|
-
-   	#General_Status			| Active 		 |
-   	#General_InternalName	| AutomationRoom |
-   	#General_RoomCategory	| Guest Rooms    |
-   	#General_FromRate		| 99			 |
-   	#General_SizeFrom		| 10			 |
-   	#General_SizeTo			| 20			 |
-   	#General_Unit			| ft²			 |
-   	#General_AdultGuests	| 1				 |
-   	#General_ChildrenGuests	| 2				 |
-   	#General_Amenities		| All			 |
-   	#LanguageSpecific_English_TitleTag			| AutomationRoom TitleTag 			|
-	#LanguageSpecific_English_MetaKeywords		| AutomationRoom MetaKeywords 		|
-   	#LanguageSpecific_English_MetaDescription	| AutomationRoom MetaDescription	|
-   	#LanguageSpecific_English_Name				| AutomationRoom Name				|
-   	#LanguageSpecific_English_VanityURL			| AutomationRoom<RandomVanityURL>	|
-   	#LanguageSpecific_English_Headline			| AutomationRoom Headline			|
-   	#LanguageSpecific_English_Description		| AutomationRoom Description		|
-   	#LanguageSpecific_English_BedTypes			| AutomationRoom BedTypes			|
-   	#LanguageSpecific_English_Features			| AutomationRoom Features			|
-   	#LanguageSpecific_English_Notes				| AutomationRoom Notes				|
    	
   @issue:INTELIER-80
    	Scenario: Sorting rooms
@@ -78,7 +57,7 @@ Feature: Accommodation Rooms
    	Then Back-end Administrator should see room 'AutomationSortTest2' first in the room list
    	
   @issue:INTELIER-82
-   	Scenario: Edit rooms settings for English language
-   	When Back-end Administrator edits rooms settings for English language with default parameters
-   	Then Back-end Administrator should save new rooms settings
+   	Scenario: Edit Room module settings for English language
+   	When Back-end Administrator edits Room module settings for English language with default parameters
+   	Then Back-end Administrator should save Room module new settings
    	   	

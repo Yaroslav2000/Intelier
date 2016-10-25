@@ -1,16 +1,16 @@
-package Intelier.steps.serenity;
+package Intelier.steps;
 
 import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.LiveCMSGenericPage;
+import Intelier.pages.LiveCMS_Pages_Generic;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class LiveCMSGenericSteps extends ScenarioSteps {
+public class LiveCMS_Steps_Generic extends ScenarioSteps {
 	
-	LiveCMSGenericPage liveCMSGeneric;
+	LiveCMS_Pages_Generic liveCMSGeneric;
 
 // -----------------------------------------------------------------------------------------------------------------
 // LOGIN & LOGOUT
