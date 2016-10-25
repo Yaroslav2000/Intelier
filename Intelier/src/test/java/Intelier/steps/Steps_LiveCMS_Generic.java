@@ -4,13 +4,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.LiveCMS_Pages_Generic;
+import Intelier.pages.Pages_LiveCMS_Generic;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class LiveCMS_Steps_Generic extends ScenarioSteps {
+public class Steps_LiveCMS_Generic extends ScenarioSteps {
 	
-	LiveCMS_Pages_Generic liveCMSGeneric;
+	Pages_LiveCMS_Generic liveCMSGeneric;
 
 // -----------------------------------------------------------------------------------------------------------------
 // LOGIN & LOGOUT

@@ -9,13 +9,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.LiveCMS_Pages_LandingPages;
+import Intelier.pages.Pages_LiveCMS_LandingPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class LiveCMS_Steps_LandingPages extends ScenarioSteps {
+public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 
-	LiveCMS_Pages_LandingPages LiveCMS_Pages_LandingPages; 
+	Pages_LiveCMS_LandingPages LiveCMS_Pages_LandingPages; 
 	
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON	

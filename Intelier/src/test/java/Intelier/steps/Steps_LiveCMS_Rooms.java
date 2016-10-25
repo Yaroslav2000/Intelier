@@ -9,14 +9,14 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.LiveCMS_Pages_Rooms;
+import Intelier.pages.Pages_LiveCMS_Rooms;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.components.HtmlTable;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class LiveCMS_Steps_Rooms extends ScenarioSteps {
+public class Steps_LiveCMS_Rooms extends ScenarioSteps {
 
-	LiveCMS_Pages_Rooms LiveCMSModuleRoomPage;
+	Pages_LiveCMS_Rooms LiveCMSModuleRoomPage;
     
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON

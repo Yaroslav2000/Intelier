@@ -13,7 +13,7 @@ import net.thucydides.core.pages.PageObject;
 		    @NamedUrl(name = "navigate.to.LandingPages", url = "/shangri-la-lpb")
 		  }
 )
-public class LiveCMS_Pages_LandingPages extends PageObject {
+public class Pages_LiveCMS_LandingPages extends PageObject {
 
 // -----------------------------------------------------------------------------------------------------------------
 // LOCATORS

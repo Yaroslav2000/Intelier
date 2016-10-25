@@ -24,7 +24,7 @@ import org.openqa.selenium.NoSuchElementException;
 		    @NamedUrl(name = "edit.settings", url = "/site/edit"),
 		  }
 )
-public class LiveCMS_Pages_Rooms extends PageObject {
+public class Pages_LiveCMS_Rooms extends PageObject {
 	
 // -----------------------------------------------------------------------------------------------------------------
 // LOCATORS

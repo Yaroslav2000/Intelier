@@ -4,13 +4,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.FrontEnd_Pages_Rooms;
+import Intelier.pages.Pages_FrontEnd_Rooms;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class FrontEnd_Steps_Rooms extends ScenarioSteps {
+public class Steps_FrontEnd_Rooms extends ScenarioSteps {
 	
-	FrontEnd_Pages_Rooms FrontendModuleRoom;
+	Pages_FrontEnd_Rooms FrontendModuleRoom;
 
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON

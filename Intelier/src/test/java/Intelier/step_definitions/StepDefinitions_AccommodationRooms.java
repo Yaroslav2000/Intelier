@@ -5,17 +5,17 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import Intelier.steps.FrontEnd_Steps_Rooms;
-import Intelier.steps.LiveCMS_Steps_Rooms;
+import Intelier.steps.Steps_FrontEnd_Rooms;
+import Intelier.steps.Steps_LiveCMS_Rooms;
 import Intelier.testdata.TestData_AccommodationRooms;
 
 public class StepDefinitions_AccommodationRooms {
 
     @Steps
-    LiveCMS_Steps_Rooms BE;
+    Steps_LiveCMS_Rooms BE;
     
     @Steps
-    FrontEnd_Steps_Rooms FE;
+    Steps_FrontEnd_Rooms FE;
     
 //Background:
     

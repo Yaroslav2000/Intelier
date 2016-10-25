@@ -4,8 +4,8 @@ import net.thucydides.core.annotations.Steps;
 
 import org.openqa.selenium.JavascriptExecutor;
 
-import Intelier.steps.FrontEnd_Steps_LandingPages;
-import Intelier.steps.LiveCMS_Steps_LandingPages;
+import Intelier.steps.Steps_FrontEnd_LandingPages;
+import Intelier.steps.Steps_LiveCMS_LandingPages;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,10 +14,10 @@ import cucumber.api.java.en.When;
 public class StepDefinitions_Campaigns {
 	
     @Steps
-    LiveCMS_Steps_LandingPages BE;
+    Steps_LiveCMS_LandingPages BE;
     
     @Steps
-    FrontEnd_Steps_LandingPages FE;
+    Steps_FrontEnd_LandingPages FE;
     
 //Background:
     
