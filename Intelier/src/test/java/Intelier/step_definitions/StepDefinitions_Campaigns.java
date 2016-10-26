@@ -51,18 +51,27 @@ public class StepDefinitions_Campaigns {
     	BE.go_Next();
     	BE.set_Languages_AddAll();
     	BE.submit_Campaign();
-    	BE.set_TitleTag("AutomationRoom TitleTag");
-    	BE.set_MetaKeywords("AutomationRoom MetaKeywords");
-    	BE.set_MetaDescription("AutomationRoom MetaDescription");
+    	BE.set_English_TitleTag("AutomationCampaign English TitleTag");
+    	BE.set_English_MetaKeywords("AutomationCampaign English MetaKeywords");
+    	BE.set_English_MetaDescription("AutomationCampaign English MetaDescription");
+    	BE.set_English_PageTitle("AutomationCampaign English PageTitle");
+    	BE.set_English_PageCopyHeadline("AutomationCampaign English PageCopyHeadline");
     	BE.publish_Campaign();
+    	BE.go_Settings();
+    	BE.set_StatusActive();
+    	BE.save_changes();
     }
 
 	@Then("Back-end Administrator should save campaign '(.*)' new settings")
-    public void should_save_campaign_new_settings(String room) {
+    public void should_save_campaign_new_settings(String campaign) {
+		BE.navigate_to_LandingPages_module();
+		BE.search_campaign(BE.Generated_RandomCampaignName.get(campaign));
+		BE.should_see_campaign_in_the_list(BE.Generated_RandomCampaignName.get(campaign));
     }
     
     @Then("Front-end User should see campaign '(.*)' new settings")
-    public void should_see_campaign_new_settings_FE(String room) {
+    public void should_see_campaign_new_settings_FE(String campaign) {
+    	FE.open_vanity_URL(BE.Generated_RandomVanityURL.get(campaign));
     }
     
     

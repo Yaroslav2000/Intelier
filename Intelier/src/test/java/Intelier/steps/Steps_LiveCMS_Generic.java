@@ -10,24 +10,25 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class Steps_LiveCMS_Generic extends ScenarioSteps {
 	
-	Pages_LiveCMS_Generic liveCMSGeneric;
+	Pages_LiveCMS_Generic BE;
 
 // -----------------------------------------------------------------------------------------------------------------
 // LOGIN & LOGOUT
 
 	@Step("LiveCMS Setup")
     public void setup() {
-		liveCMSGeneric.open();
-		liveCMSGeneric.Username_TEXTBOX.type("automation@Webcanada.com");
-		liveCMSGeneric.Password_TEXTBOX.type("Automation123");
-		liveCMSGeneric.Login_BUTTON.click();
+		BE.open();
+		BE.Username_TEXTBOX.type("automation@Webcanada.com");
+		BE.Password_TEXTBOX.type("Automation123");
+		BE.Login_BUTTON.click();
     }
 	
 	@Step("Teardown")
     public void teardown() {
-    	try {
-    		liveCMSGeneric.Logout_LINK.click();
-    	} catch (NoSuchElementException ex) {}
+    	//waitABit(1000000);
+//		try {
+//			BE.Logout_LINK.click();
+//    	} catch (NoSuchElementException ex) {}
 	}
 	
 }

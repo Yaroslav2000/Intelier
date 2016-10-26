@@ -20,6 +20,9 @@ public class Pages_LiveCMS_LandingPages extends PageObject {
 		
 	@FindBy(xpath="//div[@class='cnt-body']") public WebElementFacade AllModules_BLOCK;
 	@FindBy(xpath="//a[@class='icon plus create-campaign-button']") public WebElementFacade CreateCampaign_BUTTON;
+	@FindBy(className="list") public WebElementFacade CampaignsList_TABLE;
+	@FindBy(xpath="//input[@value='Search']") public WebElementFacade Search_TEXTBOX;
+	
 	@FindBy(xpath="//iframe") public WebElementFacade IFRAME;
 	@FindBy(xpath="//*[@data-value='GC']") public WebElementFacade Brand_GC_BUTTON;
 	@FindBy(xpath="//*[@data-value='HJ']") public WebElementFacade Brand_HJ_BUTTON;
@@ -43,7 +46,13 @@ public class Pages_LiveCMS_LandingPages extends PageObject {
     @FindBy(id="title") public WebElementFacade TitleTag_TEXTBOX;
     @FindBy(id="keywords") public WebElementFacade MetaKeywords_TEXTBOX;
     @FindBy(id="description") public WebElementFacade MetaDescription_TEXTBOX;
+    @FindBy(xpath="//input[@name='page_headline[headline]']") public WebElementFacade PageTitle_TEXTBOX;
+    @FindBy(xpath="//input[@name='headline2[headline]']") public WebElementFacade PageCopyHeadline_TEXTBOX;
     @FindBy(id="action_buttons-save") public WebElementFacade Publish_BUTTON;
+    
+    @FindBy(xpath="//a[@class='icon settings-icon']") public WebElementFacade Settings_BUTTON;
+    @FindBy(id="status-active") public WebElementFacade StatusActive_CHECKBOX;
+    @FindBy(id="save_button-save") public WebElementFacade Save_BUTTON;
     
 	
 // -----------------------------------------------------------------------------------------------------------------

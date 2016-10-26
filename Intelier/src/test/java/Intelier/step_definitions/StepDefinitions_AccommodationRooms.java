@@ -41,7 +41,7 @@ public class StepDefinitions_AccommodationRooms {
 
     @Then("Back-end Administrator should see room '(.*)' in the room list")
     public void should_see_room_in_the_list(String room) {
-    	BE.should_see_room_in_the_list_BE(room);
+    	BE.should_see_room_in_the_list(room);
     }
 
 //Scenario: Cancel adding new Room
@@ -109,19 +109,19 @@ public class StepDefinitions_AccommodationRooms {
     @Then("Front-end User should see room '(.*)' new settings")
     public void should_see_room_new_settings_FE(String room) {
     	FE.openFE();
-    	FE.should_see_FE_room_in_the_list(TestData_AccommodationRooms.LanguageSpecific_English_Name);
+    	FE.should_see_room_in_the_list(TestData_AccommodationRooms.LanguageSpecific_English_Name);
     	FE.open_vanity_URL(BE.Generated_RandomVanityURL.get(room));
-    	FE.should_see_FE_Room_Name(TestData_AccommodationRooms.LanguageSpecific_English_Name);
-    	FE.should_see_FE_RoomCategory(TestData_AccommodationRooms.General_RoomCategory);
-    	FE.should_see_FE_FromRate(TestData_AccommodationRooms.General_FromRate);
-    	FE.should_see_FE_SizeFrom(TestData_AccommodationRooms.General_SizeFrom);
-    	FE.should_see_FE_SizeTo(TestData_AccommodationRooms.General_SizeTo);
-    	FE.should_see_FE_Unit(TestData_AccommodationRooms.General_Unit);
-    	FE.should_see_FE_Headline(TestData_AccommodationRooms.LanguageSpecific_English_Headline);
-    	FE.should_see_FE_Description(TestData_AccommodationRooms.LanguageSpecific_English_Description);
-    	FE.should_see_FE_BedTypes(TestData_AccommodationRooms.LanguageSpecific_English_BedTypes);
-    	FE.should_see_FE_Features(TestData_AccommodationRooms.LanguageSpecific_English_Features);
-    	FE.should_see_FE_Notes(TestData_AccommodationRooms.LanguageSpecific_English_Notes);
+    	FE.should_see_Room_Name(TestData_AccommodationRooms.LanguageSpecific_English_Name);
+    	FE.should_see_RoomCategory(TestData_AccommodationRooms.General_RoomCategory);
+    	FE.should_see_FromRate(TestData_AccommodationRooms.General_FromRate);
+    	FE.should_see_SizeFrom(TestData_AccommodationRooms.General_SizeFrom);
+    	FE.should_see_SizeTo(TestData_AccommodationRooms.General_SizeTo);
+    	FE.should_see_Unit(TestData_AccommodationRooms.General_Unit);
+    	FE.should_see_Headline(TestData_AccommodationRooms.LanguageSpecific_English_Headline);
+    	FE.should_see_Description(TestData_AccommodationRooms.LanguageSpecific_English_Description);
+    	FE.should_see_BedTypes(TestData_AccommodationRooms.LanguageSpecific_English_BedTypes);
+    	FE.should_see_Features(TestData_AccommodationRooms.LanguageSpecific_English_Features);
+    	FE.should_see_Notes(TestData_AccommodationRooms.LanguageSpecific_English_Notes);
     }
     
 //Scenario: Search room
