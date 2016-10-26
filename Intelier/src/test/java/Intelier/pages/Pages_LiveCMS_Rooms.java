@@ -63,7 +63,7 @@ public class Pages_LiveCMS_Rooms extends PageObject {
 	@FindBy(name="numOfGuest[0][children]") public WebElementFacade General_ChildrenGuests_DROPDOWN;			
 	@FindBy(className="add-all") public WebElementFacade General_AddAllAmenities_BUTTON;
     
-    @FindBy(xpath="//div[@class='content-tab-button lang']") public WebElementFacade LanguageSpecific_English;
+    @FindBy(xpath="//*[@class='content-tab-button lang']") public WebElementFacade LanguageSpecific_English;
     @FindBy(id="langData-en_title") public WebElementFacade LanguageSpecific_English_TitleTag_TEXTBOX;
     @FindBy(id="langData-en_metaKeywords") public WebElementFacade LanguageSpecific_English_MetaKeywords_TEXTBOX;
     @FindBy(id="langData-en_metaDescription") public WebElementFacade LanguageSpecific_English_MetaDescription_TEXTBOX;

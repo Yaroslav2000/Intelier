@@ -197,7 +197,7 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
     @Step
 	public void should_see_LandingPages_module() {
     	try {
-    		assertTrue(BE.AllModules_BLOCK.toString().contains("Landing Pages"));
+    		assertTrue(BE.AllModules_BLOCK.containsText("Landing Pages"));
     	} catch (NoSuchElementException ex) {}
 	}
 

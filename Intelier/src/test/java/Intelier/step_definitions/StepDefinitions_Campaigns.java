@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import Intelier.steps.Steps_FrontEnd_LandingPages;
 import Intelier.steps.Steps_LiveCMS_LandingPages;
+import Intelier.testdata.TestData_AccommodationRooms;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -23,8 +24,8 @@ public class StepDefinitions_Campaigns {
     
     @Given("Back-end Administrator has opened Landing Pages module")
     public void navigate_to_Landing_Pages_module() {
-//    	BE.navigate_to_Client_Dashboard();
-//    	BE.should_see_LandingPages_module();
+    	BE.navigate_to_Client_Dashboard();
+    	BE.should_see_LandingPages_module();
     	BE.navigate_to_LandingPages_module();
     }
     
@@ -72,6 +73,8 @@ public class StepDefinitions_Campaigns {
     @Then("Front-end User should see campaign '(.*)' new settings")
     public void should_see_campaign_new_settings_FE(String campaign) {
     	FE.open_vanity_URL(BE.Generated_RandomVanityURL.get(campaign));
+    	FE.should_see_English_PageTitle("AutomationCampaign English PageTitle".toUpperCase());
+    	FE.should_see_English_PageCopyHeadline("AutomationCampaign English PageCopyHeadline");
     }
     
     

@@ -31,59 +31,59 @@ public class Steps_FrontEnd_Rooms extends ScenarioSteps {
     @Step
 	public void should_see_room_in_the_list(String string) {
     	try {
-    		FE.moveToElement(FE.FE_RoomsList);
-    		assertTrue(FE.FE_RoomsList.containsText(string));
+    		FE.moveToElement(FE.RoomsList);
+    		assertTrue(FE.RoomsList.containsText(string));
     	} catch (NoSuchElementException ex) {}
 	}
 
 	@Step
 	public void should_see_Room_Name(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Room_Name);
-    		assertTrue(FE.FE_Room_Name.containsText(string));
+    		FE.moveToElement(FE.Room_Name);
+    		assertTrue(FE.Room_Name.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_RoomCategory(String string) {
     	try {
-    		FE.moveToElement(FE.FE_RoomCategory);
-    		assertTrue(FE.FE_RoomCategory.containsText(string));
+    		FE.moveToElement(FE.RoomCategory);
+    		assertTrue(FE.RoomCategory.containsText(string));
     	} catch (NoSuchElementException ex) {}			
 	}
 
     @Step
 	public void should_see_FromRate(String string) {
     	try {
-    		FE.moveToElement(FE.FE_FromRate);
-    		assertTrue(FE.FE_FromRate.containsText(string));
+    		FE.moveToElement(FE.FromRate);
+    		assertTrue(FE.FromRate.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_SizeFrom(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Size_Unit);
-    		assertTrue(FE.FE_Size_Unit.containsText(string));
+    		FE.moveToElement(FE.Size_Unit);
+    		assertTrue(FE.Size_Unit.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_SizeTo(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Size_Unit);
-    		assertTrue(FE.FE_Size_Unit.containsText(string));
+    		FE.moveToElement(FE.Size_Unit);
+    		assertTrue(FE.Size_Unit.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_Unit(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Size_Unit);
+    		FE.moveToElement(FE.Size_Unit);
     		if (string.equals("m²")) {
-    			assertTrue(FE.FE_Size_Unit.containsText("m"));
+    			assertTrue(FE.Size_Unit.containsText("m"));
     		} else if (string.equals("ft²")) {
-    			assertTrue(FE.FE_Size_Unit.containsText("f"));
+    			assertTrue(FE.Size_Unit.containsText("f"));
     		}
     	} catch (NoSuchElementException ex) {}	
 	}
@@ -91,40 +91,40 @@ public class Steps_FrontEnd_Rooms extends ScenarioSteps {
     @Step
 	public void should_see_Headline(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Headline);
-    		assertTrue(FE.FE_Headline.containsText(string));
+    		FE.moveToElement(FE.Headline);
+    		assertTrue(FE.Headline.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_Description(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Description);
-    		assertTrue(FE.FE_Description.containsText(string));
+    		FE.moveToElement(FE.Description);
+    		assertTrue(FE.Description.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_BedTypes(String string) {
     	try {
-    		FE.moveToElement(FE.FE_BedTypes);
-    		assertTrue(FE.FE_BedTypes.containsText(string));
+    		FE.moveToElement(FE.BedTypes);
+    		assertTrue(FE.BedTypes.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_Features(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Features);
-    		assertTrue(FE.FE_Features.containsText(string));
+    		FE.moveToElement(FE.Features);
+    		assertTrue(FE.Features.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
     @Step
 	public void should_see_Notes(String string) {
     	try {
-    		FE.moveToElement(FE.FE_Notes);
-    		assertTrue(FE.FE_Notes.containsText(string));
+    		FE.moveToElement(FE.Notes);
+    		assertTrue(FE.Notes.containsText(string));
     	} catch (NoSuchElementException ex) {}	
 	}
 
