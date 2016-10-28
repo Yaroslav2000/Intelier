@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.Pages_Custom;
+import Intelier.pages.Pages_CustomActions;
 import Intelier.pages.Pages_FrontEnd_Rooms;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -12,7 +12,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class Steps_FrontEnd_Rooms extends ScenarioSteps {
 	
 	Pages_FrontEnd_Rooms FE;
-	Pages_Custom Custom;
+	Pages_CustomActions Custom;
 
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON

@@ -1,5 +1,11 @@
 package Intelier.pages;
 
+import java.util.List;
+import java.util.Random;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -83,6 +89,23 @@ public class Pages_LiveCMS_LandingPages extends PageObject {
 		WebElementFacade Property_ITEM = $("//div[@data-id='"+string+"']");
 		Property_ITEM.click();
 	}
+	
+//	public String select_RandomProperty() {
+//		WebElementFacade Property_ITEM = $("//div[@data-id='"+string+"']");
+//		Property_ITEM.click();
+//		return Property_ITEM;
+//		
+//		
+//		Select objSel = new Select(PropertyList);
+//		List <WebElement> weblist = objSel.getOptions();
+//		int iCnt = weblist.size();
+//		Random num = new Random();
+//		int iSelect = num.nextInt(iCnt);
+//		objSel.selectByIndex(iSelect);
+//		System.out.println(PropertyList.getAttribute("value"));
+//		
+//		
+//	}
 
 	
 }

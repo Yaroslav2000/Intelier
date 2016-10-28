@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.NoSuchElementException;
 
 import Intelier.pages.Pages_FrontEnd_LandingPages;
-import Intelier.pages.Pages_Custom;
+import Intelier.pages.Pages_CustomActions;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -13,7 +13,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
 
 	Pages_FrontEnd_LandingPages FE;
-	Pages_Custom Custom;
+	Pages_CustomActions Custom;
 
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON	

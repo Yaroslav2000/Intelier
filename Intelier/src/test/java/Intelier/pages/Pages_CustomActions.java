@@ -7,7 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import net.thucydides.core.pages.PageObject;
 
-public class Pages_Custom extends PageObject {
+public class Pages_CustomActions extends PageObject {
 	
 // -----------------------------------------------------------------------------------------------------------------
 // CUSTOM ACTIONS	
@@ -21,4 +21,6 @@ public class Pages_Custom extends PageObject {
 		withAction().moveToElement(element).perform();
 	}
 
+	//*[@id='property-holder']
+	
 }

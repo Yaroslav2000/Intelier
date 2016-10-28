@@ -35,7 +35,7 @@ public class StepDefinitions_Campaigns {
 //    public void no_campaign_in_the_campaigns_list() {
 //    }
     
-    @When("Back-end Administrator adds new single-property campaign '(.*)' with default settings")
+    @When("Back-end Administrator adds new single-property, single-offer campaign '(.*)' with default settings")
     public void add_new_campaign(String campaign) {
     	BE.open_Create_Campaign();
     	BE.set_Brand("Shangri-La");
