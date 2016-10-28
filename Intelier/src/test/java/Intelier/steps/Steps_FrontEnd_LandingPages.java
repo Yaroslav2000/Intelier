@@ -5,22 +5,32 @@ import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.NoSuchElementException;
 
 import Intelier.pages.Pages_FrontEnd_LandingPages;
+import Intelier.pages.Pages_Custom;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
 
 	Pages_FrontEnd_LandingPages FE;
+	Pages_Custom Custom;
+
+// -----------------------------------------------------------------------------------------------------------------
+// COMMON	
 	
     @Step
 	public void open_vanity_URL(String string) {
 		FE.open_vanity_URL(string);		
 	}
     
+    
+// -----------------------------------------------------------------------------------------------------------------
+// VERIFICATIONS 	
+    
     @Step
 	public void should_see_English_PageTitle(String string) {
     	try {
-    		FE.moveToElement(FE.English_PageTitle);
+    		Custom.moveToElement(FE.English_PageTitle);
     		assertTrue(FE.English_PageTitle.containsText(string));
     	} catch (NoSuchElementException ex) {}
 	}
@@ -28,8 +38,64 @@ public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
     @Step
 	public void should_see_English_PageCopyHeadline(String string) {
     	try {
-    		FE.moveToElement(FE.English_PageCopyHeadline);
+    		Custom.moveToElement(FE.English_PageCopyHeadline);
     		assertTrue(FE.English_PageCopyHeadline.containsText(string));
     	} catch (NoSuchElementException ex) {}
 	}
+
+    @Step
+	public void should_see_English_PageCopyContent(String string) {
+    	try {
+    		Custom.moveToElementByText(string);
+        	assertTrue(FE.containsText(string));
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_English_PageCopyTermsConditions(String string) {
+    	try {
+        	FE.English_TermsConditions_Open.click();
+        	assertTrue(FE.containsText(string));
+        	Serenity.takeScreenshot();
+        	FE.English_TermsConditions_Close.click();
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_Property(String string) {
+    	try {
+    		Custom.moveToElementByText(string);
+        	assertTrue(FE.containsText(string));
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_Offer_English_Title(String string) {
+    	try {
+        	FE.Offer_Open.click();
+        	Custom.moveToElementByText(string);
+        	assertTrue(FE.containsText(string));
+    	} catch (NoSuchElementException ex) {}
+		
+	}
+
+    @Step
+	public void should_see_Offer_English_Description(String string) {
+    	try {
+    		Custom.moveToElementByText(string);
+        	assertTrue(FE.containsText(string));
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_Offer_English_TermsConditions(String string) {
+    	try {
+    		FE.Offer_English_TermsConditions_Open.click();
+    		waitABit(500);
+    		Custom.moveToElementByText(string);
+        	assertTrue(FE.containsText(string));
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    
 }

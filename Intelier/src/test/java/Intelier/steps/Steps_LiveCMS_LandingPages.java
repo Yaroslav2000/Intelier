@@ -8,9 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 
+import Intelier.pages.Pages_FrontEnd_LandingPages;
 import Intelier.pages.Pages_LiveCMS_LandingPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.components.HtmlTable;
@@ -18,8 +20,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 
-	Pages_LiveCMS_LandingPages BE; 
-	
+	Pages_LiveCMS_LandingPages BE;
+
 // -----------------------------------------------------------------------------------------------------------------
 // COMMON	
 	
@@ -85,7 +87,7 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 	}
 	
 	@Step
-	public void go_Next() {
+	public void goto_Next() {
 		BE.Next_BUTTON.waitUntilClickable().click();
 	}
 	
@@ -145,6 +147,29 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 	public void submit_Campaign() {
 		BE.CreateCampaign_Submit_BUTTON.click();
 	}
+
+	
+// -----------------------------------------------------------------------------------------------------------------
+// CAMPAIGN SETTINGS	
+	
+	@Step
+	public void goto_Settings() {
+		BE.Settings_BUTTON.click();
+	}
+	
+	@Step
+	public void set_StatusActive() {
+		BE.StatusActive_CHECKBOX.click();
+	}
+
+	@Step
+	public void save_Campaign_changes() {
+		BE.Campaign_Save_BUTTON.click();
+	}
+	
+	
+// -----------------------------------------------------------------------------------------------------------------
+// CAMPAIGN PAGE CONTENT	
 	
 	@Step
 	public void set_English_TitleTag(String string) {
@@ -162,6 +187,11 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 	}
 	
 	@Step
+	public void set_English_Layout_default() {
+		BE.Single_with_offer_with_property_Layout_BUTTON.click();
+	}
+	
+	@Step
 	public void set_English_PageTitle(String string) {
 		BE.PageTitle_TEXTBOX.type(string);
 	}
@@ -172,23 +202,74 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 	}
 
 	@Step
-	public void publish_Campaign() {
-		BE.Publish_BUTTON.click();
-	}
-	
-	@Step
-	public void go_Settings() {
-		BE.Settings_BUTTON.click();
-	}
-	
-	@Step
-	public void set_StatusActive() {
-		BE.StatusActive_CHECKBOX.click();
+	public void set_English_PageCopyContent(String string) {
+		BE.Content_FRAME.click();
+		BE.Content_FRAME.sendKeys(string);
 	}
 
 	@Step
-	public void save_changes() {
-		BE.Save_BUTTON.click();
+	public void set_English_PageCopyTermsConditions(String string) {
+		BE.TermsConditions_FRAME.click();
+		BE.TermsConditions_FRAME.sendKeys(string);
+	}
+	
+	@Step
+	public void publish_Campaign() {
+		BE.Campaign_Publish_BUTTON.click();
+	}
+	
+
+// -----------------------------------------------------------------------------------------------------------------
+// OFFERS
+	
+	@Step
+	public void goto_CampaignOffers() {
+		BE.CampaignOffers_BUTTON.click();
+	}
+	
+	@Step
+	public void open_Create_Offer() {
+		BE.CreateOffer_BUTTON.click();
+	}
+	
+	@Step
+	public void set_Offer_English_InternalName(String string) {
+		BE.Offer_InternalName_TEXTBOX.type(string);
+	}
+
+	@Step
+	public void set_Offer_English_StayDates_default() {
+		BE.Offer_StayDates_StartDate_TEXTBOX.type(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+    	if (!BE.Offer_NoExpiry_CHECKBOX.isSelected()) {
+    		BE.Offer_NoExpiry_CHECKBOX.click();
+    	}
+	}
+	
+	@Step
+	public void set_Offer_English_CampaignName(String string) {
+		BE.Offer_CampaignName_TEXTBOX.type(string);
+	}
+	
+	@Step
+	public void set_Offer_English_Title(String string) {
+		BE.Offer_Title_TEXTBOX.type(string);
+	}
+
+	@Step
+	public void set_Offer_English_Description(String string) {
+		BE.Offer_Description_FRAME.click();
+		BE.Offer_Description_FRAME.sendKeys(string);
+	}
+
+	@Step
+	public void set_Offer_English_TermsConditions(String string) {
+		BE.Offer_TermsConditions_FRAME.click();
+		BE.Offer_TermsConditions_FRAME.sendKeys(string);
+	}
+	
+	@Step
+	public void save_Offer_changes() {
+		BE.Offer_Save_BUTTON.click();
 	}
 	
 // -----------------------------------------------------------------------------------------------------------------
@@ -207,19 +288,6 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
     		assertTrue(HtmlTable.rowsFrom(BE.CampaignsList_TABLE).toString().contains(campaign));
     	} catch (NoSuchElementException ex) {}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

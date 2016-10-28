@@ -314,13 +314,6 @@ public class Steps_LiveCMS_Rooms extends ScenarioSteps {
 	    	assertTrue(HtmlTable.rowsFrom(BE.RoomsList_TABLE).toString().isEmpty());
 	    } catch (NoSuchElementException ex) {}
 	}
-
-    @Step
-	public void should_save_room_new_settings(String string) {
-    	try {
-    		assertTrue(HtmlTable.rowsFrom(BE.RoomsList_TABLE).toString().contains(string));
-    	} catch (NoSuchElementException ex) {}
-	}
     
 	public boolean verify_room_exists(String string) {
     	try {
@@ -339,7 +332,7 @@ public class Steps_LiveCMS_Rooms extends ScenarioSteps {
 	}
 
 	@Step
-	public void should_save_Room_module_new_settings() {
+	public void should_save_Room_module_settings() {
     	try {
     		assertTrue(BE.RoomsList_TABLE.isPresent());
     	} catch (NoSuchElementException ex) {}

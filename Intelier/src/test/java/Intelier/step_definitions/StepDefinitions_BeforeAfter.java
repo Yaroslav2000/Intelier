@@ -5,7 +5,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import net.thucydides.core.annotations.Steps;
 
-public class StepDefinitions_Generic {
+public class StepDefinitions_BeforeAfter {
 
     @Steps
     Steps_LiveCMS_Generic BE;

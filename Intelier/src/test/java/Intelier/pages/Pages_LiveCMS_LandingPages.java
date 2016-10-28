@@ -46,14 +46,27 @@ public class Pages_LiveCMS_LandingPages extends PageObject {
     @FindBy(id="title") public WebElementFacade TitleTag_TEXTBOX;
     @FindBy(id="keywords") public WebElementFacade MetaKeywords_TEXTBOX;
     @FindBy(id="description") public WebElementFacade MetaDescription_TEXTBOX;
+    @FindBy(xpath="//*[@data-type='single-with-offer-with-property']") public WebElementFacade Single_with_offer_with_property_Layout_BUTTON;
     @FindBy(xpath="//input[@name='page_headline[headline]']") public WebElementFacade PageTitle_TEXTBOX;
     @FindBy(xpath="//input[@name='headline2[headline]']") public WebElementFacade PageCopyHeadline_TEXTBOX;
-    @FindBy(id="action_buttons-save") public WebElementFacade Publish_BUTTON;
+    @FindBy(id="main_content_ifr") public WebElementFacade Content_FRAME;
+    @FindBy(id="terms_and_conditions_ifr") public WebElementFacade TermsConditions_FRAME;
+    @FindBy(id="action_buttons-save") public WebElementFacade Campaign_Publish_BUTTON;
     
     @FindBy(xpath="//a[@class='icon settings-icon']") public WebElementFacade Settings_BUTTON;
     @FindBy(id="status-active") public WebElementFacade StatusActive_CHECKBOX;
-    @FindBy(id="save_button-save") public WebElementFacade Save_BUTTON;
+    @FindBy(id="save_button-save") public WebElementFacade Campaign_Save_BUTTON;
     
+    @FindBy(xpath="//a[@class='icon offers-icon']") public WebElementFacade CampaignOffers_BUTTON;
+    @FindBy(xpath="//a[@class='icon plus']") public WebElementFacade CreateOffer_BUTTON;
+    @FindBy(id="internal_name") public WebElementFacade Offer_InternalName_TEXTBOX;
+    @FindBy(id="start_at") public WebElementFacade Offer_StayDates_StartDate_TEXTBOX;	
+    @FindBy(id="noExpiry") public WebElementFacade Offer_NoExpiry_CHECKBOX;
+    @FindBy(id="omniture_tag") public WebElementFacade Offer_CampaignName_TEXTBOX;
+    @FindBy(id="title") public WebElementFacade Offer_Title_TEXTBOX;
+    @FindBy(id="description_ifr") public WebElementFacade Offer_Description_FRAME;
+    @FindBy(id="terms_ifr") public WebElementFacade Offer_TermsConditions_FRAME;
+    @FindBy(id="action_buttons-save") public WebElementFacade Offer_Save_BUTTON;
 	
 // -----------------------------------------------------------------------------------------------------------------
 // ACTIONS	

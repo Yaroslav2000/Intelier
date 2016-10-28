@@ -38,10 +38,6 @@ public class Pages_FrontEnd_Rooms extends PageObject {
 		open("open.vanityURL", withParameters(string));
 	}
 	
-	public void moveToElement(WebElementFacade WebElementFacade) {
-		withAction().moveToElement(WebElementFacade).perform();
-	}
-	
 }
 
 

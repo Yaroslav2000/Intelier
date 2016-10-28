@@ -101,13 +101,13 @@ public class StepDefinitions_AccommodationRooms {
     	BE.save_changes();
     }
 
-	@Then("Back-end Administrator should save room '(.*)' new settings")
-    public void should_save_room_new_settings(String room) {
-    	BE.should_save_room_new_settings(room);
+	@Then("Back-end Administrator should save room '(.*)'")
+    public void should_save_room(String room) {
+    	BE.should_see_room_in_the_list(room);
     }
     
-    @Then("Front-end User should see room '(.*)' new settings")
-    public void should_see_room_new_settings_FE(String room) {
+    @Then("Front-end User should see room '(.*)' settings")
+    public void should_see_room_settings_FE(String room) {
     	FE.openFE();
     	FE.should_see_room_in_the_list(TestData_AccommodationRooms.LanguageSpecific_English_Name);
     	FE.open_vanity_URL(BE.Generated_RandomVanityURL.get(room));
@@ -159,9 +159,9 @@ public class StepDefinitions_AccommodationRooms {
     	BE.save_changes();
     }
     
-    @Then("Back-end Administrator should save Room module new settings")
-    public void should_save_Room_module_new_settings() {
-    	BE.should_save_Room_module_new_settings();
+    @Then("Back-end Administrator should save Room module parameters")
+    public void should_save_Room_module_settings() {
+    	BE.should_save_Room_module_settings();
     }
     
 }

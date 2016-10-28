@@ -34,14 +34,14 @@ Feature: Accommodation Rooms
     Scenario: Edit room
 	And Room 'AutomationRoom' is in the room list
 	When Back-end Administrator edits room 'AutomationRoom' with default settings "1"
-   	Then Back-end Administrator should save room 'AutomationRoom' new settings
-   	And Front-end User should see room 'AutomationRoom' new settings
+   	Then Back-end Administrator should save room 'AutomationRoom'
+   	And Front-end User should see room 'AutomationRoom' settings
 
 #   Scenario Outline: Edit room
 #	And Room 'AutomationRoom' is in the room list
 #	When Back-end Administrator edits room 'AutomationRoom' with default settings "<test-data>"
-#   	Then Back-end Administrator should save room 'AutomationRoom' new settings
-#   	And Front-end User should see room 'AutomationRoom' new settings
+#   	Then Back-end Administrator should save room 'AutomationRoom' settings
+#   	And Front-end User should see room 'AutomationRoom' settings
 #
 #  Examples:
 #  |test-data|
@@ -59,5 +59,5 @@ Feature: Accommodation Rooms
   @issue:INTELIER-82
    	Scenario: Edit Room module settings for English language
    	When Back-end Administrator edits Room module settings for English language with default parameters
-   	Then Back-end Administrator should save Room module new settings
+   	Then Back-end Administrator should save Room module parameters
    	   	
