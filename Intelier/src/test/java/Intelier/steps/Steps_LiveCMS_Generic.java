@@ -25,7 +25,7 @@ public class Steps_LiveCMS_Generic extends ScenarioSteps {
 	
 	@Step("Teardown")
     public void teardown() {
-    	//waitABit(1000000);
+    	waitABit(1000000);
 //		try {
 //			BE.Logout_LINK.click();
 //    	} catch (NoSuchElementException ex) {}

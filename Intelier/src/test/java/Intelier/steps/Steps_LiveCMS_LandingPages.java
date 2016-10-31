@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.JavascriptExecutor;
@@ -91,9 +92,15 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 		BE.Next_BUTTON.waitUntilClickable().click();
 	}
 	
+	//not used
 	@Step
 	public void set_Account(String string) {
 		BE.Account_DROPDOWN.selectByVisibleText(string);
+	}
+	
+	@Step
+	public void set_Account_SelectRandom() {
+		BE.Account_DROPDOWN.selectByIndex(new Random().nextInt(BE.Account_DROPDOWN.getSelectOptions().size()));
 	}
 
 	@Step
@@ -114,28 +121,38 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 		BE.Subdomain_DROPDOWN.selectByVisibleText(string);
 	}
 	
-	public Map<String, String> Generated_RandomVanityURL = new HashMap<String, String>();
+	public Map<String, String> VanityURL_GeneratedRandom = new HashMap<String, String>();
 	
 	//workaround for bug SHLPC-550
-	public Map<String, String> Generated_RandomCampaignName = new HashMap<String, String>();
+	public Map<String, String> CampaignName_GeneratedRandom = new HashMap<String, String>();
 	
 	@Step
-	public void set_RandomVanityURL_generate(String campaign) {
+	public void set_VanityURL_GenerateRandom(String campaign) {
     	String Random_number = RandomStringUtils.randomNumeric(7);
     	String RandomVanityURL = campaign+"VanityURL"+Random_number;
     	BE.VanityURL_TEXTBOX.type(RandomVanityURL);	
-    	Generated_RandomVanityURL.put(campaign, RandomVanityURL);
+    	VanityURL_GeneratedRandom.put(campaign, RandomVanityURL);
     	
     	//workaround for bug SHLPC-550
     	String RandomCampaignName = campaign+Random_number;
     	BE.InternalName_TEXTBOX.type(RandomCampaignName);
-    	Generated_RandomCampaignName.put(campaign, RandomCampaignName);
+    	CampaignName_GeneratedRandom.put(campaign, RandomCampaignName);
 	}
 	
+	//not used
 	@Step
-	public void set_findProperty(String string) {
+	public void set_Property(String string) {
 		BE.FindProperty_TEXTBOX.click();
 		BE.select_Property(string);
+	}
+	
+	public Map<String, String> Property_SelectedRandom = new HashMap<String, String>();
+	
+	@Step
+	public void set_Property_SelectRandom(String campaign) {
+		BE.FindProperty_TEXTBOX.click();
+		String RandomProperty = BE.select_RandomProperty();
+		Property_SelectedRandom.put(campaign, RandomProperty);
 	}
 	
 	@Step
@@ -288,6 +305,7 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
     		assertTrue(HtmlTable.rowsFrom(BE.CampaignsList_TABLE).toString().contains(campaign));
     	} catch (NoSuchElementException ex) {}
 	}
+
 
 
 

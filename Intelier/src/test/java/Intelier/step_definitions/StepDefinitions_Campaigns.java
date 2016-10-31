@@ -42,13 +42,13 @@ public class StepDefinitions_Campaigns {
     	BE.set_Type("Single-Property");
     	BE.set_Layout("Template");
     	BE.goto_Next();
-    	BE.set_Account("SLIM - SLIM / Brand");
+    	BE.set_Account_SelectRandom();
     	BE.set_InternalName(campaign);
     	BE.set_ActiveDates_default();
     	BE.set_Subdomain("promo");
-    	BE.set_RandomVanityURL_generate(campaign);
+    	BE.set_VanityURL_GenerateRandom(campaign);
     	BE.goto_Next();
-    	BE.set_findProperty("CWH");
+    	BE.set_Property_SelectRandom(campaign);
     	BE.goto_Next();
     	BE.set_Languages_AddAll();
     	BE.submit_Campaign();
@@ -66,7 +66,7 @@ public class StepDefinitions_Campaigns {
     	BE.save_Campaign_changes();
     	BE.goto_CampaignOffers();
     	BE.open_Create_Offer();
-    	BE.set_Offer_English_InternalName(BE.Generated_RandomCampaignName.get(campaign)+" offer");
+    	BE.set_Offer_English_InternalName(BE.CampaignName_GeneratedRandom.get(campaign)+" offer");
     	BE.set_Offer_English_StayDates_default();
     	BE.set_Offer_English_CampaignName("AutomationCampaignName");
     	BE.set_Offer_English_Title("AutomationOffer Title");
@@ -78,18 +78,18 @@ public class StepDefinitions_Campaigns {
 	@Then("Back-end Administrator should save campaign '(.*)'")
     public void should_save_campaign(String campaign) {
 		BE.navigate_to_LandingPages_module();
-		BE.search_campaign(BE.Generated_RandomCampaignName.get(campaign));
-		BE.should_see_campaign_in_the_list(BE.Generated_RandomCampaignName.get(campaign));
+		BE.search_campaign(BE.CampaignName_GeneratedRandom.get(campaign));
+		BE.should_see_campaign_in_the_list(BE.CampaignName_GeneratedRandom.get(campaign));
     }
     
     @Then("Front-end User should see campaign '(.*)' settings")
     public void should_see_campaign_settings_FE(String campaign) {
-    	FE.open_vanity_URL(BE.Generated_RandomVanityURL.get(campaign));
+    	FE.open_vanity_URL(BE.VanityURL_GeneratedRandom.get(campaign));
     	FE.should_see_English_PageTitle("AutomationCampaign English Page Title".toUpperCase());
     	FE.should_see_English_PageCopyHeadline("AutomationCampaign English Page Headline");
     	FE.should_see_English_PageCopyContent("AutomationCampaign English Content");
     	FE.should_see_English_PageCopyTermsConditions("AutomationCampaign English Terms and Conditions");
-    	FE.should_see_Property("CWH");
+    	FE.should_see_Property(BE.Property_SelectedRandom.get(campaign));
     	FE.should_see_Offer_English_Title("AutomationOffer Title");
     	FE.should_see_Offer_English_Description("AutomationOffer English Description");
     	FE.should_see_Offer_English_TermsConditions("AutomationOffer English Terms and Conditions");

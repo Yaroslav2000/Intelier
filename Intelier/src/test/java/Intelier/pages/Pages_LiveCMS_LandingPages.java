@@ -6,6 +6,7 @@ import java.util.Random;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -90,22 +91,11 @@ public class Pages_LiveCMS_LandingPages extends PageObject {
 		Property_ITEM.click();
 	}
 	
-//	public String select_RandomProperty() {
-//		WebElementFacade Property_ITEM = $("//div[@data-id='"+string+"']");
-//		Property_ITEM.click();
-//		return Property_ITEM;
-//		
-//		
-//		Select objSel = new Select(PropertyList);
-//		List <WebElement> weblist = objSel.getOptions();
-//		int iCnt = weblist.size();
-//		Random num = new Random();
-//		int iSelect = num.nextInt(iCnt);
-//		objSel.selectByIndex(iSelect);
-//		System.out.println(PropertyList.getAttribute("value"));
-//		
-//		
-//	}
+	public String select_RandomProperty() {	
+		List<WebElementFacade> AllProperties = findAll(By.xpath(".//div[@data-id]"));
+		int iSelect = new Random().nextInt(AllProperties.size());
+		AllProperties.get(iSelect).click();
+		return AllProperties.get(iSelect).getAttribute("data-id");
+	}
 
-	
 }
