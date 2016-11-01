@@ -12,7 +12,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class StepDefinitions_Campaigns {
+public class StepDefinitions_LandingPagesCampaigns {
 	
     @Steps
     Steps_LiveCMS_LandingPages BE;
