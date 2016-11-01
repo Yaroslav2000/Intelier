@@ -66,11 +66,9 @@ public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
 
     @Step
 	public void should_see_Property(String string) {
-//    	System.out.println("////////////////////////////////////////");
 //    	System.out.println(FE.Homepage.getText());
 //    	System.out.println("////////////////////////////////////////");
 //    	System.out.println(FE.get_PropertyText(string));
-//    	System.out.println("////////////////////////////////////////");
     	try {
     		assertTrue(FE.Homepage.containsText(FE.get_PropertyText(string)));
     		Custom.moveToElementByText(string);

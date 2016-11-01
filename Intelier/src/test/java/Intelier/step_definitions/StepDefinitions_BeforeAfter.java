@@ -1,6 +1,6 @@
 package Intelier.step_definitions;
 
-import Intelier.steps.Steps_LiveCMS_Generic;
+import Intelier.steps.Steps_LiveCMS_BeforeAfter;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import net.thucydides.core.annotations.Steps;
@@ -8,7 +8,7 @@ import net.thucydides.core.annotations.Steps;
 public class StepDefinitions_BeforeAfter {
 
     @Steps
-    Steps_LiveCMS_Generic BE;
+    Steps_LiveCMS_BeforeAfter BE;
 	
     @Before
     public void setup() {
