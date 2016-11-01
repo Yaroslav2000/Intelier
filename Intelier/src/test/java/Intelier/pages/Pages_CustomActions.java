@@ -20,7 +20,5 @@ public class Pages_CustomActions extends PageObject {
 		WebElement element = getDriver().findElement(By.xpath("//*[contains(text(), '"+string+"')]"));
 		withAction().moveToElement(element).perform();
 	}
-
-	//*[@id='property-holder']
 	
 }

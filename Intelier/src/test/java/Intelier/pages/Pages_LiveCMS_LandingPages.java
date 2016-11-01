@@ -3,9 +3,6 @@ package Intelier.pages;
 import java.util.List;
 import java.util.Random;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
