@@ -13,7 +13,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 
-import Intelier.pages.Pages_FrontEnd_LandingPages;
 import Intelier.pages.Pages_LiveCMS_LandingPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.components.HtmlTable;
@@ -176,7 +175,7 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 	
 	@Step
 	public void set_StatusActive() {
-		BE.StatusActive_CHECKBOX.click();
+		BE.StatusActive_RADIOBUTTON.click();
 	}
 
 	@Step
@@ -201,6 +200,15 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
 	@Step
 	public void set_English_MetaDescription(String string) {
 		BE.MetaDescription_TEXTBOX.type(string);
+	}
+	
+	@Step
+	public void set_English_HeaderColor(String string) {
+		if (string.equals("White")) {
+			BE.HeaderColorWhite_RADIOBUTTON.click();
+		} else if (string.equals("Black")) {
+			BE.HeaderColorBlack_RADIOBUTTON.click();
+		}
 	}
 	
 	@Step
@@ -305,6 +313,8 @@ public class Steps_LiveCMS_LandingPages extends ScenarioSteps {
     		assertTrue(HtmlTable.rowsFrom(BE.CampaignsList_TABLE).toString().contains(campaign));
     	} catch (NoSuchElementException ex) {}
 	}
+
+
 
 
 

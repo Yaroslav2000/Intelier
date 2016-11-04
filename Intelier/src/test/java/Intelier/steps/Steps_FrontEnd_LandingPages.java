@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import Intelier.pages.Pages_FrontEnd_LandingPages;
 import Intelier.pages.Pages_CustomActions;
 import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -25,6 +26,47 @@ public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
     
 // -----------------------------------------------------------------------------------------------------------------
 // VERIFICATIONS 	
+    
+
+    @Step
+	public void should_see_PageLogo() {
+    	try {
+    		assertTrue(FE.containsElements(FE.PageLogo.toString()));
+    		Custom.moveToElement(FE.PageLogo);
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_PageContactUs() {
+    	try {
+    		assertTrue(FE.containsText("Contact Us"));
+    		Custom.moveToElementByText("Contact Us");
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_PageFindHotel() {
+    	try {
+    		assertTrue(FE.containsText("Find a Hotel"));
+    		Custom.moveToElementByText("Find a Hotel");
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_PageCurrency() {
+    	try {
+    		assertTrue(FE.containsElements(FE.PageCurrency.toString()));
+    		Custom.moveToElement(FE.PageCurrency);
+    	} catch (NoSuchElementException ex) {}
+	}
+
+    @Step
+	public void should_see_PageLanguage() {
+    	try {
+    		assertTrue(FE.containsElements(FE.PageLanguage.toString()));
+    		Custom.moveToElement(FE.PageLanguage);
+    	} catch (NoSuchElementException ex) {}
+	}
     
     @Step
 	public void should_see_English_PageTitle(String string) {
@@ -78,7 +120,7 @@ public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
     @Step
 	public void should_see_Offer_English_Title(String string) {
     	try {
-        	FE.Offer_Open.click();
+        	FE.get_TitleXPath(string).click();         	
     	} catch (NoSuchElementException ex) {}
     	try {
         	assertTrue(FE.Homepage.containsText(string));
@@ -97,7 +139,7 @@ public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
     @Step
 	public void should_see_Offer_English_TermsConditions(String string) {
     	try {
-    		FE.Offer_English_TermsConditions_Open.click();
+    		FE.get_TermsConditionsXPath(string).click();
     		waitABit(500);
     	} catch (NoSuchElementException ex) {}
     	try {
@@ -105,6 +147,25 @@ public class Steps_FrontEnd_LandingPages extends ScenarioSteps {
     		Custom.moveToElementByText(string);
     	} catch (NoSuchElementException ex) {}
 	}
+
+    @Step
+	public void should_see_English_ShareThisPage() {
+    	try {
+    		assertTrue(FE.English_SocialSharing.containsText("share this page"));
+    		Custom.moveToElement(FE.English_SocialSharing);
+    	} catch (NoSuchElementException ex) {}
+	}
+    
+    @Step
+	public void should_see_PageFooter() {
+    	try {
+    		assertTrue(FE.containsElements(FE.PageFooter.toString()));
+    		Custom.moveToElement(FE.PageFooter);
+    	} catch (NoSuchElementException ex) {}
+	}
+
+
+
 
     
 }

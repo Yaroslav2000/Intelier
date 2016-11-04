@@ -50,6 +50,8 @@ public class Pages_LiveCMS_LandingPages extends PageObject {
     @FindBy(id="title") public WebElementFacade TitleTag_TEXTBOX;
     @FindBy(id="keywords") public WebElementFacade MetaKeywords_TEXTBOX;
     @FindBy(id="description") public WebElementFacade MetaDescription_TEXTBOX;
+    @FindBy(id="logo_color-white") public WebElementFacade HeaderColorWhite_RADIOBUTTON;
+    @FindBy(id="logo_color-black") public WebElementFacade HeaderColorBlack_RADIOBUTTON;
     @FindBy(xpath="//*[@data-type='single-with-offer-with-property']") public WebElementFacade Single_with_offer_with_property_Layout_BUTTON;
     @FindBy(xpath="//input[@name='page_headline[headline]']") public WebElementFacade PageTitle_TEXTBOX;
     @FindBy(xpath="//input[@name='headline2[headline]']") public WebElementFacade PageCopyHeadline_TEXTBOX;
@@ -58,7 +60,8 @@ public class Pages_LiveCMS_LandingPages extends PageObject {
     @FindBy(id="action_buttons-save") public WebElementFacade Campaign_Publish_BUTTON;
     
     @FindBy(xpath="//a[@class='icon settings-icon']") public WebElementFacade Settings_BUTTON;
-    @FindBy(id="status-active") public WebElementFacade StatusActive_CHECKBOX;
+    @FindBy(id="status-active") public WebElementFacade StatusActive_RADIOBUTTON;
+    @FindBy(id="status-inactive") public WebElementFacade StatusInActive_RADIOBUTTON;
     @FindBy(id="save_button-save") public WebElementFacade Campaign_Save_BUTTON;
     
     @FindBy(xpath="//a[@class='icon offers-icon']") public WebElementFacade CampaignOffers_BUTTON;
